@@ -1,0 +1,17 @@
+\documentclass[12pt, oneside, landscape]{article}
+\usepackage{wallpaper}
+\input{../util/header}
+
+\begin{document}
+
+  \lstinputlisting[basicstyle=\ttfamily\scriptsize]{hello.c}
+\begin{shell}[linewidth=30em,basicstyle=\ttfamily\scriptsize]
+$ gcc hello.c -o hello
+$ ./hello             
+Hello!
+(H 72) (e 101) (l 108) (l 108) (o 111) (! 33) ( 0)
+(H 72) (e 101) (l 108) (l 108) (o 111) (! 33) 
+After uppercase: HELLO!
+\end{shell}
+
+\end{document}

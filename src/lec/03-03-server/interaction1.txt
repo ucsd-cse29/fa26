@@ -1,0 +1,15 @@
+Server terminal:
+$ ./string-server1
+Server started on port 2900
+Received request:
+GET /add?s=hi HTTP/1.1
+Host: localhost:2900
+User-Agent: curl/8.7.1
+Accept: */*
+
+
+^C
+
+Client terminal:
+$ curl "localhost:2900/add?s=hi"
+curl: (52) Empty reply from server

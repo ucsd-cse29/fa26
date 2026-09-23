@@ -1,0 +1,159 @@
+\documentclass[oneside, landscape]{article}
+\input{../util/header}
+
+\begin{document}
+
+\small
+
+%% PAGE 1: DoubleList + leaky version + valgrind | two list_append blanks + realloc
+
+\begin{minipage}[t]{0.40\textwidth}
+
+\textbf{Review: \texttt{DoubleList}}
+
+\vspace{0.5em}
+
+% Lines 1-11: includes, struct, forward decls
+\lstinputlisting[basicstyle=\ttfamily\footnotesize, firstline=1, lastline=11]{list-leak.c}%
+% Lines 13-23: main
+\lstinputlisting[basicstyle=\ttfamily\footnotesize, firstline=13, lastline=23, firstnumber=13]{list-leak.c}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\textbf{\texttt{list\_append} --- version 0 (has a bug!)}
+
+\vspace{0.5em}
+
+% Lines 25-31: leaky list_append
+\lstinputlisting[basicstyle=\ttfamily\footnotesize, firstnumber=25, firstline=25, lastline=31, linewidth=38em]{list-leak.c}
+
+\vspace{0.5em}
+
+\lstinputlisting[basicstyle=\ttfamily\footnotesize, numbers=none, frame=single, language={}, linewidth=38em]{valgrind-leak.txt}
+
+\vspace{0.5em}
+
+Draw a picture of where the 24 bytes in 2 blocks are lost.
+
+\vspace{4\baselineskip}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+
+\textbf{\texttt{list\_append} --- version 1, using \texttt{malloc} and \texttt{free}}
+
+\vspace{0.5em}
+
+\lstinputlisting[basicstyle=\ttfamily\footnotesize, numbers=none, firstline=25, lastline=25]{list-leak.c}%
+\vspace{8\baselineskip}% blank for malloc/memcpy/free body
+\begin{lstlisting}[basicstyle=\ttfamily\footnotesize, numbers=none]
+}
+\end{lstlisting}
+
+\vspace{3em}
+
+\textbf{\texttt{list\_append} --- version 2, using \texttt{realloc}}
+
+\vspace{0.5em}
+
+\lstinputlisting[basicstyle=\ttfamily\footnotesize, numbers=none, firstline=78, lastline=78]{list.c}%
+\vspace{5\baselineskip}% blank for realloc body
+\begin{lstlisting}[basicstyle=\ttfamily\footnotesize, numbers=none]
+}
+\end{lstlisting}
+
+\vspace{1em}
+
+\texttt{realloc} wraps malloc + memcpy + free into one call:
+
+\begin{lstlisting}[basicstyle=\ttfamily\footnotesize, numbers=none]
+void *realloc(void *ptr, size_t new_size);
+\end{lstlisting}
+
+\vspace{-0.5em}
+
+\begin{itemize} \itemsep0em
+  \item May extend in place or allocate + copy + free
+  \item \texttt{realloc(NULL, n)} acts like \texttt{malloc(n)}
+\end{itemize}
+
+\end{minipage}
+
+\newpage
+
+%% PAGE 2: Three repetitive filter functions | what's the pattern?
+
+\begin{minipage}[t]{0.45\textwidth}
+
+\textbf{Filtering a \texttt{DoubleList}}
+
+\vspace{0.5em}
+
+\lstinputlisting[basicstyle=\ttfamily\footnotesize, firstline=16, lastline=25, firstnumber=16]{list.c}
+
+\lstinputlisting[basicstyle=\ttfamily\footnotesize, firstline=27, lastline=36, firstnumber=27]{list.c}
+
+\lstinputlisting[basicstyle=\ttfamily\footnotesize, firstline=38, lastline=47, firstnumber=38]{list.c}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.50\textwidth}
+
+\vspace{2em}
+
+What's the same across all three functions?
+
+\vspace{4\baselineskip}
+
+What's different?
+
+\vspace{4\baselineskip}
+
+\hrule
+\vspace{1em}
+
+\textbf{Factoring out the pattern: \texttt{list\_filter}}
+
+\vspace{0.5em}
+
+\lstinputlisting[basicstyle=\ttfamily\footnotesize, numbers=none, firstline=10, lastline=10]{list.c}
+
+% Line 93: list_filter signature
+\lstinputlisting[basicstyle=\ttfamily\footnotesize, numbers=none, firstline=93, lastline=93]{list.c}%
+\vspace{7\baselineskip}% blank for filter body
+\begin{lstlisting}[basicstyle=\ttfamily\footnotesize, numbers=none]
+}
+\end{lstlisting}
+
+\end{minipage}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\begin{minipage}[t]{0.45\textwidth}
+
+\textbf{Examples: hardcoded filters}
+
+\vspace{0.5em}
+
+% Lines 49-59: list_examples (data setup + blanks)
+\lstinputlisting[basicstyle=\ttfamily\footnotesize, numbers=none, firstline=49, lastline=59]{list.c}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.50\textwidth}
+
+\textbf{Examples: using \texttt{list\_filter}}
+
+\vspace{0.5em}
+
+% Lines 61-71: list_examples_pred (data setup + blanks)
+\lstinputlisting[basicstyle=\ttfamily\footnotesize, numbers=none, firstline=61, lastline=71]{list.c}
+
+\end{minipage}
+
+\end{document}

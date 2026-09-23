@@ -1,0 +1,40 @@
+// Question 2 (just 2 questions)
+
+// In exec-arg0.c
+#include <unistd.h>
+#include <stdio.h>
+
+int main() {
+  char* args[] = { "alpaca", NULL };
+  execvp("./arg0", args);
+  printf("Done executing\n");
+}
+
+// In arg0.c
+#include <stdio.h>
+
+int main(int argc, char** args) {
+  printf("The 0th arg is: %s\n", args[0]);
+}
+
+$ gcc arg0.c -o arg0
+$ gcc exec-arg0.c -o exec-arg0
+$ ./exec-arg0
+
+What prints?
+
+
+
+
+
+
+
+
+
+
+How many lines print? 0 1 2 3 4 more?
+
+
+
+
+

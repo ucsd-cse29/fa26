@@ -1,0 +1,38 @@
+\documentclass[12pt, oneside, landscape]{article}
+\input{../util/header}
+
+\begin{document}
+
+\begin{minipage}[t]{0.45\textwidth}
+
+\lstinputlisting[basicstyle=\ttfamily\scriptsize]{layout.c}
+
+\begin{shell}[linewidth=34em, basicstyle=\ttfamily\scriptsize]
+$ ./layout
+&static_counter_fun:    0x6046a1dcf169
+&main:  0x6046a1dcf1c2
+&NUM:   0x6046a1dd2010
+numptr: 0x6046a1dd2010
+&HI:    0x6046a1dd2014
+hiptr:  0x6046a1dd2014
+stdin:  0x6046a1dd2020
+ctr:    1
+&ctr:   0x6046a1dd202c
+ctr:    2
+&ctr:   0x6046a1dd202c
+&argv:  0x7ffe89c5a5b0
+ptr:    0x7ffe89c5a5d9
+&ptr:   0x7ffe89c5a5c0
+&hiptr: 0x7ffe89c5a5c8
+hello:  0x7ffe89c5a5d9
+argv:   0x7ffe89c5a718
+argv[0]:        0x7ffe89c5c73c
+\end{shell}
+
+\end{minipage}
+
+\newpage
+
+\lstinputlisting[basicstyle=\ttfamily\scriptsize]{shell.c}
+
+\end{document}

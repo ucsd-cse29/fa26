@@ -1,0 +1,32 @@
+\documentclass[12pt, oneside, landscape]{article}
+\usepackage{wallpaper}
+\input{../util/header}
+
+\begin{document}
+
+\CenterWallPaper{1}{memory-template.pdf}
+
+\begin{minipage}[t]{0.45\textwidth}
+
+\lstinputlisting[basicstyle=\ttfamily\scriptsize]{strtok.c}
+
+\begin{shell}[linewidth=34em, basicstyle=\ttfamily\scriptsize]
+$ gcc strtok.c -o strtok
+$ ./strtok
+str@0x16b7b6e51: 0x16b7b6e51 "Joe Politz,jpolitz@ucsd.edu,Instructor"
+a@0x16b7b6e40: 0x16b7b6e51 "Joe Politz"
+b@0x16b7b6e38: 0x16b7b6e5c "jpolitz@ucsd.edu"
+c@0x16b7b6e30: 0x16b7b6e6d "Instructor"
+d@0x16b7b6e28: 0x0
+
+str after strtok:
+0x16b7b6e51: 'J' 'o' 'e' ' ' 'P' 'o' 'l' 'i'
+0x16b7b6e59: 't' 'z' NUL 'j' 'p' 'o' 'l' 'i'
+0x16b7b6e61: 't' 'z' '@' 'u' 'c' 's' 'd' '.'
+0x16b7b6e69: 'e' 'd' 'u' NUL 'I' 'n' 's' 't'
+0x16b7b6e71: 'r' 'u' 'c' 't' 'o' 'r' NUL
+\end{shell}
+
+\end{minipage}
+
+\end{document}

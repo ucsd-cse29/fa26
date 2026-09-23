@@ -1,0 +1,6 @@
+$ curl "localhost:2900/add?s=hi"
+Added: hi
+$ curl "localhost:2900/add"
+Missing ?s= parameter
+$ curl "localhost:2900/unknown"
+Unknown path

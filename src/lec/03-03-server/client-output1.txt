@@ -1,0 +1,2 @@
+$ curl "localhost:2900/add?s=hi"
+curl: (52) Empty reply from server

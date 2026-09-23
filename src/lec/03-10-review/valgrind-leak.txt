@@ -1,0 +1,7 @@
+$ valgrind ./list-leak
+[68.5, 72.0, 65.3]
+==2303169== HEAP SUMMARY:
+==2303169==     in use at exit: 24 bytes in 2 blocks
+==2303169==   total heap usage: 4 allocs, 2 frees, 1,072 bytes allocated
+==2303169== LEAK SUMMARY:
+==2303169==    definitely lost: 24 bytes in 2 blocks

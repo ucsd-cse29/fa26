@@ -1,0 +1,8 @@
+[book]
+authors = ["Aaron Schulman"]
+language = "en"
+src = "src"
+title = "UCSD CSE29 Fall 2026"
+
+[output.html.playground]
+runnable = false

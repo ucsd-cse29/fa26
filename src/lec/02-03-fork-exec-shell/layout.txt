@@ -1,0 +1,18 @@
+&main:	0x64d1e9b5b1c2
+&main:	0x64d1e9b5b1c2
+&NUM:	0x64d1e9b5e010
+numptr:	0x64d1e9b5e010
+&HI:	0x64d1e9b5e014
+hiptr:	0x64d1e9b5e014
+stdin:	0x64d1e9b5e020
+ctr:	1
+&ctr:	0x64d1e9b5e02c
+ctr:	2
+&ctr:	0x64d1e9b5e02c
+&argv:	0x7ffcbc857bf0
+ptr:	0x7ffcbc857c19
+&ptr:	0x7ffcbc857c00
+&hiptr:	0x7ffcbc857c08
+hello:	0x7ffcbc857c19
+argv:	0x7ffcbc857d58
+argv[0]:0x7ffcbc85873c

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heap Simulator – PA4</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f8f9fa;
+  --surface2: #e9ecef;
+  --border: #dee2e6;
+  --border2: #ced4da;
+  --green: #198754; --green-dim: #d1f0dd; --green-mid: #b8e6cc;
+  --red: #dc3545;   --red-dim: #f8d7da;   --red-mid: #f1aeb5;
+  --blue: #0d6efd;  --blue-dim: #cfe2ff;  --blue-mid: #9ec5fe;
+  --yellow: #ffc107;--yellow-dim: #fff3cd; --yellow-mid: #ffe69c;
+  --purple: #6f42c1;
+  --muted: #8aa5bd; --muted2: #7e97b1;
+  --text: #212529;  --text2: #495057;
+  --mono: 'IBM Plex Mono', monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+body { background: var(--bg); color: var(--text); font-family: var(--mono); display: flex; flex-direction: column; height: 100vh; }
+
+header {
+  display: flex; align-items: center; gap: 14px; padding: 8px 16px;
+  border-bottom: 1px solid var(--border); background: var(--surface);
+  flex-shrink: 0; flex-wrap: wrap;
+}
+.logo { font-size: 1.1rem; font-weight: 700; color: var(--green); letter-spacing: 0.1em; }
+.logo span { color: var(--muted2); font-weight: 400; }
+.sep { width: 1px; height: 22px; background: var(--border); flex-shrink: 0; }
+.cfg { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cfg label { font-size: 0.75rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; }
+input[type=number] {
+  width: 72px; background: var(--surface2); border: 1px solid var(--border2);
+  border-radius: 4px; color: var(--yellow); font-family: var(--mono);
+  font-size: 0.95rem; padding: 4px 7px; outline: none;
+}
+input[type=number]:focus { border-color: var(--yellow); }
+select {
+  background: var(--surface2); border: 1px solid var(--border2); border-radius: 4px;
+  color: var(--red); font-family: var(--mono); font-size: 0.9rem;
+  padding: 4px 7px; outline: none; min-width: 120px; cursor: pointer;
+}
+.btn {
+  font-family: var(--mono); font-size: 0.8rem; padding: 5px 12px;
+  border-radius: 4px; border: 1px solid; cursor: pointer; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; transition: all 0.12s; white-space: nowrap;
+}
+.btn-green  { background: var(--green-mid); border-color: var(--green);  color: var(--green); }
+.btn-green:hover  { background: var(--green);  color: #fff; }
+.btn-red    { background: var(--red-mid);   border-color: var(--red);    color: var(--red); }
+.btn-red:hover    { background: var(--red);    color: #fff; }
+.btn-yellow { background: var(--yellow-mid);border-color: var(--yellow); color: #856404; }
+.btn-yellow:hover { background: var(--yellow); color: #000; }
+.btn-ghost  { background: transparent; border-color: var(--border2); color: var(--muted2); }
+.btn-ghost:hover  { border-color: var(--muted2); color: var(--text); }
+
+.workspace { display: grid; grid-template-columns: 250px 1fr; flex: 1; overflow: hidden; min-height: 0; }
+
+.left-panel { border-right: 1px solid var(--border); background: var(--surface); display: flex; flex-direction: column; overflow: hidden; }
+.panel-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted2); padding: 8px 14px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.history-list { flex: 1; overflow-y: auto; padding: 6px 0; }
+.history-list::-webkit-scrollbar { width: 4px; }
+.history-list::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+.history-item { display: flex; align-items: center; gap: 8px; padding: 6px 14px; cursor: pointer; transition: background 0.1s; border-left: 2px solid transparent; }
+.history-item:hover { background: var(--surface2); }
+.history-item.active { background: var(--surface2); border-left-color: var(--green); }
+.hi-idx { font-size: 0.7rem; color: var(--muted); min-width: 18px; }
+.hi-code { font-size: 0.85rem; color: var(--text2); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hi-code .kw-a { color: var(--green); }
+.hi-code .kw-f { color: var(--red); }
+.hi-code .kw-i { color: var(--yellow); }
+.hi-badge { font-size: 0.65rem; padding: 2px 5px; border-radius: 3px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; flex-shrink: 0; }
+.badge-ok   { background: var(--green-dim); color: var(--green); border: 1px solid var(--green-mid); }
+.badge-null { background: var(--red-dim);   color: var(--red);   border: 1px solid var(--red-mid); }
+.badge-noop { background: #e9ecef; color: var(--muted2); border: 1px solid var(--border2); }
+
+.right-panel { display: flex; flex-direction: column; overflow: hidden; min-height: 0; }
+.controls-bar { padding: 8px 16px; border-bottom: 1px solid var(--border); background: var(--surface); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; flex-shrink: 0; }
+.op-group { display: flex; align-items: center; gap: 6px; }
+.op-group label { font-size: 0.75rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.06em; }
+#heapStats { margin-left: auto; font-size: 0.75rem; color: var(--muted2); }
+
+.heap-area { flex: 1; overflow: visible; padding: 20px 20px 60px 20px; min-height: 0; }
+
+.state-op { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+.state-op .op-i { color: var(--yellow); }
+.state-op .op-a { color: var(--green); }
+.state-op .op-f { color: var(--red); }
+
+.event-log { margin-bottom: 16px; font-size: 0.8rem; color: var(--muted2); background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; line-height: 1.9; }
+.ev-split { color: var(--purple); }
+.ev-coal  { color: var(--yellow); }
+.ev-alloc { color: var(--green); }
+.ev-free  { color: var(--red); }
+.ev-noop  { color: var(--muted2); }
+
+.heap-diagram { overflow-x: auto; margin-top: 40px; }
+.ruler { position: relative; height: 18px; margin-bottom: 2px; }
+.ruler-tick { position: absolute; font-size: 0.6rem; color: var(--muted); transform: translateX(-50%); white-space: nowrap; }
+.block-row { display: flex; height: 84px; align-items: stretch; gap: 1px; }
+
+.blk {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border: 1.5px solid; border-radius: 3px; flex-shrink: 0; cursor: default;
+  transition: filter 0.15s, transform 0.1s; position: relative; padding: 2px;
+}
+.blk:hover { filter: brightness(1.15); }
+.blk .bname { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; text-align: center; line-height: 1.2; }
+.blk .binfo { font-size: 0.6rem; opacity: 0.75; line-height: 1.5; text-align: center; margin-top: 2px; white-space: pre; }
+
+
+
+.blk-pad  { background: #e9ecef; border-color: #adb5bd; color: #6c757d; }
+.blk-hdr  { background: #d1f0dd; border-color: #75b798; color: #0f5132; }
+.blk-ftr  { background: #d8f3dc; border-color: #74c69d; color: #0f5132; }
+.blk-end  { background: #f8d7da; border-color: #dc3545; color: #842029; }
+.blk-free { background: #cfe2ff; border-color: #0d6efd; color: #084298; border-style: dashed; }
+
+.ptr-labels { position: relative; height: 22px; }
+.ptr-arrow { position: absolute; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; font-size: 0.65rem; white-space: nowrap; }
+.ptr-arrow .pa-line { width: 1px; height: 7px; margin-bottom: 1px; }
+
+.legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 14px; }
+.legend-item { display: flex; align-items: center; gap: 5px; font-size: 0.7rem; color: var(--muted2); }
+.legend-swatch { width: 10px; height: 10px; border-radius: 2px; border: 1.5px solid; flex-shrink: 0; }
+
+.ptr-table { margin-top: 16px; max-width: 440px; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; font-size: 0.8rem; }
+.ptr-table-hdr { display: grid; grid-template-columns: 80px 80px 1fr; background: var(--surface2); border-bottom: 1px solid var(--border); padding: 5px 10px; color: var(--muted2); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.ptr-row { display: grid; grid-template-columns: 80px 80px 1fr; padding: 5px 10px; border-bottom: 1px solid var(--border); }
+.ptr-row:last-child { border-bottom: none; }
+.ptr-row:hover { background: var(--surface2); }
+.ptr-row .pname { color: var(--green); font-weight: 600; }
+.ptr-row .paddr { color: var(--yellow); }
+.ptr-row .pstatus.live   { color: var(--green); }
+.ptr-row .pstatus.freed  { color: var(--red); text-decoration: line-through; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">heap<span>sim</span></div>
+    <div style="font-size:0.7rem;color:var(--muted2);margin-top:1px">PA4 · best-fit · 16B align · coalescing</div>
+  </div>
+  <div class="sep"></div>
+  <div class="cfg">
+    <label>Heap size</label>
+    <input type="number" id="heapSizeInput" value="1024" min="64" max="65536" step="64">
+    <label style="color:var(--muted)">bytes</label>
+    <button class="btn btn-yellow" id="initBtn">⟳ re-init</button>
+    <button class="btn btn-ghost"  id="undoBtn">← undo</button>
+    <button class="btn btn-ghost"  id="clearBtn">✕ reset</button>
+  </div>
+</header>
+
+<div class="workspace">
+  <div class="left-panel">
+    <div class="panel-title">operation history — click to inspect</div>
+    <div class="history-list" id="historyList"></div>
+  </div>
+  <div class="right-panel">
+    <div class="controls-bar">
+      <div class="op-group">
+        <label>vmalloc</label>
+        <input type="number" id="mallocSize" value="16" min="1" max="999999">
+        <span style="font-size:0.75rem;color:var(--muted2)">bytes</span>
+        <button class="btn btn-green" id="mallocBtn">+ alloc</button>
+      </div>
+      <div class="sep" style="height:22px"></div>
+      <div class="op-group">
+        <label>vmfree</label>
+        <select id="freeSelect"><option value="">— pick ptr —</option></select>
+        <button class="btn btn-red" id="freeBtn">− free</button>
+      </div>
+      <div id="heapStats"></div>
+    </div>
+    <div style="flex:1;overflow:auto;min-height:0;"><div class="heap-area" id="heapArea"></div></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+//  CONSTANTS
+// ═══════════════════════════════════════════════
+const HDR_SZ = 8;  // header bytes
+const FTR_SZ = 8;  // footer bytes (free blocks only)
+
+function align16(n) { return Math.ceil(n / 16) * 16; }
+
+// ═══════════════════════════════════════════════
+//  HEAP ENGINE
+//  Block layout:
+//    busy:  [HDR(8) | payload (req bytes) | align-pad]  — no footer
+//    free:  [HDR(8) | payload             | FTR(8)]
+//  Block size is always a multiple of 16.
+// ═══════════════════════════════════════════════
+class HeapSim {
+  constructor(totalBytes) {
+    this.total = totalBytes;
+    this.blocks = [];
+    this.ptrMap = {};
+    this.ptrCounter = 1;
+    this.history = [];
+    this.cursor = 0;
+    this._init();
+  }
+
+  _init() {
+    // Layout: padding[0,8), free-block[8, endmark), endmark[endmark, total)
+    // free block size must be multiple of 16; endmark = 8 + alignedFreeSize
+    const rawFree = this.total - 8 - 8; // subtract padding and endmark
+    const alignedFree = Math.floor(rawFree / 16) * 16;
+    const endmarkAddr = 8 + alignedFree;
+
+    this.blocks = [
+      { type: 'padding',  addr: 0 },
+      { type: 'free',     addr: 8, size: alignedFree, prevBusy: true },
+      { type: 'endmark',  addr: endmarkAddr, prevBusy: false },
+    ];
+    this.ptrMap = {};
+    this.ptrCounter = 1;
+    this.history = [];
+    this._pushHistory(`vminit(${this.total})`, 'init',
+      [`Heap initialised. Free block [8, ${endmarkAddr}), size=${alignedFree}B.`]);
+  }
+
+  _pushHistory(op, label, events, resultPtr) {
+    this.history.push({
+      op, label, events,
+      resultPtr: resultPtr !== undefined ? resultPtr : null,
+      blocks:  JSON.parse(JSON.stringify(this.blocks)),
+      ptrMap:  JSON.parse(JSON.stringify(this.ptrMap)),
+    });
+    this.cursor = this.history.length - 1;
+  }
+
+  _setNextPrevBusy(addr, val) {
+    const b = this.blocks.find(x => x.addr === addr);
+    if (b) b.prevBusy = val;
+  }
+
+  vmalloc(requestedBytes) {
+    const events = [];
+    if (requestedBytes <= 0) {
+      events.push('Size must be > 0. Returning NULL.');
+      this._pushHistory(`vmalloc(${requestedBytes})`, 'alloc', events, null);
+      return { ptr: null };
+    }
+
+    // Busy block has no footer: size = align16(HDR + requestedBytes)
+    const neededBlock = align16(HDR_SZ + requestedBytes);
+    events.push(`Requested ${requestedBytes}B → block = align16(${HDR_SZ}+${requestedBytes}) = ${neededBlock}B.`);
+
+    // Best-fit scan
+    let best = null, bestSize = Infinity;
+    for (const b of this.blocks) {
+      if (b.type === 'free' && b.size >= neededBlock && b.size < bestSize) {
+        best = b; bestSize = b.size;
+      }
+    }
+
+    if (!best) {
+      events.push(`No free block large enough (need ${neededBlock}B). Returning NULL.`);
+      this._pushHistory(`vmalloc(${requestedBytes})`, 'alloc', events, null);
+      return { ptr: null };
+    }
+
+    events.push(`Best-fit: free block [${best.addr}, ${best.addr+best.size}), size=${best.size}B.`);
+
+    const idx = this.blocks.indexOf(best);
+    const leftover = best.size - neededBlock;
+    // Remaining free block needs HDR + FTR = 16B minimum
+    const canSplit = leftover >= (HDR_SZ + FTR_SZ);
+
+    const allocSize = canSplit ? neededBlock : best.size;
+
+    if (canSplit) {
+      const newFreeAddr = best.addr + neededBlock;
+      events.push(`Splitting: [${best.addr},${best.addr+neededBlock}) BUSY + [${newFreeAddr},${newFreeAddr+leftover}) FREE.`);
+      this.blocks.splice(idx, 1,
+        { type: 'busy', addr: best.addr,   size: neededBlock, prevBusy: best.prevBusy },
+        { type: 'free', addr: newFreeAddr, size: leftover,    prevBusy: true }
+      );
+      this._setNextPrevBusy(newFreeAddr + leftover, false);
+    } else {
+      events.push(`Using entire ${best.size}B block (leftover ${leftover}B < 16B min).`);
+      best.type = 'busy';
+      this._setNextPrevBusy(best.addr + best.size, true);
+    }
+
+    const payloadAddr = best.addr + HDR_SZ;
+    const ptrName = 'ptr' + this.ptrCounter++;
+    this.ptrMap[ptrName] = { addr: payloadAddr, blockAddr: best.addr, requestedBytes, freed: false };
+    events.push(`Allocated! ${ptrName} = ${payloadAddr}.`);
+
+    this._pushHistory(`${ptrName} = vmalloc(${requestedBytes})`, 'alloc', events, ptrName);
+    return { ptr: payloadAddr, name: ptrName };
+  }
+
+  vmfree(ptrName) {
+    const events = [];
+    const info = this.ptrMap[ptrName];
+
+    if (!info) {
+      events.push(`${ptrName} unknown. No-op.`);
+      this._pushHistory(`vmfree(${ptrName})`, 'free', events);
+      return;
+    }
+    if (info.freed) {
+      events.push(`${ptrName} already freed. No-op.`);
+      this._pushHistory(`vmfree(${ptrName})`, 'free', events);
+      return;
+    }
+
+    let idx = this.blocks.findIndex(b => b.addr === info.blockAddr);
+    if (idx < 0 || this.blocks[idx].type !== 'busy') {
+      events.push(`Block at ${info.blockAddr} not found or not busy. No-op.`);
+      this._pushHistory(`vmfree(${ptrName})`, 'free', events);
+      return;
+    }
+
+    events.push(`Freeing block [${this.blocks[idx].addr}, ${this.blocks[idx].addr+this.blocks[idx].size}).`);
+
+    // When freeing a busy block, we need to give it a footer so free-block invariants hold.
+    // The block size stays the same; the last FTR_SZ bytes become the footer.
+    this.blocks[idx].type = 'free';
+
+    // Coalesce next
+    if (idx + 1 < this.blocks.length && this.blocks[idx+1].type === 'free') {
+      const nxt = this.blocks[idx+1];
+      events.push(`Next block [${nxt.addr},${nxt.addr+nxt.size}) FREE → coalescing forward.`);
+      this.blocks[idx].size += nxt.size;
+      this.blocks.splice(idx+1, 1);
+    }
+
+    // Coalesce prev
+    if (idx > 0 && this.blocks[idx-1].type === 'free') {
+      const prv = this.blocks[idx-1];
+      events.push(`Prev block [${prv.addr},${prv.addr+prv.size}) FREE → coalescing backward.`);
+      prv.size += this.blocks[idx].size;
+      this.blocks.splice(idx, 1);
+      idx = idx - 1;
+    }
+
+    this._setNextPrevBusy(this.blocks[idx].addr + this.blocks[idx].size, false);
+
+    info.freed = true;
+    const m = this.blocks[idx];
+    events.push(`Done. Merged free block [${m.addr},${m.addr+m.size}), size=${m.size}B.`);
+
+    this._pushHistory(`vmfree(${ptrName})`, 'free', events);
+  }
+
+  goTo(idx) {
+    const s = this.history[idx];
+    this.blocks  = JSON.parse(JSON.stringify(s.blocks));
+    this.ptrMap  = JSON.parse(JSON.stringify(s.ptrMap));
+    this.cursor  = idx;
+    let max = 0;
+    for (const k of Object.keys(this.ptrMap)) {
+      const n = parseInt(k.replace('ptr','')) || 0;
+      if (n > max) max = n;
+    }
+    this.ptrCounter = max + 1;
+  }
+
+  undo() {
+    if (this.history.length > 1) {
+      this.history.pop();
+      this.goTo(this.history.length - 1);
+    }
+  }
+
+  heapStats() {
+    let freeBytes = 0, busyBytes = 0, freeBlocks = 0, busyBlocks = 0;
+    for (const b of this.blocks) {
+      if (b.type === 'free') { freeBytes += b.size; freeBlocks++; }
+      if (b.type === 'busy') { busyBytes += b.size; busyBlocks++; }
+    }
+    return { freeBytes, busyBytes, freeBlocks, busyBlocks };
+  }
+}
+
+// ═══════════════════════════════════════════════
+//  RENDERER
+// ═══════════════════════════════════════════════
+
+const PTR_COLORS = [
+  { bg: '#ffe4cc', border: '#fd7e14', text: '#7a4419' },
+  { bg: '#cfe2ff', border: '#0d6efd', text: '#084298' },
+  { bg: '#e0cffc', border: '#6f42c1', text: '#432874' },
+  { bg: '#ffe69c', border: '#ffc107', text: '#856404' },
+  { bg: '#f8d7da', border: '#dc3545', text: '#842029' },
+  { bg: '#d1ecf1', border: '#17a2b8', text: '#0c5460' },
+  { bg: '#fff3cd', border: '#ffc107', text: '#856404' },
+  { bg: '#e7d6f5', border: '#9b59b6', text: '#5a3472' },
+];
+
+let sim = new HeapSim(parseInt(document.getElementById('heapSizeInput').value));
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function getPtrColor(ptrName, ptrMap) {
+  const keys = Object.keys(ptrMap);
+  return PTR_COLORS[keys.indexOf(ptrName) % PTR_COLORS.length] || PTR_COLORS[0];
+}
+
+function renderHeap(state) {
+  const area = document.getElementById('heapArea');
+  const { blocks, ptrMap, op, label, events, resultPtr } = state;
+
+  // blockAddr → ptrName for live ptrs
+  const addrToPtr = {};
+  for (const [name, info] of Object.entries(ptrMap)) {
+    if (!info.freed) addrToPtr[info.blockAddr] = name;
+  }
+
+  // ── Build segments ──
+  // Each segment: { kind, addr, bytes, w, ...extra }
+  // kinds: 'heappad' | 'hdr' | 'payload' | 'alignpad' | 'ftr' | 'end'
+
+  const META_PX = 46;
+  const MAX_W = Math.min(window.innerWidth - 310, 1200);
+
+  // Count payload bytes for scaling (payload + alignpad for busy; payload for free)
+  let totalScalableBytes = 0;
+  let metaCount = 0;
+  for (const b of blocks) {
+    if (b.type === 'padding')  { metaCount += 1; }
+    else if (b.type === 'endmark') { metaCount += 1; }
+    else if (b.type === 'busy') {
+      metaCount += 1; // just header
+      totalScalableBytes += (b.size - HDR_SZ); // payload + alignpad
+    }
+    else if (b.type === 'free') {
+      metaCount += 2; // header + footer
+      const payload = b.size - HDR_SZ - FTR_SZ;
+      if (payload > 0) totalScalableBytes += payload;
+    }
+  }
+
+  const metaUsed = metaCount * META_PX + metaCount;
+  const scalableAvail = Math.max(MAX_W - metaUsed, 80);
+  const scale = totalScalableBytes > 0 ? scalableAvail / totalScalableBytes : 4;
+  function spx(bytes) { return Math.max(Math.round(bytes * scale), 18); }
+
+  const segs = [];
+
+  for (const b of blocks) {
+    if (b.type === 'padding') {
+      segs.push({ kind: 'heappad', addr: 0, bytes: 8, w: META_PX });
+
+    } else if (b.type === 'endmark') {
+      segs.push({ kind: 'end', addr: b.addr, bytes: 8, w: META_PX, prevBusy: b.prevBusy });
+
+    } else if (b.type === 'busy') {
+      const ptrName = addrToPtr[b.addr] || null;
+      const reqBytes = ptrName && ptrMap[ptrName] ? ptrMap[ptrName].requestedBytes : 0;
+      const totalPayload = b.size - HDR_SZ;
+      const alignPad = totalPayload - reqBytes;
+
+      segs.push({ kind: 'hdr', addr: b.addr, bytes: HDR_SZ, w: META_PX,
+        blockType: 'busy', size: b.size, prevBusy: b.prevBusy });
+
+      if (reqBytes > 0) {
+        segs.push({ kind: 'payload', addr: b.addr + HDR_SZ, bytes: reqBytes,
+          w: spx(reqBytes), blockType: 'busy', ptrName, requestedBytes: reqBytes });
+      }
+      if (alignPad > 0) {
+        segs.push({ kind: 'alignpad', addr: b.addr + HDR_SZ + reqBytes, bytes: alignPad,
+          w: spx(alignPad) });
+      }
+
+    } else if (b.type === 'free') {
+      const ptrName = addrToPtr[b.addr] || null;
+      const payloadBytes = b.size - HDR_SZ - FTR_SZ;
+
+      segs.push({ kind: 'hdr', addr: b.addr, bytes: HDR_SZ, w: META_PX,
+        blockType: 'free', size: b.size, prevBusy: b.prevBusy });
+
+      if (payloadBytes > 0) {
+        segs.push({ kind: 'payload', addr: b.addr + HDR_SZ, bytes: payloadBytes,
+          w: spx(payloadBytes), blockType: 'free', ptrName });
+      }
+
+      segs.push({ kind: 'ftr', addr: b.addr + b.size - FTR_SZ, bytes: FTR_SZ, w: META_PX,
+        blockType: 'free', size: b.size });
+    }
+  }
+
+  const totalW = segs.reduce((s, sg) => s + sg.w, 0) + Math.max(segs.length - 1, 0);
+
+  // ── Build HTML ──
+  let html = '';
+
+  // Title
+  const opCls = label === 'init' ? 'op-i' : label === 'alloc' ? 'op-a' : 'op-f';
+  html += `<div class="state-op"><span class="${opCls}">${esc(op)}</span>`;
+  if (resultPtr === null && label === 'alloc') {
+    html += ` <span style="color:var(--red);font-size:0.9rem">→ NULL</span>`;
+  }
+  html += `</div>`;
+
+  // Event log
+  if (events && events.length) {
+    html += `<div class="event-log">`;
+    for (const e of events) {
+      let cls = '';
+      if (/split/i.test(e))   cls = 'ev-split';
+      else if (/coalesc/i.test(e)) cls = 'ev-coal';
+      else if (/Allocated/i.test(e)) cls = 'ev-alloc';
+      else if (/Freeing/i.test(e))   cls = 'ev-free';
+      else if (/No-op|NULL/i.test(e)) cls = 'ev-noop';
+      html += `<div class="${cls}">▸ ${esc(e)}</div>`;
+    }
+    html += `</div>`;
+  }
+
+  // Ruler
+  html += `<div class="heap-diagram"><div class="ruler" style="width:${totalW}px">`;
+  let rulerpx = 0, lastAddr = -9999;
+  for (const sg of segs) {
+    if (sg.addr !== lastAddr) {
+      html += `<div class="ruler-tick" style="left:${rulerpx}px">${sg.addr}</div>`;
+      lastAddr = sg.addr;
+    }
+    rulerpx += sg.w + 1;
+  }
+  html += `<div class="ruler-tick" style="left:${rulerpx}px">${sim.total}</div>`;
+  html += `</div>`;
+
+  // Block row
+  const ptrCenterPx = {};
+  let bpx = 0;
+  html += `<div class="block-row">`;
+
+  for (const sg of segs) {
+    let cls = '', name = '', info = '';
+
+    if (sg.kind === 'heappad') {
+      cls = 'blk-pad'; name = 'PAD'; info = '8B';
+
+    } else if (sg.kind === 'end') {
+      cls = 'blk-end'; name = 'END';
+      info = `sz:0\nprev:${sg.prevBusy ? 'BUSY' : 'FREE'}\nBUSY`;
+
+    } else if (sg.kind === 'hdr') {
+      cls = 'blk-hdr'; name = 'HDR';
+      const stat = sg.blockType === 'busy' ? 'BUSY' : 'FREE';
+      info = `sz:${sg.size}\nprev:${sg.prevBusy ? 'BUSY' : 'FREE'}\n${stat}`;
+
+    } else if (sg.kind === 'ftr') {
+      cls = 'blk-ftr'; name = 'FTR';
+      info = `sz:${sg.size}\nFREE`;
+
+    } else if (sg.kind === 'alignpad') {
+      cls = 'blk-pad'; name = 'PAD'; info = `${sg.bytes}B`;
+
+    } else if (sg.kind === 'payload') {
+      if (sg.blockType === 'free') {
+        cls = 'blk-free'; name = 'FREE'; info = `${sg.bytes}B`;
+      } else {
+        // busy — has a named pointer
+        if (sg.ptrName) {
+          const c = getPtrColor(sg.ptrName, ptrMap);
+          ptrCenterPx[sg.ptrName] = bpx;// + sg.w / 2;
+          html += `<div class="blk" style="width:${sg.w}px;background:${c.bg};border-color:${c.border};color:${c.text}">
+            <div class="bname">${esc(sg.ptrName)}</div>
+            <div class="binfo">${sg.bytes}B</div>
+          </div>`;
+          bpx += sg.w + 1;
+          continue;
+        } else {
+          cls = 'blk-free'; name = 'BUSY'; info = `${sg.bytes}B`;
+        }
+      }
+    }
+
+    html += `<div class="blk ${cls}" style="width:${sg.w}px">
+      <div class="bname">${esc(name)}</div>
+      ${info ? `<div class="binfo">${esc(info)}</div>` : ''}
+    </div>`;
+    bpx += sg.w + 1;
+  }
+
+  html += `</div>`; // block-row
+
+  // Pointer arrows
+  html += `<div class="ptr-labels" style="width:${totalW}px">`;
+  for (const [pname, cx] of Object.entries(ptrCenterPx)) {
+    const c = getPtrColor(pname, ptrMap);
+    html += `<div class="ptr-arrow" style="left:${cx}px;color:${c.text}">
+      <div class="pa-line" style="background:${c.text}"></div>
+      <span>${esc(pname)}</span>
+    </div>`;
+  }
+  html += `</div>`;
+
+  html += `</div>`; // heap-diagram
+
+  // Legend
+  html += `<div class="legend">
+    <div class="legend-item"><div class="legend-swatch" style="background:#e9ecef;border-color:#adb5bd"></div>Padding (heap / align)</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#d1f0dd;border-color:#75b798"></div>Header</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#d8f3dc;border-color:#74c69d"></div>Footer (free only)</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#f8d7da;border-color:#dc3545"></div>Endmark</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#cfe2ff;border-color:#0d6efd;border-style:dashed"></div>Free payload</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#ffe4cc;border-color:#fd7e14"></div>Allocated payload</div>
+  </div>`;
+
+  // Pointer table
+  const ptrEntries = Object.entries(ptrMap);
+  if (ptrEntries.length > 0) {
+    html += `<div class="ptr-table">
+      <div class="ptr-table-hdr"><span>pointer</span><span>address</span><span>status</span></div>`;
+    for (const [name, info] of ptrEntries) {
+      const sc = info.freed ? 'freed' : 'live';
+      const st = info.freed ? 'freed' : `live · ${info.requestedBytes}B requested`;
+      html += `<div class="ptr-row">
+        <span class="pname">${esc(name)}</span>
+        <span class="paddr">${info.addr}</span>
+        <span class="pstatus ${sc}">${st}</span>
+      </div>`;
+    }
+    html += `</div>`;
+  }
+
+  area.innerHTML = html;
+
+  // Stats bar
+  const s = sim.heapStats();
+  document.getElementById('heapStats').textContent =
+    `free: ${s.freeBytes}B (${s.freeBlocks} blk) · busy: ${s.busyBytes}B (${s.busyBlocks} blk)`;
+}
+
+function renderHistory() {
+  const list = document.getElementById('historyList');
+  let html = '';
+  for (let i = 0; i < sim.history.length; i++) {
+    const h = sim.history[i];
+    const active = i === sim.cursor;
+    let code = '';
+    if (h.label === 'init')  code = `<span class="kw-i">${esc(h.op)}</span>`;
+    else if (h.label === 'alloc') code = `<span class="kw-a">${esc(h.op)}</span>`;
+    else code = `<span class="kw-f">${esc(h.op)}</span>`;
+
+    let badge = '';
+    if (h.label === 'alloc') {
+      badge = h.resultPtr ? `<span class="hi-badge badge-ok">ok</span>` : `<span class="hi-badge badge-null">null</span>`;
+    } else if (h.label === 'free' && h.events?.[0]?.includes('No-op')) {
+      badge = `<span class="hi-badge badge-noop">noop</span>`;
+    }
+
+    html += `<div class="history-item${active ? ' active' : ''}" data-idx="${i}">
+      <span class="hi-idx">${i}</span>
+      <span class="hi-code">${code}</span>${badge}
+    </div>`;
+  }
+  list.innerHTML = html;
+  list.scrollTop = list.scrollHeight;
+}
+
+function updateFreeSelect() {
+  const sel = document.getElementById('freeSelect');
+  const live = Object.entries(sim.history[sim.cursor].ptrMap).filter(([, i]) => !i.freed);
+  sel.innerHTML = `<option value="">— pick ptr —</option>`;
+  for (const [name, info] of live) {
+    sel.innerHTML += `<option value="${esc(name)}">${esc(name)} (addr ${info.addr})</option>`;
+  }
+}
+
+function fullRender() {
+  renderHeap(sim.history[sim.cursor]);
+  renderHistory();
+  updateFreeSelect();
+}
+
+// ── Event bindings ──
+
+document.getElementById('initBtn').addEventListener('click', () => {
+  const sz = parseInt(document.getElementById('heapSizeInput').value);
+  if (isNaN(sz) || sz < 64) return alert('Heap must be ≥ 64 bytes.');
+  sim = new HeapSim(sz);
+  fullRender();
+});
+
+document.getElementById('mallocBtn').addEventListener('click', () => {
+  const sz = parseInt(document.getElementById('mallocSize').value);
+  if (isNaN(sz) || sz < 1) return alert('Size must be ≥ 1 byte.');
+  if (sim.cursor < sim.history.length - 1) {
+    sim.history = sim.history.slice(0, sim.cursor + 1);
+    sim.goTo(sim.cursor);
+  }
+  sim.vmalloc(sz);
+  fullRender();
+});
+
+document.getElementById('freeBtn').addEventListener('click', () => {
+  const ptrName = document.getElementById('freeSelect').value;
+  if (!ptrName) return alert('Select a pointer to free.');
+  if (sim.cursor < sim.history.length - 1) {
+    sim.history = sim.history.slice(0, sim.cursor + 1);
+    sim.goTo(sim.cursor);
+  }
+  sim.vmfree(ptrName);
+  fullRender();
+});
+
+document.getElementById('undoBtn').addEventListener('click', () => { sim.undo(); fullRender(); });
+document.getElementById('clearBtn').addEventListener('click', () => {
+  sim = new HeapSim(parseInt(document.getElementById('heapSizeInput').value) || 1024);
+  fullRender();
+});
+
+document.getElementById('historyList').addEventListener('click', e => {
+  const item = e.target.closest('.history-item');
+  if (item) { sim.goTo(parseInt(item.dataset.idx)); fullRender(); }
+});
+
+document.getElementById('mallocSize').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('mallocBtn').click(); });
+document.getElementById('heapSizeInput').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('initBtn').click(); });
+
+fullRender();
+</script>
+</body>
+</html>

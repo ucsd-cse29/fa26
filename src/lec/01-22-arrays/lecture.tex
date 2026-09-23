@@ -1,0 +1,64 @@
+\documentclass[12pt, oneside, landscape]{article}
+\usepackage{wallpaper}
+\input{../util/header}
+
+\begin{document}
+
+\CenterWallPaper{1}{memory-template.pdf}
+
+\begin{minipage}[t]{0.45\textwidth}
+
+\lstinputlisting[basicstyle=\ttfamily\scriptsize]{concat.c}
+
+\begin{shell}[linewidth=30em, basicstyle=\ttfamily\scriptsize]
+$ gcc concat.c -o concat
+concat.c:22:10: warning: address of stack memory associated with local variable 'result' returned [-Wreturn-stack-address]
+   22 |   return result;
+      |          ^~~~~~
+$ ./concat
+vec1:   0x16f563010     vec2:   0x16f563000     result: 0x16f562f40
+vec1:   0x16f562ff0     vec2:   0x16f562f40     result: 0x16f562f40
+first element of v3, v5: 100.000000 100.000000
+v1: 0x16f563010
+v2: 0x16f563000
+v3: 0x16f562f40
+v4: 0x16f562ff0
+v5: 0x16f562f40
+\end{shell}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+
+
+\end{minipage}
+
+\newpage
+
+\CenterWallPaper{1}{memory-template.pdf}
+
+\begin{minipage}[t]{0.45\textwidth}
+
+\lstinputlisting[basicstyle=\ttfamily\scriptsize]{wheresmystuff.c}
+
+\begin{shell}[linewidth=24em, basicstyle=\ttfamily\scriptsize]
+$ # NOTE - Joe ran this on his Macbook to get this output
+$ gcc wheresmystuff.c -o wheresmystuff
+$ ./wheresmystuff
+x=12, 4 bytes, starts at: 0x16f4c6e44
+y=53, 1 bytes, starts at: 0x16f4c6e43
+z=9, 1 bytes, starts at: 0x16f4c6e42
+ns=[4.000000,3.000000,9.000000], 24 bytes, starts at: 0x16f4c6e50
+s="14 char string"@0x16f4c6e98, 8 bytes, starts at: 0x16f4c6e48
+
+str takes up 15 bytes starting at: 0x16f4c6e98
+\end{shell}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+
+
+\end{minipage}
+
+\end{document}

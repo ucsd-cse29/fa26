@@ -1,0 +1,56 @@
+// Question 1
+
+// in fork2.c
+#include <stdio.h>
+#include <unistd.h>
+
+int main() {
+  int pid1 = fork();
+  int pid2 = fork();
+  printf("The pids are: %d %d\n", pid1, pid2);
+}
+
+
+$ gcc fork2.c -o fork2
+$ ./fork2
+
+What prints?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+How many lines print? 0, 1, 2, 3, 4, more? 4 lines!
+
+Line 8 starts a new process
+
+Original process                                    Child 1 Process
+pid1 = <id of child 1>                              pid1 = 0
+int pid2 = fork();                                  int pid2 = fork();
+printf(...)                                         printf(...)
+
+Original                  Child 2                   Child 1                   Child 3
+pid1 = <id of child 1>    pid1 = <id of child 1>    pid1 = 0                  pid1 = 0
+pid2 = <id of child 2>    pid2 = 0                  pid2 = <id of child 3>    pid2 = 0
+printf(...)               printf(...)               printf(...)               printf(...)
+
+two positive integers     pos int and then 0        0 and then pos int        0 and then 0
+
+
+
+

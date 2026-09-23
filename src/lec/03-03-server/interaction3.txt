@@ -1,0 +1,11 @@
+Server terminal:
+$ ./string-server3
+Server started on port 2900
+
+Client terminal:
+$ curl "localhost:2900/add?s=hi"
+Added: hi
+$ curl "localhost:2900/add"
+Missing ?s= parameter
+$ curl "localhost:2900/unknown"
+Unknown path

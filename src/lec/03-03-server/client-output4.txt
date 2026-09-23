@@ -1,0 +1,9 @@
+$ curl "localhost:2900/add?s=hello"
+hello
+$ curl "localhost:2900/add?s=world"
+hello
+world
+$ curl "localhost:2900/add?s=goodbye"
+hello
+world
+goodbye

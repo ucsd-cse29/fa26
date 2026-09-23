@@ -1,0 +1,78 @@
+\documentclass[12pt, oneside, landscape]{article}
+\usepackage{wallpaper}
+\input{../util/header}
+
+\begin{document}
+
+\begin{minipage}[t]{0.45\textwidth}
+  \lstinputlisting[basicstyle=\ttfamily\scriptsize]{bits.c}
+
+\begin{shell}[linewidth=30em,basicstyle=\ttfamily\scriptsize]
+$ gcc bits.c -o bits
+$ ./bits
+capital_a:  A 65
+sixty_five: A 65
+\end{shell}
+
+\end{minipage}
+\begin{minipage}[t]{0.45\textwidth}
+
+\textbf{\Large ASCII Table}
+
+\vspace{1em}
+
+\small
+
+\begin{tabular}{|c|c||c|c||c|c||c|c|}
+\hline
+\textbf{Dec} & \textbf{Char} & \textbf{Dec} & \textbf{Char} & \textbf{Dec} & \textbf{Char} & \textbf{Dec} & \textbf{Char} \\
+\hline
+0   & \texttt{NUL} & 32  & \texttt{<space>} & 64  & \texttt{@} & 96  & \texttt{`} \\
+1   & \texttt{SOH} & 33  & \texttt{!} & 65  & \texttt{A} & 97  & \texttt{a} \\
+2   & \texttt{STX} & 34  & \texttt{"} & 66  & \texttt{B} & 98  & \texttt{b} \\
+3   & \texttt{ETX} & 35  & \texttt{\#} & 67  & \texttt{C} & 99  & \texttt{c} \\
+4   & \texttt{EOT} & 36  & \texttt{\$} & 68  & \texttt{D} & 100 & \texttt{d} \\
+5   & \texttt{ENQ} & 37  & \texttt{\%} & 69  & \texttt{E} & 101 & \texttt{e} \\
+6   & \texttt{ACK} & 38  & \texttt{\&} & 70  & \texttt{F} & 102 & \texttt{f} \\
+7   & \texttt{BEL} & 39  & \texttt{'} & 71  & \texttt{G} & 103 & \texttt{g} \\
+8   & \texttt{BS}  & 40  & \texttt{(} & 72  & \texttt{H} & 104 & \texttt{h} \\
+9   & \texttt{TAB} & 41  & \texttt{)} & 73  & \texttt{I} & 105 & \texttt{i} \\
+10  & \texttt{LF}  & 42  & \texttt{*} & 74  & \texttt{J} & 106 & \texttt{j} \\
+11  & \texttt{VT}  & 43  & \texttt{+} & 75  & \texttt{K} & 107 & \texttt{k} \\
+12  & \texttt{FF}  & 44  & \texttt{,} & 76  & \texttt{L} & 108 & \texttt{l} \\
+13  & \texttt{CR}  & 45  & \texttt{-} & 77  & \texttt{M} & 109 & \texttt{m} \\
+14  & \texttt{SO}  & 46  & \texttt{.} & 78  & \texttt{N} & 110 & \texttt{n} \\
+15  & \texttt{SI}  & 47  & \texttt{/} & 79  & \texttt{O} & 111 & \texttt{o} \\
+16  & \texttt{DLE} & 48  & \texttt{0} & 80  & \texttt{P} & 112 & \texttt{p} \\
+17  & \texttt{DC1} & 49  & \texttt{1} & 81  & \texttt{Q} & 113 & \texttt{q} \\
+18  & \texttt{DC2} & 50  & \texttt{2} & 82  & \texttt{R} & 114 & \texttt{r} \\
+19  & \texttt{DC3} & 51  & \texttt{3} & 83  & \texttt{S} & 115 & \texttt{s} \\
+20  & \texttt{DC4} & 52  & \texttt{4} & 84  & \texttt{T} & 116 & \texttt{t} \\
+21  & \texttt{NAK} & 53  & \texttt{5} & 85  & \texttt{U} & 117 & \texttt{u} \\
+22  & \texttt{SYN} & 54  & \texttt{6} & 86  & \texttt{V} & 118 & \texttt{v} \\
+23  & \texttt{ETB} & 55  & \texttt{7} & 87  & \texttt{W} & 119 & \texttt{w} \\
+24  & \texttt{CAN} & 56  & \texttt{8} & 88  & \texttt{X} & 120 & \texttt{x} \\
+25  & \texttt{EM}  & 57  & \texttt{9} & 89  & \texttt{Y} & 121 & \texttt{y} \\
+26  & \texttt{SUB} & 58  & \texttt{:} & 90  & \texttt{Z} & 122 & \texttt{z} \\
+27  & \texttt{ESC} & 59  & \texttt{;} & 91  & \texttt{[} & 123 & \texttt{\{} \\
+28  & \texttt{FS}  & 60  & \texttt{<} & 92  & \texttt{\textbackslash} & 124 & \texttt{|} \\
+29  & \texttt{GS}  & 61  & \texttt{=} & 93  & \texttt{]} & 125 & \texttt{\}} \\
+30  & \texttt{RS}  & 62  & \texttt{>} & 94  & \texttt{\^{}} & 126 & \texttt{\~{}} \\
+31  & \texttt{US}  & 63  & \texttt{?} & 95  & \texttt{\_} & 127 & \texttt{DEL} \\
+\hline
+\end{tabular}
+\end{minipage}
+
+\newpage
+
+  \lstinputlisting[basicstyle=\ttfamily\scriptsize]{hello.c}
+\begin{shell}[linewidth=30em,basicstyle=\ttfamily\scriptsize]
+$ gcc hello.c -o hello
+$ ./hello             
+Hello!
+(H 72) (e 101) (l 108) (l 108) (o 111) (! 33) ( 0)
+(H 72) (e 101) (l 108) (l 108) (o 111) (! 33) 
+After uppercase: HELLO!
+\end{shell}
+
+\end{document}

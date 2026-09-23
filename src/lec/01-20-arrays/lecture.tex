@@ -1,0 +1,65 @@
+\documentclass[12pt, oneside, landscape]{article}
+\usepackage{fontspec}
+
+\usepackage{emoji}
+
+
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}
+
+\newfontfamily\HiraginoSans{Hiragino Sans}
+
+\input{../util/header}
+\usepackage{verbatim}
+
+\begin{document}
+
+\begin{minipage}[t]{0.45\textwidth}
+
+\lstinputlisting{analyzer.c}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+
+\small
+\textbf{Problem Statement:}
+
+Write a program that takes an input string and prints the first 6 bytes of that string and that string with all of its lowercase ASCII characters uppercased.
+
+\vspace{2em}
+
+\textbf{What \underline{should} happen according to the problem statement?}
+
+\begin{shell}[linewidth=20em, basicstyle=\ttfamily\scriptsize]
+$ gcc analyzer.c -o analyzer
+$ ./analyzer
+utf8 is (*@\emoji{exploding-head}@*)
+The input was: utf8 is (*@\emoji{exploding-head}@*)
+
+First 6 bytes of input: 
+
+Uppercased: 
+(*@\vspace{1em}@*) 
+\end{shell}
+
+\vspace{2em}
+
+\textbf{What \underline{does} happen according to this implementation?}
+
+\begin{shell}[linewidth=20em, basicstyle=\ttfamily\scriptsize]
+$ gcc analyzer.c -o analyzer
+$ ./analyzer
+utf8 is (*@\emoji{exploding-head}@*)
+The input was: utf8 is (*@\emoji{exploding-head}@*)
+
+First 6 bytes of input: 
+
+Uppercased: 
+(*@\vspace{1em}@*) 
+\end{shell}
+
+\end{minipage}
+
+\end{document}

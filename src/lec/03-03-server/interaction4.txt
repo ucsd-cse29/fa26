@@ -1,0 +1,14 @@
+Server terminal:
+$ ./string-server4
+Server started on port 2900
+
+Client terminal:
+$ curl "localhost:2900/add?s=hello"
+hello
+$ curl "localhost:2900/add?s=world"
+hello
+world
+$ curl "localhost:2900/add?s=goodbye"
+hello
+world
+goodbye

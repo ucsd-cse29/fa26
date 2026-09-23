@@ -1,0 +1,283 @@
+\documentclass[oneside, landscape]{article}
+\input{../util/header}
+
+\lstdefinestyle{shell}{frame=single, linewidth=34em, numbers=none, basicstyle=\ttfamily\footnotesize}
+
+\begin{document}
+
+\small
+
+%% PAGE 1: Review
+
+\begin{minipage}[t]{0.45\textwidth}
+
+\textbf{Inside \texttt{start\_server}}
+
+\begin{lstlisting}[frame=single, numbers=none, basicstyle=\ttfamily\footnotesize, language={}, linewidth=35em]
+// http-server.c
+typedef void (*RequestHandler)(char *, int);
+void start_server(RequestHandler handler, int port) {
+
+  char buffer[2048];
+
+  ... set up on the given port ...
+
+  while(1) {
+      // not the real system call names
+      int client = accept_connection_from_internet();
+      read_from_internet(buffer, client);
+      buffer[bytes] = '\0';
+      (*handler)(buffer, client);
+      close(client);
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily\footnotesize, numbers=none, linewidth=35em]
+// string-server.c
+void handle(char *request, int client) { /* all of PA5 */  }
+
+int main() { start_server(&handle, 2900); }
+\end{lstlisting}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.50\textwidth}
+
+\vspace{20em}
+
+\end{minipage}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\begin{minipage}[t]{0.45\textwidth}
+
+\textbf{Reference: \texttt{sscanf}}
+
+\vspace{0.5em}
+
+Reads formatted data from a string — the inverse of \texttt{sprintf}.
+
+\begin{lstlisting}[numbers=none, basicstyle=\ttfamily\footnotesize]
+char name[50]; int age;
+sscanf("Alice 30", "%s %d", name, &age);
+// name is "Alice", age is 30
+// %s stops at whitespace
+\end{lstlisting}
+
+\vspace{0.5em}
+
+\textbf{Reference: \texttt{strstr}}
+
+\vspace{0.5em}
+
+\texttt{strstr(haystack, needle)} returns a pointer to the first occurrence of \texttt{needle} in \texttt{haystack}, or \texttt{NULL}.
+
+\begin{lstlisting}[numbers=none, basicstyle=\ttfamily\footnotesize]
+char *p = strstr("key=value", "=");
+// p points to "=value"
+// p + 1 points to "value"
+\end{lstlisting}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.50\textwidth}
+
+\textbf{HTTP Request and Response}
+
+\vspace{0.5em}
+
+A request from \texttt{curl "localhost:2900/add?s=hello"}:
+
+\begin{lstlisting}[numbers=none, basicstyle=\ttfamily\footnotesize]
+GET /add?s=hello HTTP/1.1\r\n
+Host: localhost:2900\r\n
+User-Agent: curl/8.7.1\r\n
+\end{lstlisting}
+
+\vspace{0.5em}
+
+A response sent back with \texttt{write(client, ...)}:
+
+\begin{lstlisting}[numbers=none, basicstyle=\ttfamily\footnotesize]
+HTTP/1.1 200 OK\r\n
+Content-Type: text/plain\r\n
+\r\n
+...response body...
+\end{lstlisting}
+
+\end{minipage}
+
+\newpage
+
+%% PAGE 2: Program 4
+
+\begin{minipage}[t]{0.40\textwidth}
+
+\textbf{Program 4: Keeping state across requests}
+
+Goal is to have this kind of behavior:
+
+\lstinputlisting[style=shell, linewidth=20em]{../03-03-server/client-output4.txt}
+
+\vspace{0.5em}
+
+A server runs forever. Data that persists between requests can't live on the
+stack — it needs to be in global variables or on the heap.
+
+\vspace{1em}
+
+What if \texttt{add\_string} just stores the pointer?
+
+\begin{lstlisting}[basicstyle=\ttfamily\footnotesize, numbers=none]
+void add_string(char *s) {
+    strings[num_strings] = s;
+    num_strings++;
+}
+\end{lstlisting}
+
+
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.55\textwidth}
+
+% Lines 4-18: globals + add_string signature and guard
+\lstinputlisting[basicstyle=\ttfamily\footnotesize, firstline=4, lastline=18, firstnumber=4, aboveskip=0pt, belowskip=0pt]{../03-03-server/string-server4.c}%
+\vspace{4\baselineskip}% blank space for lines 19-20 (malloc + strcpy)
+% Lines 21-26: rest of add_string + respond_with_list header + for loop
+\lstinputlisting[basicstyle=\ttfamily\footnotesize, firstline=21, lastline=26, firstnumber=21, aboveskip=0pt, belowskip=0pt]{../03-03-server/string-server4.c}%
+\vspace{2\baselineskip}% blank space for line 27 (write call)
+% Lines 28-50: rest of file
+\lstinputlisting[basicstyle=\ttfamily\footnotesize, firstline=28, firstnumber=28, aboveskip=0pt, belowskip=0pt]{../03-03-server/string-server4.c}
+
+\end{minipage}
+
+\newpage
+
+%% PAGE 3: Review Questions
+
+\normalsize
+
+\textbf{Review Questions}
+
+\vspace{1em}
+
+1. Given the following request string:
+
+\begin{lstlisting}[numbers=none, basicstyle=\ttfamily\small]
+char request[] =
+  "GET /add?s=goodbye HTTP/1.1\r\n"
+  "Host: localhost:2900\r\n";
+\end{lstlisting}
+
+Write code that extracts \texttt{"goodbye"} into a variable
+called \texttt{value}. Use any functions you want, but also
+refer to {\tt sscanf} and {\tt strstr} from the handout if
+needed!
+
+\vspace{3em}
+
+2. Given the following request string:
+
+\begin{lstlisting}[numbers=none, basicstyle=\ttfamily\small]
+char request[] =
+  "GET /add-number?n=367 HTTP/1.1\r\n"
+  "Host: localhost:2900\r\n";
+\end{lstlisting}
+
+Write code that extracts the number \texttt{367} into an
+\texttt{int} variable called \texttt{n}.
+
+\vspace{3em}
+
+3. Our http server gives an \lstinline{int client} value to
+the handler. What is that value used for?
+
+
+
+\newpage
+
+%% PAGE 4: Function pointer comparison (instructor reference)
+
+\begin{minipage}[t]{0.45\textwidth}
+
+\textbf{Function Pointers: Java vs C}
+
+\vspace{0.5em}
+
+In Java, you pass behavior using an \textit{interface}:
+
+\begin{lstlisting}[frame=single, language=Java, basicstyle=\ttfamily\footnotesize, numbers=none]
+// http-server.java
+interface RequestHandler {
+  void handle(String request, int client);
+}
+
+class Server {
+  static void startServer(RequestHandler handler, int port) {
+    // server implementation
+    ... handler.handle(requestFromClient, clientFileDescriptor); ...
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[frame=single, language=Java, basicstyle=\ttfamily\footnotesize, numbers=none]
+// string-server.java
+class StringHandler implements RequestHandler {
+    public void handle(String request, int client) { /* ... */  }
+}
+class Main {
+  public static void main(String[] args) {
+    Server.startServer(new StringHandler(), 2900);
+  }
+}
+\end{lstlisting}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.50\textwidth}
+
+\vspace{2em}
+
+In C, there are no interfaces. We pass a \textit{function pointer} — the
+address of a function. We can use a \lstinline{typedef} to name the type to
+make it look more like Java:
+
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily\footnotesize, numbers=none]
+// http-server.c
+typedef void (*RequestHandler)(char *, int);
+
+void start_server(RequestHandler handler, int port) {
+    // server implementation
+    ... (*handler)(request_from_client, client_file_descriptor); ...
+}
+\end{lstlisting}
+
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily\footnotesize, numbers=none]
+// string-server.c
+void handle(char *request, int client) { /* ... */  }
+
+int main() { start_server(&handle, 2900); }
+\end{lstlisting}
+
+\vspace{0.5em}
+
+In Python, functions can be passed directly, which is more like C:
+
+\begin{lstlisting}[frame=single, language=Python, basicstyle=\ttfamily\footnotesize, numbers=none]
+# http-server.py
+def start_server(handler, port):
+    ... handler(request_from_client, client_file_descriptor) ...
+
+# string-server.py
+def handle(request, client): ...
+
+start_server(handle, 2900)
+\end{lstlisting}
+
+\end{minipage}
+
+\end{document}

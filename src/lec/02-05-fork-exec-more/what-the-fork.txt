@@ -1,0 +1,18 @@
+Original Process
+
+int pid1 = fork();
+int pid2 = fork();
+printf(...);
+
+
+Original Process                                  Child Process c1
+pid1 = <pid of c1>                                pid1 = 0
+int pid2 = fork();                                int pid2 = fork();
+printf(...)                                       printf(...)
+
+Original Process      Child Process c2            Child Process c1      Child Process c3
+pid1 = <pid of c1>    pid1 = <pid of c1>          pid1 = 0              pid1 = 0
+pid2 = <pid of c2>    pid2 = 0                    pid2 = <pid of c3>    pid2 = 0
+printf(...)           printf(...)                 printf(...)           print(...)
+
+12284 12285           12284 0                     0 12287               0 0
