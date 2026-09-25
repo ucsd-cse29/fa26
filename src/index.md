@@ -419,14 +419,6 @@ Stay tuned for announcements about scheduling make-ups in final exam week.
 We do this for you; as long as you submit something in the first two weeks, we
 will mark you as commencing academic activity.
 
-**When are the midterms scheduled?**
-
-The midterms will be flexibly scheduled during the quarter using a testing
-center. More details will come; you will need to set aside some outside-of-class
-time to do them, but there is not a specific class-wide time you have to put on
-your calendar.
-
 **I have a conflict with the final exam time, what can I do?**
 
-The final exam will also be flexibly scheduled during final exam week using the
-testing center.
+The final exam week we will offer flexibly scheduled timeslots to retake the three PrarieLearn exams from the quarter.
