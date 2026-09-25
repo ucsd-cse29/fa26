@@ -1,0 +1,4 @@
+/* Hide auto-generated chapter numbers in the sidebar TOC */
+.chapter-item strong[aria-hidden="true"] {
+    display: none;
+}
