@@ -1,0 +1,7 @@
+book/
+*.out
+*.fls
+*.aux
+*.log
+.DS_Store
+*.swp
