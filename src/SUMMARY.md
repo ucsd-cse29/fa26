@@ -1,3 +1,3 @@
 # Summary
 
-[Systems Programming & Software Tools](./index.md)
+- [UCSD CSE29 FA26 Syllabus and Logistics](./index.md)

@@ -40,7 +40,7 @@ better!
   - Wednesday 1:00-2:00pm CSE B270/tables outside labs (CSE29 students only)
   - Thursday 2:30-3:30pm, CSE 3206 (advising focused, open to all students)
 - Office Hours: Refer to calendar
-- Q&A forum: [Piazza](https://piazza.com/class/mjz0y0rvk9c2lw)
+- Q&A forum: [Piazza](https://piazza.com/class/muexxx2uta25up/)
 - PrairieLearn: [https://us.prairielearn.com](https://us.prairielearn.com)
 - Textbook/readings: [Dive Into Systems](https://diveintosystems.org/book/), plus additional readings we will assign
   - Free: [MIT Missing Semester](https://missing.csail.mit.edu/)
