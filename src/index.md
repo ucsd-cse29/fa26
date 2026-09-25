@@ -56,11 +56,9 @@ better!
 - **Week 0 – Welcome, Strings and Bitwise Representations**
   - **Lecture Materials**
     - Friday
-      - [Handout](lec/01-06-welcome/lecture.pdf)
-      - Annotated Handout: [11am](lec/01-06-welcome/lecture_notes_jan6_11am.pdf) [12:30pm](lec/01-06-welcome/ScanJan06,2026Joe'sNotes.pdf)
-      - [Lecture Summary Google Slides](https://docs.google.com/presentation/d/1HU3oxK0Ll9bZU0Bfe_wApEpr22mc7FoXy2VItm80sQs/edit?usp=sharing)
-      - [Lecture Summary](lec/01-06-welcome/summary.pdf)
-      - Code: [bits.c](lec/01-06-welcome/bits.c), [hello.c](lec/01-06-welcome/hello.c)
+      - [Handout](todo)
+      - [Lecture Summary](todo)
+      - Code: [bits.c](todo), [hello.c](todo)
 
 # Course Components
 
