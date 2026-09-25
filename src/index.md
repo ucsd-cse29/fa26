@@ -56,9 +56,8 @@ better!
 - **Week 0 – Welcome, Strings and Bitwise Representations**
   - **Lecture Materials**
     - Friday
-      - [Handout](todo)
-      - [Lecture Summary](todo)
-      - Code: [bits.c](todo), [hello.c](todo)
+      - [Lecture](src/lec/09-25-welcome/29-fa26-l0.pdf)
+      - Code: [bits.c](src/lec/09-25-welcome/bits.c), [hello.c](src/lec/09-25-welcome/hello.c)
 
 # Course Components
 
