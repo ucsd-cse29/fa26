@@ -63,7 +63,7 @@ better!
   - **Lecture Materials**
     - Monday
       - [Lecture](lec/09-28-cstrings/29-fa26-l1.pdf)
-      - Code: [print.c](lec/09-28-cstrings/print.c) [hello.c](lec/09-28-cstrings/hello.c), [out_of_bounds.c](lec/09-25-welcome/out_of_bounds.c)
+      - Code: [print.c](lec/09-28-cstrings/print.c) [hello.c](lec/09-28-cstrings/hello.c), [out_of_bounds.c](lec/09-28-cstrings/out_of_bounds.c)
 
 
 # Course Components
