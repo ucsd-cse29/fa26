@@ -33,9 +33,9 @@ int main() {
            message[4], message[4],
            message[5], message[5],
            message[6], message[6]);
-    //inspect(message);
+    inspect(message);
 
     // After this call, message should contain "HELLO!"
-    //uppercase(message);
-    //printf("After uppercase: %s\n", message);
+    uppercase(message);
+    printf("After uppercase: %s\n", message);
 }
