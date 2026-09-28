@@ -28,6 +28,151 @@ particular environment (we'd have no way to check anyway).
 
 To get started create a [GitHub Classroom](https://classroom.github.com/a/pff3Avby) assignment.
 
+## Milestones, Working Process, and Definitions
+
+
+The functions described below are organized into milestones; you should definitely finish the functions in a milestone set before moving onto the next.
+
+In general, you should work one function at a time, and earlier functions may be useful in implementing later functions.
+
+A good first task is to implement *only* `is_ascii` and the corresponding part of `main` needed to read input and print the result for `is_ascii`, and make sure you can test that. Then move onto `capitalize_ascii`, and so on.
+
+You can and should save your work by using `git` commits (if you're comfortable with that), or even just saving copies of your `.c` file when you hit important milestones. We may ask to see your work from an earlier milestone if you ask us for help on a function from a later one.
+
+Some reminders and information about the function signatures:
+
+- `int32_t` is a 32-bit (4-byte) integer. You can think of it like `int` in Java, we just want to be explicit about sizes of things when we program in C, and `int` can mean different things on different systems. This type is defined in `stdint.h`, so `#include <stdint.h>` at the top of a program will make it usable.
+- We use `cpi` as an abbreviation in some variable names, it stands for “code point index”.
+- We use `bi` as an abbreviation in some variable names, it stands for “byte index”.
+
+## Functions - Milestone 1
+
+
+### `int32_t is_ascii(char str[])`
+
+Takes a UTF-8 encoded string and returns if it is valid ASCII (e.g. all bytes are 127 or less).
+
+#### Example Usage: 
+```
+printf("Is 🔥 ASCII? %d\n", is_ascii("🔥"));
+
+=== Output ===
+Is 🔥 ASCII? 0
+
+printf("Is abcd ASCII? %d\n", is_ascii("abcd"));
+
+=== Output ===
+Is abcd ASCII? 1
+```
+
+### `int32_t capitalize_ascii(char str[])`
+
+Takes a UTF-8 encoded string and *changes* it in-place so that any ASCII lowercase characters `a`-`z` are changed to their uppercase versions. Leaves all other characters unchanged. It returns the number of characters updated from lowercase to uppercase.
+
+#### Example Usage: 
+```
+int32_t ret = 0;
+char str[] = "abcd";
+ret = capitalize_ascii(str);
+printf("Capitalized String: %s\nCharacters updated: %d\n", str, ret);`
+
+=== Output ===
+Capitalized String: ABCD
+Characters updated: 4
+```
+
+## Functions - Milestone 2
+
+### `int32_t width_from_start_byte(char start_byte)`
+
+Given the start byte of a UTF-8 sequence, return how many bytes it indicates the sequence will take (start byte + continuation bytes).
+
+Returns 1 for ASCII characters, and -1 if byte is not a valid start byte.
+
+#### Example Usage:
+```
+char s[] = "Héy"; // same as { 'H', 0xC3, 0xA9, 'y', 0 },   é is start byte + 1 cont. byte
+printf("Width: %d bytes\n", width_from_start_byte(s[1])); // start byte 0xC3 indicates 2-byte sequence
+
+=== Output ===
+Width: 2 bytes
+
+printf("Width: %d bytes\n", width_from_start_byte(s[2])); // start byte 0xA9 is a continuation byte, not a start byte
+
+=== Output ===
+Width: -1
+```
+
+### `int32_t utf8_strlen(char str[])`
+
+Takes a UTF-8 encoded string and returns the number of UTF-8 codepoints it represents.
+
+Returns -1 if there are any errors encountered in processing the UTF-8 string.
+
+#### Example Usage:
+```
+char str[] = "Joséph";
+printf("Length of string %s is %d\n", str, utf8_strlen(str));  // 6 codepoints, (even though 7 bytes)
+
+=== Output ===
+Length of string Joséph is 6
+```
+
+### `int32_t codepoint_index_to_byte_index(char str[], int32_t cpi)`
+
+Given a UTF-8 encoded string, and a codepoint index, return the byte index in the string where the Unicode character at the given codepoint index starts. 
+
+Returns -1 if there are any errors encountered in processing the UTF-8 string.
+
+#### Example Usage: 
+```
+char str[] = "Joséph";
+int32_t idx = 4;
+printf("Codepoint index %d is byte index %d\n", idx, codepoint_index_to_byte_index("Joséph", idx));
+
+=== Output ===
+Codepoint index 4 is byte index 5
+```
+
+### `void utf8_substring(char str[], int32_t cpi_start, int32_t cpi_end, char result[])`
+
+Takes a UTF-8 encoded string and start(inclusive) and end(exclusive) codepoint indices, and writes the substring between those indices to `result`, with a null terminator. Assumes that `result` has sufficient bytes of space available. (Hint: `result` will be created beforehand with a given size and passed as input here. Can any of the above functions be used to determine what the size of `result` should be?)
+
+If `cpi_start` is greater than `cpi_end` or either is negative, the function should have no effect.
+
+#### Example Usage:
+```
+char result[10];
+utf8_substring("🦀🦮🦮🦀🦀🦮🦮", 3, 7, result)
+printf("String: %s\nSubstring: %s", result); // these emoji are 4 bytes long
+
+=== Output ===
+String: 🦀🦮🦮🦀🦀🦮🦮
+Substring: 🦀🦀🦮🦮
+```
+
+## Functions - Milestone 3
+
+### `int32_t codepoint_at(char str[], int32_t cpi)`
+
+Takes a UTF-8 encoded string and a codepoint index, and returns a decimal representing the codepoint at that index.
+
+#### Example Usage:
+```
+char str[] = "Joséph";
+int32_t idx = 4;
+printf("Codepoint at %d in %s is %d\n", idx, str, codepoint_at(str, idx)); // 'p' is the 4th codepoint
+
+=== Output ===
+Codepoint at 4 in Joséph is 112
+```
+
+### `char is_animal_emoji_at(char str[], int32_t cpi)`
+
+Takes a UTF-8 encoded string and an codepoint index, and returns if the code point at that index is an animal emoji.
+
+For simplicity for this question, we will define that that the “animal emojii” are in two ranges: from 🐀 to 🐿️ and from 🦀 to 🦮. (Yes, this technically includes things like 🐽 which are only related to or part of an animal, and excludes a few things like 🙊, 😸, which are animal faces.). You may find the [wikipedia page on Unicode emoji](https://en.wikipedia.org/wiki/List_of_emojis) helpful here.
+
 ## UTF-8 Analyzer
 
 You'll write a program that reads UTF-8 input and prints out some information
