@@ -59,6 +59,13 @@ better!
       - [Lecture](lec/09-25-welcome/29-fa26-l0.pdf)
       - Code: [bits.c](lec/09-25-welcome/bits.c), [hello.c](lec/09-25-welcome/hello.c)
 
+- **Week 1 – Binary, Printing, and Strings**
+  - **Lecture Materials**
+    - Monday
+      - [Lecture](lec/09-28-cstrings/29-fa26-l1.pdf)
+      - Code: [print.c](lec/09-28-cstrings/print.c) [hello.c](lec/09-28-cstrings/hello.c), [out_of_bounds.c](lec/09-25-welcome/out_of_bounds.c)
+
+
 # Course Components
 
 There are three main parts of the course: **Assignments**, **Exams**, and
