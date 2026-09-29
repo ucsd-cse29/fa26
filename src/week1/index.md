@@ -42,7 +42,7 @@ During the labs, you will see these purple boxes, these are to help you know whe
 
 # Github Setup
 Make a Github account **WITH YOUR UCSD EMAIL** and fill out this form. 
-https://forms.gle/pVQP1Xpc8akjqmTh9
+[https://forms.gle/pVQP1Xpc8akjqmTh9](https://forms.gle/pVQP1Xpc8akjqmTh9)
 If you already have a Github account, follow this [link](https://docs.github.com/en/account-and-profile/how-tos/email-preferences/adding-an-email-address-to-your-github-account) to add your UCSD email to your account. If you find yourself spending more than 5 minutes on this part, ask a staff member for help
 
 
