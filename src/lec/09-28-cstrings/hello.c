@@ -1,23 +1,17 @@
 #include <stdio.h>
+#include <string.h>
 
 void uppercase(char str[]) {
-
-
-
-
-
-
-
-
-
-
-
+  for (int i = 0; str[i] != '\0'; i++) {
+    if (str[i] >= 97 && str[i] <= 122)
+      str[i] = str[i] - 32;
+  }
 }
 
 void inspect(char str[]) {
     for (int i = 0; str[i] != '\0'; i++) {
         char c = str[i];
-        printf("(%c %d) ", c, c);
+        printf("I (%c %d) ", c, c);
     }
     printf("\n");
 }
@@ -34,6 +28,7 @@ int main() {
            message[5], message[5],
            message[6], message[6]);
     inspect(message);
+    printf("len: %lu\n", strlen(message));
 
     // After this call, message should contain "HELLO!"
     uppercase(message);
