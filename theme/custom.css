@@ -1,0 +1,181 @@
+/* Fun fact callout, ported from monip1.github.io/_sass/custom/custom.scss */
+
+:root {
+    --callout-funfact-bg: #48cbe8;
+    --callout-funfact-fg: #000000;
+}
+
+/* mdBook's dark themes */
+.coal,
+.navy,
+.ayu {
+    --callout-funfact-bg: #48aee8;
+    --callout-funfact-fg: #ffffff;
+}
+
+.fun-fact {
+    background-color: var(--callout-funfact-bg) !important;
+    background-image:
+        repeating-linear-gradient(
+            35deg,
+            transparent 0px,
+            rgba(130, 231, 211, 0.35) 240px,
+            rgba(132, 176, 243, 0.35) 480px,
+            rgba(171, 150, 254, 0.35) 720px,
+            transparent 960px
+        ),
+        repeating-linear-gradient(
+            -35deg,
+            transparent 0px,
+            rgba(130, 231, 211, 0.35) 240px,
+            rgba(132, 176, 243, 0.35) 480px,
+            rgba(171, 150, 254, 0.35) 720px,
+            transparent 960px
+        ) !important;
+    background-size: 1200% 1200%, 1200% 1200%;
+    background-position: 0px 0px, 0px 0px;
+    animation: ff-slide 200s linear infinite;
+    color: var(--callout-funfact-fg) !important;
+    /* just-the-docs gave blockquotes this 3px left border */
+    border-left: 3px solid #41ac99 !important;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    margin: 1rem 0;
+}
+
+.fun-fact::before {
+    content: "Fun fact: ✨";
+    display: inline-block;
+    margin-right: 0.5rem;
+    /* em, not rem: mdBook sets the root font-size to 10px */
+    font-size: 1.1em;
+    vertical-align: middle;
+    animation: ff-pulse 8s ease-in-out infinite;
+}
+
+.fun-fact a,
+.fun-fact a:visited {
+    color: #fff8f5 !important;
+    font-weight: 700;
+    text-decoration-color: rgba(255, 248, 245, 0.9) !important;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 2.5px;
+    text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.45),
+        0 0 8px rgba(255, 255, 255, 0.18);
+}
+
+.fun-fact a:hover {
+    color: #ffffff !important;
+    text-decoration-color: #ffffff !important;
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.6),
+        0 0 12px rgba(255, 255, 255, 0.25);
+}
+
+@keyframes ff-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.10); }
+    100% { transform: scale(1); }
+}
+
+@keyframes ff-slide {
+    0% { background-position: 0% 0%, 0% 0%; }
+    100% { background-position: 1200% 0% }
+}
+
+/*
+ * note / checkoff / exercise / owntime callouts, recreating just-the-docs'
+ * callouts from monip1.github.io/_config.yml (.note background from custom.scss)
+ * Colors are just-the-docs' $<color>-000 / -200 / -300.
+ */
+
+:root {
+    --callout-note-bg: #e7f3ff;
+    --callout-note-border: #183385;
+    --callout-note-title: #264caf;
+    --callout-checkoff-bg: rgba(65, 214, 147, 0.2);
+    --callout-checkoff-border: #026e57;
+    --callout-checkoff-title: #009c7b;
+    --callout-exercise-bg: rgba(114, 83, 237, 0.2);
+    --callout-exercise-border: #381885;
+    --callout-exercise-title: #4e26af;
+    --callout-owntime-bg: rgba(149, 147, 150, 0.2);
+    --callout-owntime-border: #27262b;
+    --callout-owntime-title: #44434d;
+}
+
+.coal,
+.navy,
+.ayu {
+    --callout-note-bg: #1a2332;
+    --callout-note-border: #2c84fa;
+    --callout-note-title: #2c84fa;
+    --callout-checkoff-bg: rgba(2, 110, 87, 0.2);
+    --callout-checkoff-border: #41d693;
+    --callout-checkoff-title: #41d693;
+    --callout-exercise-bg: rgba(56, 24, 133, 0.2);
+    --callout-exercise-border: #7253ed;
+    --callout-exercise-title: #7253ed;
+    --callout-owntime-bg: rgba(39, 38, 43, 0.2);
+    --callout-owntime-border: #959396;
+    --callout-owntime-title: #959396;
+}
+
+.note,
+.checkoff,
+.exercise,
+.owntime {
+    padding: 0.8rem 1rem;
+    margin: 1rem 0;
+    border-left: 4px solid;
+    border-radius: 4px;
+}
+
+.note::before,
+.checkoff::before,
+.exercise::before,
+.owntime::before {
+    display: block;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-bottom: 0.125rem;
+}
+
+.note     { background-color: var(--callout-note-bg);     border-left-color: var(--callout-note-border); }
+.checkoff { background-color: var(--callout-checkoff-bg); border-left-color: var(--callout-checkoff-border); }
+.exercise { background-color: var(--callout-exercise-bg); border-left-color: var(--callout-exercise-border); }
+.owntime  { background-color: var(--callout-owntime-bg);  border-left-color: var(--callout-owntime-border); }
+
+.note::before     { content: "note";                  color: var(--callout-note-title); }
+.checkoff::before { content: "📋 Team check in!";     color: var(--callout-checkoff-title); }
+.exercise::before { content: "💪 Exercise";           color: var(--callout-exercise-title); }
+.owntime::before  { content: "🚀 In your own time";   color: var(--callout-owntime-title); }
+
+/* Trim the outer margins of the first/last child so the box hugs its content */
+.note > :first-child,
+.checkoff > :first-child,
+.exercise > :first-child,
+.owntime > :first-child {
+    margin-top: 0;
+}
+
+.note > :last-child,
+.checkoff > :last-child,
+.exercise > :last-child,
+.owntime > :last-child {
+    margin-bottom: 0;
+}
+
+/* Blockquotes wrapped in a callout shouldn't draw mdBook's own quote box */
+.note > blockquote,
+.checkoff > blockquote,
+.exercise > blockquote,
+.owntime > blockquote {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+}

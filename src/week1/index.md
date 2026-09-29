@@ -2,10 +2,10 @@
 
 
 Welcome to the first CSE 29 lab!  
-I'm your lab for this course, here to provide you with the time and space to explore practical software tools, including Unix commands, Git, GDB, Valgrind, Makefiles, and shell scripting.  
-You are not expected to know any of these topics yet—this is just a preview of what’s to come. Over the next 10 weeks, I will guide you as you build familiarity with these tools, which you’ll use throughout this course and in future endeavors.  
-I hope you enjoy the process and have some fun along the way!
-* In each lab session, you will follow this guide to get firsthand experience with the tools and techniques we have introduced to you in lectures and discussions. This experience will be essential to your PA work. You earn credit for participation by being engaged with the content of this lab and interacting with the staff when asked.
+Lab is the time and space to explore practical software tools aspect of CSE 29's title. Tools will include Unix commands, Git, GDB, Valgrind, Makefiles, shell scripting, and more.  
+You are not expected to know what any of these topics are yet—this is just a preview of what’s to come. Over the next 10 weeks, the lab writeups found here will guide you as you build familiarity with these tools, which you’ll use throughout this course and in future endeavors.  
+I, the Lab, hope you enjoy the process and have some fun along the way!
+* In each lab session, you will follow this guide to get firsthand experience with the tools and techniques we have introduced to you in lectures and discussions. This experience will be essential to your Project work. You earn credit for participation by being engaged with the content of this lab and interacting with the staff when asked.
 
 These labs are a low-stakes environment to get proficient with programming and software tools with support from fellow classmates and course staff. **Please ask for help from course staff if you are stuck on something—we are here for you!**
 
@@ -16,12 +16,6 @@ These labs are a low-stakes environment to get proficient with programming and s
 * Try out and understand some essential Unix/Linux commands
 * Write a basic C program on `ieng6` using Vim
 * Compile and run the C program you wrote
-
-#### Table of contents
-{: .no_toc}
-
-1. TOC
-{:toc }
 
 # Icebreaker
 
@@ -40,10 +34,14 @@ These labs are a low-stakes environment to get proficient with programming and s
 
 Throughout this lab, we strongly encourage you to help each other. The staff is always there to help, but do try working together and helping each other out first.
 
-# Github Setup
-Make a Github account **WITH YOUR UCSD EMAIL** and fill out this form. 
-https://forms.gle/pVQP1Xpc8akjqmTh9
-If you already have a Github account, follow this [link](https://docs.github.com/en/account-and-profile/how-tos/email-preferences/adding-an-email-address-to-your-github-account) to add your UCSD email to your account. If you find yourself spending more than 5 minutes on this part, ask a staff member for help
+<div class="exercise">
+
+During the labs, you will see these purple boxes, these are to help you know when there is an exercise to complete. If it needs to be checked off it will be indicated with a green box instructing you to get checked off. Please fill out your whiteboard as follows:
+![people_whiteboard](./assets/icebreaker_whiteboard.png)
+</div>
+
+
+
 
 # Let’s connect to `ieng6`
 
@@ -101,13 +99,6 @@ To see all available software packages, type "prep -l" at the command prompt, or
 
 Now your terminal is connected to a computer that is physically somewhere else on campus, and any commands you run will run on that computer\! We call your computer the *client* and the computer that is elsewhere the *server* based on how you are connected.
 
-{: .fun-fact}
-> I sent one of your staff members on a mission to inquire about the origin of the name *ieng6*. The following was provided by the Office of Engineering Computing:  
-> "ieng6 is a load-balanced multiprocessor Linux server that is maintained by ITS. This hostname originated decades ago, and unfortunately, we do not know why it was named ieng6. It may not even stand for anything."  
-> While the history of the name remains a mystery (at least for the time being), we did learn something interesting about *what* it is. Many people can use ieng6 at the same time.  
-> Being a "multiprocessor" system means each machine(201, 202, 203 ...) has multiple CPUs (or cores), so it can run many tasks at the same time.  
-> Being "load balanced" means that when people connect to ieng6, they are distributed across multiple machines behind the scenes so no single machine becomes overloaded with work. When you SSH into ieng6 you are placed on a specific machine (such as ieng6-201, ieng6-202 or ieng6-203) which you can see in your prompt. Which one are you on? Is it the same as the people around you?  
->"Linux" is the operating system it runs. Other operating systems you may be familiar with include Windows and macOS.
 
 If, in this process, you run into errors and can’t figure out how to proceed, ask\! Remember – it is **rare** for a tutorial to work perfectly. We often have to stop, think, guess, Google search, ask someone, etc. in order to get things to work the way the tutorial says.
 
@@ -172,9 +163,12 @@ Most commands will have multiple pre-defined options which allow you to modify t
 If you would like to always have the colored output, run the following command which will add the line "alias ls=\"ls --color\" to the end of a file called .bash_profile. You do not need to fully understand this yet.  
 `echo alias ls=\"ls --color\" >> ~/.bash_profile`  
 
-{: .note }
+<div class="note">
+
 If you get a message resembling: `-bash: (...) .bash_profile Permission denied`  
 Run: `chmod +w ~/.bash_profile` to give yourself permission to write to the file.
+
+</div>
 
 ## cd \- Going Places
 
@@ -331,34 +325,48 @@ Try looking up some of the commands we’ve learned about so far in the manual. 
 
 # Who are you? -- Whiteboard Activity
 
-Using the commands above, fill out the following whiteboard with your group!  
-> Each group member should put their answer for each box.  
+Using the commands above, fill out the following whiteboard with your group!  Each group member should put their answer for each box.  
 A set of example answers have been given 
 
-![whiteboard1](../../assets/labs/sp26/whoami_whiteboard.png)
+![whiteboard1](./assets/whoami_whiteboard.png)
 
-{: .checkoff }
+<div class="checkoff">
+
 As a group, call over your tutor/TA to get checked off for your whiteboard.
+
+</div>
 
 # Who are we anyways? -- Whiteboard Activity
 Now that you've established who you are using some commands you just learned, the course staff has come together to make an activity for you to explore more commands from above *and* learn something about them.
 
-Run:
- 1. On ieng6, create a directory called `cse29`, this will be the directory that contains all your work for labs
- 1. Within `cse29`,  create a directory called `lab1`
- 1. Within `lab1`, Run:
-`cp -r /home/linux/ieng6/CSE29_SP26_A00/public/people .` 
+<div class="exercise">
 
-{: .note }
+> 1. On ieng6, create a directory called `cse29`, this will be the directory that contains all your work for labs
+> 1. Within `cse29`,  create a directory called `lab1`
+> 1. Within `lab1`, Run:
+`cp -r /home/linux/ieng6/CSE29_SP26_A00/public/people .` 
+</div>
+<div class="note">
+
 the `.` at the end is the path for your *current directory*. This will recursively copy the entire directory we've made called `people` into `lab1` since that's where you are.
 
-{: .exercise }
+</div>
+
+<div class="exercise">
+
 Using commands from above, write down some information you find. Each person should contribute at least one thing they found to the whiteboard resulting in something like this 
 
-![people_whiteboard](../../assets/labs/sp26/people_whiteboard.png)
+</div>
 
+![people_whiteboard](./assets/people_whiteboard.png)
 
-{: .exercise }
+<div class="checkoff">
+
+As a group, call over your tutor/TA to share it with them and get checked off.
+
+</div>
+
+<div class="exercise">
 
 > 1. Inside lab1, create two directories called Music and Books
 > 1. In Music and Books, create a couple of files with the names of your favorite songs and books respectively, here’s an example:
@@ -382,6 +390,8 @@ Using commands from above, write down some information you find. Each person sho
 >
 >    **HINT:** there is an option that lets you do this, try using the `man` command to find the `ls` option that enables you to print the contents of a directory **recursively**
 
+</div>
+
 
 # The Vim Text Editor
 
@@ -395,15 +405,18 @@ After all, all the awesome hackers in movies are always *typing*, have you seen 
 
 Our terminal-based editor is called **vim**. It’s an incredibly powerful editor once you learn how to use it properly. However, the learning curve is very steep, which is why the more you practice in these earlier weeks, the better. In this lab, you will use vim to write a small C program while learning a few essential vim features along the way.
 
-{: .exercise}
+<div class="exercise">
+
 > to get acquainted with `vim`, you can run `$ vimtutor` to open vimtutor which is a tutorial in and of itself. Please complete sections 1 and 2 of vimtutor. If you are a bit low on time, you can skip 2.3-2.5 and do them later.
-> Don't worry about memorizing everything as you go, you can always revisit it later and I have provided some of the same information throughout the last activity for your reference. 
+> Don't worry about memorizing everything as you go, you can always revisit it later and some of the same information is provided below for your reference throughout the last activity. 
+
+</div>
 
 
 Vim is highly configurable—using its own scripting language (VimScript), we can customize its behavior in a wide variety of ways. We can even install a Vim package manager and add [plugins](https://vimawesome.com/) that make it feel like VSCode\! For now, let's start with some sensible defaults, like 4 spaces for indentation, syntax highlighting enabled, and automatic "smart" indentation. If you haven't configured Vim on `ieng6` before, run the following command to download and install our configuration file:
 
 ```
-$ curl https://cse29spring2026.github.io/assets/labs/lab1_commandline/vimrc.txt >> ~/.vimrc
+$ curl https://cse29.site/week1/assets/vimrc.txt >> ~/.vimrc
 ```
 
 Now, we are ready to begin. Inside the `lab1` directory you created in the previous section, run the following command to edit a new file named `contains.c`:
@@ -471,15 +484,20 @@ By the way, if you ever change your mind and want to abandon your command, press
 
 A quick side note - avoid running two instances of Vim on the same file at the same time as this can lead to <a href="https://engineering.purdue.edu/ece264/21sp/resources/vim_swap_warnings">swap file conflicts</a>. You should not close your terminal window to exit Vim as this will leave the swapfile there.
 
-{: .exercise }
+<div class="exercise">
+
 > 1. Using `yy` and `p` in Normal mode, change your code to make several calls to `contains` with different values for `item`, printing out the result each time.
 > 2. Using `dd` in Normal mode, remove the line with `return 0;` inside the `main` function. This line is actually not required for the `main` function.
 > 3. Save your changes and exit vim.
 > 4. To verify that your changes are saved, display the contents of `contains.c` without using vim.
 
+</div>
 
-{: .owntime }
+<div class="owntime">
+
 Vim has many more commands and shortcuts. You can complete more of `vimtutor` on your own time for a guided tutorial through them.
+
+</div>
 
 # Compiling and running your program
 
@@ -510,3 +528,48 @@ $ ./contains
 You should see your linear search implementation in action.
 
 Congratulations! In this lab, you have created, compiled, and executed a C program. If your program has not run, please ask a staff member near you for help.
+
+<div class="fun-fact">
+
+If you find yourself wondering about the origin of the name *ieng6*, The following was provided by the Office of Engineering Computing:  
+"ieng6 is a load-balanced multiprocessor Linux server that is maintained by ITS. This hostname originated decades ago, and unfortunately, we do not know why it was named ieng6. It may not even stand for anything."  
+While the history of the name remains a mystery (at least for the time being), we did learn something interesting about *what* it is. Many people can use ieng6 at the same time.  
+Being a "multiprocessor" system means each machine(201, 202, 203 ...) has multiple CPUs (or cores), so it can run many tasks at the same time.  
+Being "load balanced" means that when people connect to ieng6, they are distributed across multiple machines behind the scenes so no single machine becomes overloaded with work. When you SSH into ieng6 you are placed on a specific machine (such as ieng6-201, ieng6-202 or ieng6-203) which you can see in your prompt. Which one are you on? Is it the same as the people around you?  
+"Linux" is the operating system it runs. Other operating systems you may be familiar with include Windows and macOS.
+
+ While that's some great information, it didn't answer our question regarding the name. Not to worry, Caleb Crawford of the IT Services department, knower of many things ieng6, has answered many questions.
+
+"For some history, ieng stands for "Interactive Engineering" and dates back to when we had machines in AP&M that you had to use a video terminal to interact with the machines. The 6 in the name is from the IP Address originally assigned,  which was 132.239.50.6. There used to be other "ieng" machines, you may encounter someone that remembers ieng9 that used to host Solaris SPARC used in CSE30 and CSE120.
+
+ieng6 and almost all of the infrastructure students might use is physically located in SDSC. The ieng6 machines are entirely virtual machine based so they're balanced on a cluster of hardware supporting most ITS.
+
+ieng6.ucsd.edu is a round robin load balancer that currently balances number of connections between ieng6-201, 202, and 203 (this will be increasing this summer). 201-203 are SSH only machines, everything else also allows RDP desktop sessions which you can connect to from campus/VPN or via linuxcloud.ucsd.edu. All the ieng6 machines are open to use as needed but we may point courses at specific sets of machines depending on what's needed for the course.
+
+ieng6-240 - 253 are the original desktop cluster and the number is based off their IP address. 
+
+`$ host ieng6-240`
+
+ieng6-240.ucsd.edu has address 128.54.70.240
+
+ieng6-640 and ieng6-641 were originally the first x86_64 deployments and are currently used to support old software that needs CentOS 7.
+
+ieng6-700 through 702 and ieng6-300 through 309 are higher resource machines (more memory + CPU) which were added as we needed to support more intensive desktop software/more desktop sessions total during covid.
+
+ieng6-ece-01 through 20 are machines specifically for ECE courses.
+
+There used to be igpu-### machines which were GPU compute servers that eventually turned into the DSMLP cluster.
+
+For home directories, the old style "OCE" paths means your account was setup prior to May 2025 and didn't get migrated to the new format. I don't know the particular history on how that hash layout was developed but it was in use for 30+ years. Accounts used to need to be flagged as "Open Computing Environment" to get persistent storage and compute resources that you can use outside of a specific course, which mattered a lot more when disk and cpu resources were limited. Non OCE accounts used to look like "cs29sp26aa" and were allocated for specific courses and removed after the quarter.
+
+New accounts are standardized with the home directory bin being the last 3 digits of your UID. Note your UID is 112263
+
+`$ getent passwd etomson`
+
+etomson:*:112263:20:Tomson, Elena:/home/linux/ieng6/students/263/etomson:/bin/bash"
+</div>
+
+<div class="note">
+>SDSC is the San Diego Supercomputer Center which resides near RIMAC on Ridgewalk.
+
+</div>
