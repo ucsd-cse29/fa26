@@ -46,6 +46,7 @@ better!
   - Free: [MIT Missing Semester](https://missing.csail.mit.edu/)
   - Not free but pretty cheap: [Julia Evans Zines](https://wizardzines.com/), especially [The Pocket Guide to Debugging](https://wizardzines.com/zines/debugging-guide/)
 - Reference Sheets: [Google Doc](https://docs.google.com/document/d/1LbkMiVf9-d0Z21Xok-SUiLKItvoMmdYS0ADqMC_fsTI/edit?usp=sharing)
+- Lecture Review Template (for late submissions): [Review Template](./lec/review_template.pdf)
 
 # Office Hours Calendar
 
