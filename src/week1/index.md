@@ -40,6 +40,11 @@ These labs are a low-stakes environment to get proficient with programming and s
 
 Throughout this lab, we strongly encourage you to help each other. The staff is always there to help, but do try working together and helping each other out first.
 
+# Github Setup
+Make a Github account **WITH YOUR UCSD EMAIL** and fill out this form. 
+https://forms.gle/pVQP1Xpc8akjqmTh9
+If you already have a Github account, follow this [link](https://docs.github.com/en/account-and-profile/how-tos/email-preferences/adding-an-email-address-to-your-github-account) to add your UCSD email to your account. If you find yourself spending more than 5 minutes on this part, ask a staff member for help
+
 # Let’s connect to `ieng6`
 
 First, open up a terminal window by following the instructions for your operating system.
