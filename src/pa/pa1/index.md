@@ -1,4 +1,4 @@
-# PA1 - UTF-8: Due TODO
+# PA1 - UTF-8: Due Monday 10/12
 
 Representing text is straightforward using ASCII: one byte per character fits well within `char[]` and it represents most English text. However, there are many more than 256 characters in the text we use, from non-Latin alphabets (Cyrillic, Arabic, and Chinese character sets, etc.) to emojis and other symbols like €, to accented characters like é and ü.
 
@@ -15,8 +15,14 @@ It's useful to get some experience with UTF-8 so you understand how it's suppose
 To that end, you'll write several functions that work with UTF-8 encoded text, and use them to analyze some example texts.
 
 ## Getting Started
+### Step 1: Do the Prairielearn Problem Set #1
+Before you start coding or doing the project, you need to do the Prairielearn: [Problem Set 1](https://us.prairielearn.com/pl/course_instance/221911/assessment_instance/15146553). You will incrementally build your full UTF-8 analyzer by doing this problem set. Then you will put everything together you built in the Problem Set into one complete program that will analyze UTF-8 strings.
 
-To get started, visit the [Classroom50](TODO) **[TODO]**
+### Step 2: Make your Git repository and being coding
+
+Visit this link to create your project Git repository: [Classroom50](https://classroom50.org/ucsd-cse29-fall2026/cse29-fa26/assignments/pa1/accept)
+
+**Note:** Git is a command line tool used for managing source code that we will teach you to use in lab 2. You should commit and push all your code and changes to this repository.
 
 ## Milestones, Working Process, and Definitions
 
