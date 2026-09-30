@@ -65,6 +65,10 @@ better!
     - Monday
       - [Lecture](lec/09-28-cstrings/29-fa26-l1.pdf)
       - Code: [print.c](lec/09-28-cstrings/print.c) [hello.c](lec/09-28-cstrings/hello.c), [out_of_bounds.c](lec/09-28-cstrings/out_of_bounds.c)
+    - Wednesday 
+      - [Lecture](lec/09-30-utf8/29-fa26-l2.pdf)
+      - Code: [inspect.c](lec/09-28-cstrings/inspect.c)
+
 
 
 # Course Components
