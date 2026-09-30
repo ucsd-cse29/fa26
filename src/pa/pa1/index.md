@@ -216,7 +216,7 @@ We provide 3 basic tests in the `tests` folder of your Classroom50 repository. T
 You can see the result for a single test by using:
 
 ```
-./utf8analyzer < tests/test-file.txt
+./utf8analyzer < tests/utf8test.txt
 ```
 
 Here are some other ideas for tests you should write. They aren't necessarily comprehensive (you should design your own!) but they should get you started. For each of these kinds of strings, you should check how UTF-8 analyzer handles them:
@@ -280,10 +280,12 @@ Your submission should contain:
 To submit:
 
 1. Make sure all of your work is committed and pushed to your Classroom50 repository (`git status` should show nothing left to commit, and your latest changes should be visible on GitHub).
-2. Open the `pa1` assignment on Gradescope and choose **GitHub** as the submission method. (The first time, you will need to connect your GitHub account to Gradescope.)
-3. Select your PA1 Classroom50 repository and the `main` branch, then upload.
+2. Open the `Project 1 - Code` assignment on Gradescope and choose **GitHub** as the submission method. (The first time, you will need to connect your GitHub account to Gradescope.)
+3. Select your repository, `ucsd-cse29-fall2026/cse29-fa26-pa1-<your GitHub username>`, and the `main` branch, then upload.
 
-Pushing to your repository does **not** submit your assignment. Only what you submit on Gradescope before the deadline will be graded, so if you push more changes, submit again on Gradescope.
+If your repository doesn't appear in the list on Gradescope, choose **Upload** instead and upload your `.c` files and your `tests` folder.
+
+Pushing to your repository does **not** submit your assignment, even if Classroom50 shows the assignment as **Submitted**. Only what you submit on Gradescope before the deadline will be graded, so if you push more changes, submit again on Gradescope.
 
 The submission system will show you the output of compiling and running your program on the provided tests to make sure the baseline format of your submission works. You will not get feedback about your overall grade before the deadline.
 
