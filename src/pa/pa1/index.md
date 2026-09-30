@@ -210,12 +210,7 @@ Animal emojis: 🐩
 ```
 
 ## Testing
-We provide 2 basic tests in the `tests` folder - which contain simple tests for detecting if there are errors in your code while identifying valid ASCII and converting ASCII lowercase to uppercase characters. We have provided a test bash file that checks if your program output contains each line in the .expect file. You can use the following commands to run the tests (You may need to change the permission of the `test_script` file to be executable with the command `chmod u+x test_script`.):
-```
-gcc *.c -o utfanalyzer // compiles your C code into an executable called utfanalyzer
-./test_script utfanalyzer
-```
-Then it will print out result in your terminal. 
+We provide 3 basic tests files in the `tests` folder that you can use to test your program.
 
 You can see the result for a single test by using:
 
