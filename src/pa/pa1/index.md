@@ -18,7 +18,7 @@ To that end, you'll write several functions that work with UTF-8 encoded text, a
 ### Step 1: Do the Prairielearn Problem Set #1
 Before you start coding or doing the project, you need to do the Prairielearn: [Problem Set 1](https://us.prairielearn.com/pl/course_instance/221911/assessment_instance/15146553). You will incrementally build your full UTF-8 analyzer by doing this problem set. Then you will put everything together you built in the Problem Set into one complete program that will analyze UTF-8 strings.
 
-### Step 2: Make your Git repository and being coding
+### Step 2: Make your Git repository and begin coding
 
 Visit this link to create your project Git repository: [Classroom50](https://classroom50.org/ucsd-cse29-fall2026/cse29-fa26/assignments/pa1/accept)
 
