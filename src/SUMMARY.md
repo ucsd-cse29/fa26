@@ -5,3 +5,6 @@
 # Labs
 
 - [Lab 1](./week1/index.md)
+
+# Projects
+- [Project 1](./pa/pa1/index.md)
