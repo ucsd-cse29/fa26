@@ -68,6 +68,7 @@ better!
     - Wednesday 
       - [Lecture](lec/09-30-utf8/29-fa26-l2.pdf)
       - Code: [inspect.c](lec/09-30-utf8/inspect.c)
+      - [Discussion](disc/week1/Week%201%20Discussion%20Slides.pdf) 
 
 
 
