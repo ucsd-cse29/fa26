@@ -69,6 +69,11 @@ better!
       - [Lecture](lec/09-30-utf8/29-fa26-l2.pdf)
       - Code: [inspect.c](lec/09-30-utf8/inspect.c)
       - [Discussion](disc/week1/Week%201%20Discussion%20Slides.pdf) 
+    - Friday 
+      - [Lecture](lec/10-02-utf8v2/29-fa26-l3.pdf)
+      - Code: [uppercase.c](lec/10-02-utf8v2/uppercase.c)
+      - Code: [is_multibyte.c](lec/10-02-utf8v2/is_multibyte.c)
+
 
 
 
