@@ -105,7 +105,7 @@ For this section of the lab, you should work in groups of 2-3. Let a TA or tutor
 Before you start using git hands-on, we should establish some vocabulary and concepts about git and GitHub.
 
 * *git* is a command line program that enables version control, i.e. the ability to track and switch between different versions of your code, including switching to past versions.
-* A *repository* (or repo) is a folder, usually containing code, which is configured to work with git to manage different versions. When you accepted the assignment on GitHub Classroom, it should have automatically created an empty repo for your group.
+* A *repository* (or repo) is a folder, usually containing code, which is configured to work with git to manage different versions. When you forked the repository on GitHub, it created a copy of the original repo for you that you can edit.
 * *GitHub* is a website which hosts repos, allowing you to save your work on a server, and can allow people to contribute to others’ repos.
 
 If there is any software which most (if not all) programmers use, it’s git and its integration with GitHub. That’s why knowing how to use git and having a GitHub account are essential for programmers.
