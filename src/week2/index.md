@@ -179,6 +179,20 @@ A *fork* of a repository is a personal copy of the repository that you can make 
 ![Image](./assets/fork.png)
 </div>
 
+## Share the Repo
+
+In order for the rest of the team to have the correct access rights to the repository, it must be properly shared in Github. To add the rest of your teammates, click "Settings"
+
+![Git_repo_settings](./assets/git_repo_settings.png)
+
+Then click "Collaborators"
+
+![collaborators](./assets/git_collaborators.png)
+
+Now you can add your teammates using the "Add People" button and using their Github Usernames
+
+![add_people](./assets/git_add_people.png)
+
 ## Clone the Repo
 
 ![Steps to clone a repository](./assets/lab2_cloning.png)
@@ -404,7 +418,7 @@ To undo our destructive change, we precisely need to "`discard changes in workin
 
 <div class="checkoff">
 
-Make sure everyone in your group was able to successfully restore the once destroyed `contains.c` contents. Call over a staff member to get checked off.
+Make sure everyone in your group was able to successfully restore the once destroyed `contains.c` contents. Call over a staff member to get checked off. Then submit to **Gradescope**!
 
 </div>
 
