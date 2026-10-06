@@ -1,0 +1,11 @@
+syntax on
+set number
+set belloff=all
+set showtabline=2   " always show buffer tabs
+set tabstop=4
+set noexpandtab   "ensures tabs do not expand to spaces
+set autoindent
+set cindent
+inoremap { {<CR>}<Esc>ko
+set shiftwidth=4
+set backspace=indent,eol,start

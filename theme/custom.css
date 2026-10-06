@@ -1,8 +1,10 @@
-/* Fun fact callout, ported from monip1.github.io/_sass/custom/custom.scss */
+/* Fun fact and quality callouts, ported from monip1.github.io/_sass/custom/custom.scss */
 
 :root {
     --callout-funfact-bg: #48cbe8;
     --callout-funfact-fg: #000000;
+    --callout-quality-bg: #ea5656;
+    --callout-quality-fg: #27262b;
 }
 
 /* mdBook's dark themes */
@@ -11,6 +13,8 @@
 .ayu {
     --callout-funfact-bg: #48aee8;
     --callout-funfact-fg: #ffffff;
+    --callout-quality-bg: #ea5656;
+    --callout-quality-fg: #e1e1e6;
 }
 
 .fun-fact {
@@ -74,6 +78,65 @@
         0 0 12px rgba(255, 255, 255, 0.25);
 }
 
+.quality {
+    background-color: var(--callout-quality-bg) !important;
+    background-image:
+        repeating-linear-gradient(
+            35deg,
+            transparent 0px,
+            rgba(225, 118, 73, 0.35) 240px,
+            rgba(236, 61, 38, 0.35) 480px,
+            rgba(230, 136, 82, 0.35) 720px,
+            transparent 960px
+        ),
+        repeating-linear-gradient(
+            -35deg,
+            transparent 0px,
+            rgba(225, 118, 73, 0.35) 240px,
+            rgba(236, 61, 38, 0.35) 480px,
+            rgba(230, 136, 82, 0.35) 720px,
+            transparent 960px
+        ) !important;
+    background-size: 1200% 1200%, 1200% 1200%;
+    background-position: 0px 0px, 0px 0px;
+    animation: ff-slide 300s linear infinite;
+    color: var(--callout-quality-fg) !important;
+    border-left: 3px solid #fcab99 !important;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    margin: 1rem 0;
+}
+
+.quality::before {
+    content: "Quality of Life Improvement 💫";
+    display: inline-block;
+    margin-right: 0.5rem;
+    font-size: 1.1em;
+    vertical-align: middle;
+    animation: ff-pulse 8s ease-in-out infinite;
+}
+
+.quality a,
+.quality a:visited {
+    color: #fff8f5 !important;
+    font-weight: 700;
+    text-decoration-color: rgba(255, 248, 245, 0.9) !important;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 2.5px;
+    text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.45),
+        0 0 8px rgba(255, 255, 255, 0.18);
+}
+
+.quality a:hover {
+    color: #ffffff !important;
+    text-decoration-color: #ffffff !important;
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.6),
+        0 0 12px rgba(255, 255, 255, 0.25);
+}
+
 @keyframes ff-pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.10); }
@@ -86,8 +149,9 @@
 }
 
 /*
- * note / checkoff / exercise / owntime callouts, recreating just-the-docs'
- * callouts from monip1.github.io/_config.yml (.note background from custom.scss)
+ * note / warning / important / checkoff / exercise / owntime / midterm callouts,
+ * recreating just-the-docs' callouts from monip1.github.io/_config.yml
+ * (.note, .warning and .important backgrounds from custom.scss).
  * Colors are just-the-docs' $<color>-000 / -200 / -300.
  */
 
@@ -95,6 +159,15 @@
     --callout-note-bg: #e7f3ff;
     --callout-note-border: #183385;
     --callout-note-title: #264caf;
+    --callout-warning-bg: #fff0f0;
+    --callout-warning-border: #dd2e2e;
+    --callout-warning-title: #e94c4c;
+    --callout-important-bg: #ffba6c;
+    --callout-important-border: #ff5100;
+    --callout-important-title: #742500;
+    --callout-midterm-bg: rgba(247, 126, 126, 0.2);
+    --callout-midterm-border: #dd2e2e;
+    --callout-midterm-title: #e94c4c;
     --callout-checkoff-bg: rgba(65, 214, 147, 0.2);
     --callout-checkoff-border: #026e57;
     --callout-checkoff-title: #009c7b;
@@ -112,6 +185,16 @@
     --callout-note-bg: #1a2332;
     --callout-note-border: #2c84fa;
     --callout-note-title: #2c84fa;
+    --callout-warning-bg: #321a1a;
+    --callout-warning-border: #f77e7e;
+    --callout-warning-title: #f77e7e;
+    --callout-important-bg: #ffba6c;
+    --callout-important-border: #ff5100;
+    --callout-important-title: #742500;
+    --callout-important-fg: #000000;
+    --callout-midterm-bg: rgba(221, 46, 46, 0.2);
+    --callout-midterm-border: #f77e7e;
+    --callout-midterm-title: #f77e7e;
     --callout-checkoff-bg: rgba(2, 110, 87, 0.2);
     --callout-checkoff-border: #41d693;
     --callout-checkoff-title: #41d693;
@@ -124,9 +207,12 @@
 }
 
 .note,
+.warning,
+.important,
 .checkoff,
 .exercise,
-.owntime {
+.owntime,
+.midterm {
     padding: 0.8rem 1rem;
     margin: 1rem 0;
     border-left: 4px solid;
@@ -134,9 +220,12 @@
 }
 
 .note::before,
+.warning::before,
+.important::before,
 .checkoff::before,
 .exercise::before,
-.owntime::before {
+.owntime::before,
+.midterm::before {
     display: block;
     font-size: 0.75em;
     font-weight: bold;
@@ -144,38 +233,82 @@
     padding-bottom: 0.125rem;
 }
 
-.note     { background-color: var(--callout-note-bg);     border-left-color: var(--callout-note-border); }
-.checkoff { background-color: var(--callout-checkoff-bg); border-left-color: var(--callout-checkoff-border); }
-.exercise { background-color: var(--callout-exercise-bg); border-left-color: var(--callout-exercise-border); }
-.owntime  { background-color: var(--callout-owntime-bg);  border-left-color: var(--callout-owntime-border); }
+.note      { background-color: var(--callout-note-bg);      border-left-color: var(--callout-note-border); }
+.warning   { background-color: var(--callout-warning-bg);   border-left-color: var(--callout-warning-border); }
+.important { background-color: var(--callout-important-bg); border-left-color: var(--callout-important-border); color: var(--callout-important-fg, inherit); }
+.checkoff  { background-color: var(--callout-checkoff-bg);  border-left-color: var(--callout-checkoff-border); }
+.exercise  { background-color: var(--callout-exercise-bg);  border-left-color: var(--callout-exercise-border); }
+.owntime   { background-color: var(--callout-owntime-bg);   border-left-color: var(--callout-owntime-border); }
+.midterm   { background-color: var(--callout-midterm-bg);   border-left-color: var(--callout-midterm-border); }
 
-.note::before     { content: "note";                  color: var(--callout-note-title); }
-.checkoff::before { content: "📋 Team check in!";     color: var(--callout-checkoff-title); }
-.exercise::before { content: "💪 Exercise";           color: var(--callout-exercise-title); }
-.owntime::before  { content: "🚀 In your own time";   color: var(--callout-owntime-title); }
+.note::before      { content: "note";                color: var(--callout-note-title); }
+.warning::before   { content: "warning";             color: var(--callout-warning-title); }
+.important::before { content: "important";           color: var(--callout-important-title); }
+.checkoff::before  { content: "📋 Team check in!";   color: var(--callout-checkoff-title); }
+.exercise::before  { content: "💪 Exercise";         color: var(--callout-exercise-title); }
+.owntime::before   { content: "🚀 In your own time"; color: var(--callout-owntime-title); }
+.midterm::before   { content: "Midterm Exam";        color: var(--callout-midterm-title); }
+
+/*
+ * Custom titles, replacing just-the-docs' .<callout>-title variants:
+ * <div class="warning" data-title="🛑 WAIT"> shows "🛑 WAIT" instead of "warning"
+ */
+.note[data-title]::before,
+.warning[data-title]::before,
+.important[data-title]::before,
+.checkoff[data-title]::before,
+.exercise[data-title]::before,
+.owntime[data-title]::before,
+.midterm[data-title]::before {
+    content: attr(data-title);
+}
 
 /* Trim the outer margins of the first/last child so the box hugs its content */
 .note > :first-child,
+.warning > :first-child,
+.important > :first-child,
 .checkoff > :first-child,
 .exercise > :first-child,
-.owntime > :first-child {
+.owntime > :first-child,
+.midterm > :first-child {
     margin-top: 0;
 }
 
 .note > :last-child,
+.warning > :last-child,
+.important > :last-child,
 .checkoff > :last-child,
 .exercise > :last-child,
-.owntime > :last-child {
+.owntime > :last-child,
+.midterm > :last-child {
     margin-bottom: 0;
 }
 
 /* Blockquotes wrapped in a callout shouldn't draw mdBook's own quote box */
 .note > blockquote,
+.warning > blockquote,
+.important > blockquote,
 .checkoff > blockquote,
 .exercise > blockquote,
-.owntime > blockquote {
+.owntime > blockquote,
+.midterm > blockquote {
     margin: 0;
     padding: 0;
     border: none;
     background: none;
 }
+
+/* "Optional" heading tags, recreating just-the-docs' .label / .label-purple */
+.label {
+    display: inline-block;
+    padding: 0.16em 0.56em;
+    margin-left: 0.5rem;
+    color: #ffffff;
+    font-size: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+    vertical-align: middle;
+    border-radius: 12px;
+}
+
+.label-purple { background-color: #5e41d0; }
