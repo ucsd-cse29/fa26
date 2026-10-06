@@ -418,7 +418,7 @@ To undo our destructive change, we precisely need to "`discard changes in workin
 
 <div class="checkoff">
 
-Make sure everyone in your group was able to successfully restore the once destroyed `contains.c` contents. Call over a staff member to get checked off. Then submit to **Gradescope**!
+Make sure everyone in your group was able to successfully restore the once destroyed `contains.c` contents.
 
 </div>
 
@@ -462,7 +462,7 @@ printf("b>>1 = %d\n", b >> 1);
 
 <div class="checkoff">
 
-This is the submittable checkoff for the lab.
+This is the submittable checkoff for the lab. Submit the repository to **Gradescope** as a group (1 person submits and adds the rest of the team).
 
 </div>
 
