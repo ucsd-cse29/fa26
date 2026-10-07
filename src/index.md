@@ -54,11 +54,12 @@ better!
 
 ## Schedule
 
-- **Week 0 – Welcome, Strings and Bitwise Representations**
+- **Week 2 – UTF-8 and Shell**
   - **Lecture Materials**
-    - Friday
-      - [Lecture](lec/09-25-welcome/29-fa26-l0.pdf)
-      - Code: [bits.c](lec/09-25-welcome/bits.c), [hello.c](lec/09-25-welcome/hello.c)
+    - Monday
+      - [Lecture](lec/10-05-utf8analyzer/29-fa26-l4.pdf)
+      - Code: [utf8analyzer.c](lec/10-05-utf8analyzer/utf8analyzer.c), [codepoint.c](lec/10-05-utf8analyzer/codepoint.c)
+
 
 - **Week 1 – Binary, Printing, and Strings**
   - **Lecture Materials**
@@ -74,11 +75,11 @@ better!
       - Code: [uppercase.c](lec/10-02-utf8v2/uppercase.c)
       - Code: [is_multibyte.c](lec/10-02-utf8v2/is_multibyte.c)
 
-- **Week 2 – UTF-8 and Shell **
+- **Week 0 – Welcome, Strings and Bitwise Representations**
   - **Lecture Materials**
-    - Monday
-      - [Lecture](lec/10-05-utf8analyzer/29-fa26-l4.pdf)
-      - Code: [utf8analyzer.c](lec/10-05-utf8analyzer/utf8analyzer.c), [codepoint.c](lec/10-05-utf8analyzer/codepoint.c)
+    - Friday
+      - [Lecture](lec/09-25-welcome/29-fa26-l0.pdf)
+      - Code: [bits.c](lec/09-25-welcome/bits.c), [hello.c](lec/09-25-welcome/hello.c)
 
 
 
