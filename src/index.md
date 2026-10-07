@@ -60,6 +60,7 @@ better!
       - [Lecture](lec/10-05-utf8analyzer/29-fa26-l4.pdf)
       - Code: [utf8analyzer.c](lec/10-05-utf8analyzer/utf8analyzer.c), [codepoint.c](lec/10-05-utf8analyzer/codepoint.c)
     - Wednesday
+      - Review Questions: [REVIEW.txt](lec/10-07-remote-arrays/REVIEW.txt)
       - Code: [arrays.c](lec/10-07-remote-arrays/arrays.c), [webserver.c](lec/10-07-remote-arrays/webserver.c)
 
 

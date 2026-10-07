@@ -1,0 +1,7 @@
+1. What terminal commands do you need to connect to 
+a remote server and copy code to it?
+
+2. What commands on a remote server do you use to
+edit, compile, and run a C program?
+
+3. How can you return an array from a function in C?
