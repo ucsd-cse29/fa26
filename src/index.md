@@ -59,6 +59,8 @@ better!
     - Monday
       - [Lecture](lec/10-05-utf8analyzer/29-fa26-l4.pdf)
       - Code: [utf8analyzer.c](lec/10-05-utf8analyzer/utf8analyzer.c), [codepoint.c](lec/10-05-utf8analyzer/codepoint.c)
+    - Wednesday
+      - Code: [arrays.c](lec/10-07-remote-arrays/arrays.c), [webserver.c](lec/10-07-remote-arrays/webserver.c)
 
 
 - **Week 1 – Binary, Printing, and Strings**
