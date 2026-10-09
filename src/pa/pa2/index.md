@@ -1,4 +1,4 @@
-# PA2 - Hashing and Passwords: Due 1/29 at 11:59pm - [Github Classroom Link](https://classroom.github.com/a/m9ZLT8wD)
+# PA2 - Hashing and Passwords: Due TBD at 11:59pm
 
 [Cryptographic hash functions](https://en.wikipedia.org/wiki/Cryptographic_hash_function) take an input of arbitrary length and produces a fixed length output. The special features are that the outputs are _deterministic_ (the same input always generates the same output) and yet the outputs are apparently “random” – two similar inputs are likely to produce very different outputs, and it's difficult to determine the input by looking at the ouput.
 
@@ -11,7 +11,7 @@ In some cases, password cracking can [exploit the structure](https://en.wikipedi
 
 ## Getting Started
 
-To get started, visit the [Github Classroom](https://classroom.github.com/a/m9ZLT8wD) assignment link. Select your username from the list (or if you don't see it, you can skip and use your Github username). A repository will be created for you to use for your work. This PA should be completed on the `ieng6` server. Refer [this](https://ucsd-cse29.github.io/wi26/week1/lab1.html#logging-into-ieng6) section in Week 1's Lab for instructions on logging in to your account on `ieng6` and working with files on the server.
+To get started, visit the [TODO Add Class50 Link](https://classroom.github.com/a/m9ZLT8wD) assignment link. Select your username from the list (or if you don't see it, you can skip and use your Github username). A repository will be created for you to use for your work. This PA should be completed on the `ieng6` server. Refer [this](https://ucsd-cse29.github.io/wi26/week1/lab1.html#logging-into-ieng6) section in Week 1's Lab for instructions on logging in to your account on `ieng6` and working with files on the server.
 
 **Note** - The autograder uses the C11 standard of the C programming language.
 
