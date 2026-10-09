@@ -268,8 +268,6 @@ You can use any code from class, lab, or discussion in your work.
 
 PA1 has **two separate Gradescope submissions**. You must complete both.
 
-<p style="font-size:4rem;">These have yet to be set up! Hang tight if you complete the assignment before they are set up</p>
-
 ### 1. Code: the `Project 1 - Code` assignment on Gradescope
 
 Your submission should contain:
@@ -292,3 +290,6 @@ The submission system will show you the output of compiling and running your pro
 ### 2. Design Questions: the `Project 1 - Design Questions` assignment on Gradescope
 
 Type your answers to the [design questions](#design-questions) directly into the `Project 1 - Design Questions` assignment on Gradescope. Do **not** put them in your repository or your code submission; answers submitted there will not be graded.
+
+
+===
