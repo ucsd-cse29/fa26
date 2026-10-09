@@ -63,6 +63,8 @@ better!
       - Review Questions: [REVIEW.txt](lec/10-07-remote-arrays/REVIEW.txt)
       - Code: [arrays.c](lec/10-07-remote-arrays/arrays.c), [webserver.c](lec/10-07-remote-arrays/webserver.c)
       - [Discussion](disc/week2/week-2-discussion-slides.pdf) (Code: [utf8analyzer.c](disc/week2/utf8analyzer.c))
+    - Friday
+      - [Lecture](lec/10-09-integers/29-fa26-l6.pdf)
 
 
 - **Week 1 – Binary, Printing, and Strings**
