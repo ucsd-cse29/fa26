@@ -58,7 +58,7 @@ better!
   - **Lecture Materials**
     - Monday
       - [Lecture](lec/10-12-pointers/29-fa26-l7.pdf)
-      - Code: [wheresmystuff.c](lec/10-12-pointers/whereismystuff.c)
+      - Code: [wheresmystuff.c](lec/10-12-pointers/wheresmystuff.c)
 
 - **Week 2 – UTF-8 and Shell**
   - **Lecture Materials**
