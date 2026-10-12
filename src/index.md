@@ -65,6 +65,7 @@ better!
       - [Discussion](disc/week2/week-2-discussion-slides.pdf) (Code: [utf8analyzer.c](disc/week2/utf8analyzer.c))
     - Friday
       - [Lecture](lec/10-09-integers/29-fa26-l6.pdf)
+      - Code: [integers.c](lec/10-09-integers/integers.c)
 
 
 - **Week 1 – Binary, Printing, and Strings**
