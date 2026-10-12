@@ -54,6 +54,12 @@ better!
 
 ## Schedule
 
+- **Week 3 – Pointers**
+  - **Lecture Materials**
+    - Monday
+      - [Lecture](lec/10-12-pointers/29-fa26-l7.pdf)
+      - Code: [whereismystuff.c](lec/10-12-pointers/whereismystuff.c)
+
 - **Week 2 – UTF-8 and Shell**
   - **Lecture Materials**
     - Monday
