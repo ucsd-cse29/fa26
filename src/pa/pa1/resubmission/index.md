@@ -1,6 +1,6 @@
-# PA1 Resubmission: Due Date 1/29 at 11:59pm
+# PA1 Resubmission: Due Date Friday 10/23 at 11:59pm
 
-## If you want to resubmit PA1, please read this section carefully. You need to pass all the tests in the original PA1, while also implementing an extra function described below
+## If you want to resubmit Project 1, please read this section carefully. You need to pass all the tests in the original Project 1, while also implementing an extra function described below
 
 ### `void next_utf8_char(char str[], int32_t cpi, char result[])`
 
