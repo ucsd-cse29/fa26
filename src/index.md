@@ -120,16 +120,19 @@ there will be:
 **Grading**: There are 6 points available for each assignment.
 
 - **2** points for the corresponding problem set (2 points for fully correct and
-  complete by the deadline, 1 point for somewhat complete at the deadline, 0 points for incomplete or very little completed at the deadline).
+  complete by the deadline, 1 point for somewhat complete at the deadline (>70%), 0 points for incomplete or very little completed at the deadline).
 - **2** points for program correctness (2 points for perfect or nearly-perfect, 1 point
-  for significant errors, 0 for programs that work on very few or no examples)
+  for significant errors, 0 for programs that work on very few or no examples). The thresholds for each project will be determined after submission.
 - **2** points for design questions (2 points for perfect or nearly-perfect, 1
   point for minor errors, 0 points for major errors or incomplete)
 
 After each assignment is graded, you'll have a chance to _resubmit_ all
 components based on the feedback you received, which will detail what you need
 to do to increase your score. You can increase your score by up to **1** point
-in each component on a resubmit.
+in each component on a resubmit. 
+
+Resubmission for design questions and the programming assignment will be available on Gradescope after feedback is released. 
+For problem sets, complete the assignment (even though you won't see your total score increase on PL) within 2 weeks of the deadline to earn the resubmission point. 
 
 This is also the only late policy for assignments. Unsubmitted assignments are
 initially given a **0**, and can get a maximum of **3** points on resubmission.
