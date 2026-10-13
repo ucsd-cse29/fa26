@@ -201,6 +201,9 @@ GDB also provides shortcuts for some commonly used commands, which can be used i
 
 In addition to shortcuts, inputting no command and pressing `Enter` will automatically execute the most recently used command. This can be helpful when you need to use `next` repeatedly.
 
+
+**Tip:** If your terminal looks a bit messed up, try pressing <kbd>Ctrl</kbd>+<kbd>L</kbd>, which will refresh the window.
+
 </div>
 
 Then continue using `next` to run through the loop and figure out why `index_of()` is buggy. Try printing out the relevant variables as you go through each iteration. Once you figure out why `index_of()` isn’t working, write what the problem was along with how you would fix it on your whiteboard.
