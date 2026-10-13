@@ -59,6 +59,7 @@ better!
     - Monday
       - [Lecture](lec/10-12-pointers/29-fa26-l7.pdf)
       - Code: [wheresmystuff.c](lec/10-12-pointers/wheresmystuff.c)
+      - [Review Questions Answers](lec_rq_answers/20261012-rq-answers.pdf)
 
 - **Week 2 – UTF-8 and Shell**
   - **Lecture Materials**
