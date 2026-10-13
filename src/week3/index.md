@@ -248,7 +248,7 @@ Since we know that segfaults are caused by illegal memory access, and we know th
 <div class="gradescope">
 
 There are 3 buggy programs in the `gdb` directory with names `buggy*.c`.
-Use what you have learned in this lab to fix these programs, then submit them to gradescope.
+Use what you have learned in this lab to fix these programs, then submit them to gradescope by Monday, October 19th at 11am.
 
 </div>
 
