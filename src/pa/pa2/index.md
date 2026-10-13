@@ -27,7 +27,7 @@ We'll start by describing the overall task and goal so it's clear where you're g
 
 Write a program `pwcrack` that takes one command-line argument, the `SHA256` hash of a password in hex format.
 
-The program then reads from `stdin` potential passwords, one per line (assumed to be in UTF-8 format).
+The program then reads from `stdin` potential passwords, one per line (assumed to be in UTF-8 format **with only letters, no numbers or symbols**).
 
 The program should, for each password:
 
@@ -109,6 +109,14 @@ $ ./pwcrack a2c3b02cb22af83d6d1ead1d4e18d916599be7c2ef2f017169327df1f7c844fd
 SECRET
 <Press Ctrl-D for end of input>
 Did not find a matching password
+```
+
+But the correct password below WOULD be found because going from `SeCret` to `seCret` only requires one character to be changed.
+
+```
+$ ./pwcrack a2c3b02cb22af83d6d1ead1d4e18d916599be7c2ef2f017169327df1f7c844fd
+SeCret
+Found password: SHA256(seCret) = a2c3b02cb22af83d6d1ead1d4e18d916599be7c2ef2f017169327df1f7c844fd
 ```
 
 ## Design Questions
