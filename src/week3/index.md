@@ -234,6 +234,7 @@ Use the following guide to find and fix the following bug in `charshift.c`.
 </div>
 
 <div class="note">
+
 If you break or lose a file. Recall:  
 [Git Restore](../week2/index.html#oops-undoing-destructive-changes)
 
