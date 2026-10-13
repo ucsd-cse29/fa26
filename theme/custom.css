@@ -149,7 +149,7 @@
 }
 
 /*
- * note / warning / important / checkoff / exercise / owntime / midterm callouts,
+ * note / warning / important / checkoff / gradescope / exercise / owntime / midterm callouts,
  * recreating just-the-docs' callouts from monip1.github.io/_config.yml
  * (.note, .warning and .important backgrounds from custom.scss).
  * Colors are just-the-docs' $<color>-000 / -200 / -300.
@@ -171,6 +171,9 @@
     --callout-checkoff-bg: rgba(65, 214, 147, 0.2);
     --callout-checkoff-border: #026e57;
     --callout-checkoff-title: #009c7b;
+    --callout-gradescope-bg: rgba(15, 203, 237, 0.463);
+    --callout-gradescope-border: #06388d;
+    --callout-gradescope-title: #0c2b80;
     --callout-exercise-bg: rgba(114, 83, 237, 0.2);
     --callout-exercise-border: #381885;
     --callout-exercise-title: #4e26af;
@@ -198,6 +201,9 @@
     --callout-checkoff-bg: rgba(2, 110, 87, 0.2);
     --callout-checkoff-border: #41d693;
     --callout-checkoff-title: #41d693;
+    --callout-gradescope-bg: rgba(30, 62, 98, 0.447);
+    --callout-gradescope-border: #3c9ae3;
+    --callout-gradescope-title: #39c7e0;
     --callout-exercise-bg: rgba(56, 24, 133, 0.2);
     --callout-exercise-border: #7253ed;
     --callout-exercise-title: #7253ed;
@@ -210,6 +216,7 @@
 .warning,
 .important,
 .checkoff,
+.gradescope,
 .exercise,
 .owntime,
 .midterm {
@@ -223,6 +230,7 @@
 .warning::before,
 .important::before,
 .checkoff::before,
+.gradescope::before,
 .exercise::before,
 .owntime::before,
 .midterm::before {
@@ -237,6 +245,7 @@
 .warning   { background-color: var(--callout-warning-bg);   border-left-color: var(--callout-warning-border); }
 .important { background-color: var(--callout-important-bg); border-left-color: var(--callout-important-border); color: var(--callout-important-fg, inherit); }
 .checkoff  { background-color: var(--callout-checkoff-bg);  border-left-color: var(--callout-checkoff-border); }
+.gradescope  { background-color: var(--callout-gradescope-bg);  border-left-color: var(--callout-gradescope-border); }
 .exercise  { background-color: var(--callout-exercise-bg);  border-left-color: var(--callout-exercise-border); }
 .owntime   { background-color: var(--callout-owntime-bg);   border-left-color: var(--callout-owntime-border); }
 .midterm   { background-color: var(--callout-midterm-bg);   border-left-color: var(--callout-midterm-border); }
@@ -244,7 +253,8 @@
 .note::before      { content: "note";                color: var(--callout-note-title); }
 .warning::before   { content: "warning";             color: var(--callout-warning-title); }
 .important::before { content: "important";           color: var(--callout-important-title); }
-.checkoff::before  { content: "📋 Team check in!";   color: var(--callout-checkoff-title); }
+.checkoff::before  { content: "📋 Team checkoff!";   color: var(--callout-checkoff-title); }
+.gradescope::before  { content: "✔️ Gradescope submission checkoff!";   color: var(--callout-gradescope-title); }
 .exercise::before  { content: "💪 Exercise";         color: var(--callout-exercise-title); }
 .owntime::before   { content: "🚀 In your own time"; color: var(--callout-owntime-title); }
 .midterm::before   { content: "Midterm Exam";        color: var(--callout-midterm-title); }
@@ -257,6 +267,7 @@
 .warning[data-title]::before,
 .important[data-title]::before,
 .checkoff[data-title]::before,
+.gradescope[data-title]::before,
 .exercise[data-title]::before,
 .owntime[data-title]::before,
 .midterm[data-title]::before {
@@ -268,6 +279,7 @@
 .warning > :first-child,
 .important > :first-child,
 .checkoff > :first-child,
+.gradescope > :first-child,
 .exercise > :first-child,
 .owntime > :first-child,
 .midterm > :first-child {
@@ -289,6 +301,7 @@
 .warning > blockquote,
 .important > blockquote,
 .checkoff > blockquote,
+.gradescope > blockquote,
 .exercise > blockquote,
 .owntime > blockquote,
 .midterm > blockquote {
