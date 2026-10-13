@@ -49,7 +49,8 @@ The order of flags given to `gcc` does not matter. The only case where it does m
 
 <div class="exercise">
 
-Using [**this repository**](https://classroom50.org/ucsd-cse29-fall2026/cse29-fa26/assignments/lab3/accept) navigate to the `Wall` directory and fix the programs. All bugs will be reported by compiliing using the `-Wall` flag
+1. Clone [**this repository**](https://classroom50.org/ucsd-cse29-fall2026/cse29-fa26/assignments/lab3/accept)
+1. Navigate to the `Wall` directory and fix the programs. All bugs will be reported by compiliing using the `-Wall` flag
 
 </div>
 
