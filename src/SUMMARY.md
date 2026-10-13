@@ -6,6 +6,7 @@
 
 - [Lab 1](./week1/index.md)
 - [Lab 2](./week2/index.md)
+- [Lab 3](./week3/index.md)
 
 # Projects
 - [Project 1](./pa/pa1/index.md)
