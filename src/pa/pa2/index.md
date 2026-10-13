@@ -1,4 +1,4 @@
-# PA2 - Hashing and Passwords: Due TBD at 11:59pm
+# PA2 - Hashing and Passwords: Due Friday 10/23 at 11:59pm
 
 [Cryptographic hash functions](https://en.wikipedia.org/wiki/Cryptographic_hash_function) take an input of arbitrary length and produces a fixed length output. The special features are that the outputs are _deterministic_ (the same input always generates the same output) and yet the outputs are apparently “random” – two similar inputs are likely to produce very different outputs, and it's difficult to determine the input by looking at the ouput.
 
@@ -11,14 +11,17 @@ In some cases, password cracking can [exploit the structure](https://en.wikipedi
 
 ## Getting Started
 
-To get started, visit the [TODO Add Class50 Link](https://classroom.github.com/a/m9ZLT8wD) assignment link. Select your username from the list (or if you don't see it, you can skip and use your Github username). A repository will be created for you to use for your work. This PA should be completed on the `ieng6` server. Refer [this](https://ucsd-cse29.github.io/wi26/week1/lab1.html#logging-into-ieng6) section in Week 1's Lab for instructions on logging in to your account on `ieng6` and working with files on the server.
+### Step 1: Do Prairielearn Problem Set 2
+Just like for Project 1, and all future projects, the problem set on Prairielearn is meant to help you practice the knowledge and skills you will need to use to finish this project. 
+
+### Step 2: Set up Github Repository
+Visit the [TODO Add Class50 Link](https://classroom.github.com/a/m9ZLT8wD) assignment link. Select your username from the list (or if you don't see it, you can skip and use your Github username). A repository will be created for you to use for your work (**PLEASE MAKE SURE THE REPO HAS YOUR USERNAME IN IT**). This PA should be completed on the `ieng6` server. Refer to [Week 1's lab](https://cse29.site/week1/index.html) for instructions on logging in to your account on `ieng6` and working with files on the server.
 
 **Note** - The autograder uses the C11 standard of the C programming language.
 
 ## Overall Task
 
-We'll start by describing the overall task and goal so it's clear where you're going.
-However, don't start by trying to implement this exactly – use the milestones below to get there.
+We'll start by describing the overall task and goal so it's clear where you're going. This may initially be very overwhelming. If it still feels difficult and unclear after you finish the problem set, it is always a good idea to try to start by outlining the problem, and breaking it down into chunks like we had you do for [Project 1](https://cse29.site/pa/pa1/index.html).
 
 ### `pwcrack`, a Password Cracker
 
@@ -31,6 +34,8 @@ The program should, for each password:
 - Check if the SHA256 hash of the potential password matches the given hash
 - Check if the SHA256 hash of the potential password with each of its ASCII characters
   uppercased or lowercased matches the given hash
+
+(You can use the [reference file](#TODO ADD LINK) from Wednesday's (10/14) lecture on how to use a C library to generate SHA256 hashes.)
 
 If a matching password is found, the program should print the message below and then exit:
 
