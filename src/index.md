@@ -66,6 +66,7 @@ better!
     - Monday
       - [Lecture](lec/10-05-utf8analyzer/29-fa26-l4.pdf)
       - Code: [utf8analyzer.c](lec/10-05-utf8analyzer/utf8analyzer.c), [codepoint.c](lec/10-05-utf8analyzer/codepoint.c)
+      - [Review Questions Answers](lec_rq_answers/20261005-rq-answers.pdf)
     - Wednesday
       - Review Questions: [REVIEW.txt](lec/10-07-remote-arrays/REVIEW.txt)
       - Code: [arrays.c](lec/10-07-remote-arrays/arrays.c), [webserver.c](lec/10-07-remote-arrays/webserver.c)
@@ -73,6 +74,7 @@ better!
     - Friday
       - [Lecture](lec/10-09-integers/29-fa26-l6.pdf)
       - Code: [integers.c](lec/10-09-integers/integers.c)
+      - [Review Questions Answers](lec_rq_answers/20261009-rq-answers.pdf)
 
 
 - **Week 1 – Binary, Printing, and Strings**
@@ -80,9 +82,11 @@ better!
     - Monday
       - [Lecture](lec/09-28-cstrings/29-fa26-l1.pdf)
       - Code: [print.c](lec/09-28-cstrings/print.c) [hello.c](lec/09-28-cstrings/hello.c), [out_of_bounds.c](lec/09-28-cstrings/out_of_bounds.c)
+      - [Review Questions Answers](lec_rq_answers/20260928-rq-answers.pdf)
     - Wednesday 
       - [Lecture](lec/09-30-utf8/29-fa26-l2.pdf)
       - Code: [inspect.c](lec/09-30-utf8/inspect.c)
+      - [Review Questions Answers](lec_rq_answers/20260930-rq-answers.pdf)
       - [Discussion](disc/week1/week-1-discussion-slides.pdf)
     - Friday 
       - [Lecture](lec/10-02-utf8v2/29-fa26-l3.pdf)
@@ -94,6 +98,7 @@ better!
     - Friday
       - [Lecture](lec/09-25-welcome/29-fa26-l0.pdf)
       - Code: [bits.c](lec/09-25-welcome/bits.c), [hello.c](lec/09-25-welcome/hello.c)
+      - [Review Questions Answers](lec_rq_answers/20260924-rq-answers.pdf)
 
 
 
