@@ -132,7 +132,7 @@ to do to increase your score. You can increase your score by up to **1** point
 in each component on a resubmit. 
 
 Resubmission for design questions and the programming assignment will be available on Gradescope after feedback is released. 
-For problem sets, complete the assignment (even though you won't see your score increase on PL) within 2 weeks of the deadline to earn the resubmission point. 
+For problem sets, complete the assignment (even though you won't see your total score increase on PL) within 2 weeks of the deadline to earn the resubmission point. 
 
 This is also the only late policy for assignments. Unsubmitted assignments are
 initially given a **0**, and can get a maximum of **3** points on resubmission.
