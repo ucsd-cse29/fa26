@@ -122,7 +122,7 @@ there will be:
 - **2** points for the corresponding problem set (2 points for fully correct and
   complete by the deadline, 1 point for somewhat complete at the deadline (>70%), 0 points for incomplete or very little completed at the deadline).
 - **2** points for program correctness (2 points for perfect or nearly-perfect, 1 point
-  for significant errors, 0 for programs that work on very few or no examples). The thresholds will be determined after submission.
+  for significant errors, 0 for programs that work on very few or no examples). The thresholds for each project will be determined after submission.
 - **2** points for design questions (2 points for perfect or nearly-perfect, 1
   point for minor errors, 0 points for major errors or incomplete)
 
