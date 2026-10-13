@@ -15,7 +15,7 @@ In some cases, password cracking can [exploit the structure](https://en.wikipedi
 Just like for Project 1, and all future projects, the problem set on Prairielearn is meant to help you practice the knowledge and skills you will need to use to finish this project. 
 
 ### Step 2: Set up Github Repository
-Visit the [TODO Add Class50 Link](https://classroom.github.com/a/m9ZLT8wD) assignment link. Select your username from the list (or if you don't see it, you can skip and use your Github username). A repository will be created for you to use for your work (**PLEASE MAKE SURE THE REPO HAS YOUR USERNAME IN IT**). This PA should be completed on the `ieng6` server. Refer to [Week 1's lab](https://cse29.site/week1/index.html) for instructions on logging in to your account on `ieng6` and working with files on the server.
+Visit the [Classroom50](https://classroom50.org/ucsd-cse29-fall2026/cse29-fa26/assignments/pa2-password-cracker/accept) assignment link. Select your username from the list (or if you don't see it, you can skip and use your Github username). A repository will be created for you to use for your work (**PLEASE MAKE SURE THE REPO HAS YOUR USERNAME IN IT**). This PA should be completed on the `ieng6` server. Refer to [Week 1's lab](https://cse29.site/week1/index.html) for instructions on logging in to your account on `ieng6` and working with files on the server.
 
 **Note** - The autograder uses the C11 standard of the C programming language.
 
@@ -176,7 +176,7 @@ all offensive passwords from the list.
 
 You see in the news and on social media that there was a “data breach” of PrairieLearn, and the passwords of all instructors and TAs were exposed on the “dark web”. A classmate sends you a mysterious link that clearly contains usernames for the CSE29 staff and gibberish after each name.
 
-[PrairieLearn Password Dump](https://raw.githubusercontent.com/ucsd-cse29/fa25/refs/heads/main/src/private/data/raw/sha/pw.txt)
+[Staff passwords](#TODO STAFF PASSWORDS LINK)
 
 Can you figure out the passwords of each of the staff members using your `pwcrack` program, the data at that link, and the rockyou dataset shared above?
 
