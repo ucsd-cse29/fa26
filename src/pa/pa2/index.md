@@ -160,11 +160,11 @@ For that moment in the program, right when your program would call SHA256 on tha
 ## Fun (and Authentic!) Testing
 
 To help testing your PA, we are providing you with a file containing 3 million real plaintext passwords famously found a data breach of the [RockYou
-social network](https://en.wikipedia.org/wiki/RockYou) in 2009. You can use the password file present in the `ieng6` servers by reading it into `pwcrack` using
+social network](https://en.wikipedia.org/wiki/RockYou) in 2009. You can use the `rockyou_clean.txt` password file present in the `ieng6` servers by reading it into `pwcrack` using
 the following commandline:
 
 ```
-$./pwcrack a2c3b02cb22af83d6d1ead1d4e18d916599be7c2ef2f017169327df1f7c844fd < /home/linux/ieng6/CSE29_WI26_A00/public/pa2/rockyou_clean.txt
+$./pwcrack a2c3b02cb22af83d6d1ead1d4e18d916599be7c2ef2f017169327df1f7c844fd < /home/linux/ieng6/CSE29_FA26_001/public/rockyou_clean.txt
 ```
 
 Note: these are real human-generated passwords, so they may contain profane words (and offensive concepts). We are providing a
@@ -176,7 +176,7 @@ all offensive passwords from the list.
 
 You see in the news and on social media that there was a “data breach” of PrairieLearn, and the passwords of all instructors and TAs were exposed on the “dark web”. A classmate sends you a mysterious link that clearly contains usernames for the CSE29 staff and gibberish after each name.
 
-[Staff passwords](#TODO STAFF PASSWORDS LINK)
+You can find the staff password file at `/home/linux/ieng6/CSE029_FA26_001/public/passwd` in `ieng6`.
 
 Can you figure out the passwords of each of the staff members using your `pwcrack` program, the data at that link, and the rockyou dataset shared above?
 
