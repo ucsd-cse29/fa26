@@ -1,4 +1,4 @@
-# PA2 - Hashing and Passwords: Due 1/29 at 11:59pm - [Github Classroom Link](https://classroom.github.com/a/m9ZLT8wD)
+# PA2 - Hashing and Passwords: Due Friday 10/23 at 10:00pm
 
 [Cryptographic hash functions](https://en.wikipedia.org/wiki/Cryptographic_hash_function) take an input of arbitrary length and produces a fixed length output. The special features are that the outputs are _deterministic_ (the same input always generates the same output) and yet the outputs are apparently “random” – two similar inputs are likely to produce very different outputs, and it's difficult to determine the input by looking at the ouput.
 
@@ -11,20 +11,23 @@ In some cases, password cracking can [exploit the structure](https://en.wikipedi
 
 ## Getting Started
 
-To get started, visit the [Github Classroom](https://classroom.github.com/a/m9ZLT8wD) assignment link. Select your username from the list (or if you don't see it, you can skip and use your Github username). A repository will be created for you to use for your work. This PA should be completed on the `ieng6` server. Refer [this](https://ucsd-cse29.github.io/wi26/week1/lab1.html#logging-into-ieng6) section in Week 1's Lab for instructions on logging in to your account on `ieng6` and working with files on the server.
+### Step 1: Do Prairielearn Problem Set 2
+Just like for Project 1, and all future projects, the problem set on Prairielearn is meant to help you practice the knowledge and skills you will need to use to finish this project. 
+
+### Step 2: Set up Github Repository
+Visit the [Classroom50](https://classroom50.org/ucsd-cse29-fall2026/cse29-fa26/assignments/pa2-password-cracker/accept) assignment link. Select your username from the list (or if you don't see it, you can skip and use your Github username). A repository will be created for you to use for your work (**PLEASE MAKE SURE THE REPO HAS YOUR USERNAME IN IT**). This PA should be completed on the `ieng6` server. Refer to [Week 1's lab](https://cse29.site/week1/index.html) for instructions on logging in to your account on `ieng6` and working with files on the server.
 
 **Note** - The autograder uses the C11 standard of the C programming language.
 
 ## Overall Task
 
-We'll start by describing the overall task and goal so it's clear where you're going.
-However, don't start by trying to implement this exactly – use the milestones below to get there.
+We'll start by describing the overall task and goal so it's clear where you're going. This may initially be very overwhelming. If it still feels difficult and unclear after you finish the problem set, it is always a good idea to try to start by outlining the problem, and breaking it down into chunks like we had you do for [Project 1](https://cse29.site/pa/pa1/index.html).
 
 ### `pwcrack`, a Password Cracker
 
 Write a program `pwcrack` that takes one command-line argument, the `SHA256` hash of a password in hex format.
 
-The program then reads from `stdin` potential passwords, one per line (assumed to be in UTF-8 format).
+The program then reads from `stdin` potential passwords, one per line (assumed to be in UTF-8 format **with only letters, no numbers or symbols**).
 
 The program should, for each password:
 
@@ -32,6 +35,8 @@ The program should, for each password:
 - Check if the SHA256 hash of the potential password with each of its ASCII characters
   uppercased or lowercased matches the given hash. 
   - We will not check every possible combination of uppercased and lowercased letters in a password. Only versions that require a single character change like going from `password` to `Password`
+
+(You can use the [hash.c](../../lec/10-14-array-hash/hash.c) reference file from Wednesday's (10/14) lecture on how to use a C library to generate SHA256 hashes.)
 
 If a matching password is found, the program should print the message below and then exit:
 
@@ -107,6 +112,14 @@ SECRET
 Did not find a matching password
 ```
 
+But the correct password below WOULD be found because going from `SeCret` to `seCret` only requires one character to be changed.
+
+```
+$ ./pwcrack a2c3b02cb22af83d6d1ead1d4e18d916599be7c2ef2f017169327df1f7c844fd
+SeCret
+Found password: SHA256(seCret) = a2c3b02cb22af83d6d1ead1d4e18d916599be7c2ef2f017169327df1f7c844fd
+```
+
 ## Design Questions
 
 ### Problem 1
@@ -140,19 +153,19 @@ For that moment in the program, right when your program would call SHA256 on tha
 
 ## What to Hand In
 
-- Any .c files you wrote (can be one file or many; it's totally reasonable to only have one). We will compile your code, so you should make sure it works when we do that.
-  You will hand in your code to the `pa2` assignment on Gradescope. An autograder will give you information about if your code compiles and works on some simple examples like the ones from this writeup.
+- Any .c files you wrote (can be one file or many; it's totally reasonable to only have one). Please make sure that if you turn in multiple files, that you don't write the same function in multiple different files because that will cause the autograder to fail.
+  You will hand in your code to the `pa2` assignment on Gradescope. The autograder will give you information about if your code compiles and works on some simple examples like the ones from this writeup.
 
 - Submit your answers to the design questions on Gradescope under the assignment `PA2 Design Questions`.
 
 ## Fun (and Authentic!) Testing
 
 To help testing your PA, we are providing you with a file containing 3 million real plaintext passwords famously found a data breach of the [RockYou
-social network](https://en.wikipedia.org/wiki/RockYou) in 2009. You can use the password file present in the `ieng6` servers by reading it into `pwcrack` using
+social network](https://en.wikipedia.org/wiki/RockYou) in 2009. You can use the `rockyou_clean.txt` password file present in the `ieng6` servers by reading it into `pwcrack` using
 the following commandline:
 
 ```
-$./pwcrack a2c3b02cb22af83d6d1ead1d4e18d916599be7c2ef2f017169327df1f7c844fd < /home/linux/ieng6/CSE29_WI26_A00/public/pa2/rockyou_clean.txt
+$./pwcrack a2c3b02cb22af83d6d1ead1d4e18d916599be7c2ef2f017169327df1f7c844fd < /home/linux/ieng6/CSE29_FA26_001/public/rockyou_clean.txt
 ```
 
 Note: these are real human-generated passwords, so they may contain profane words (and offensive concepts). We are providing a
@@ -164,7 +177,7 @@ all offensive passwords from the list.
 
 You see in the news and on social media that there was a “data breach” of PrairieLearn, and the passwords of all instructors and TAs were exposed on the “dark web”. A classmate sends you a mysterious link that clearly contains usernames for the CSE29 staff and gibberish after each name.
 
-[PrairieLearn Password Dump](https://raw.githubusercontent.com/ucsd-cse29/fa25/refs/heads/main/src/private/data/raw/sha/pw.txt)
+You can find the staff password file at `/home/linux/ieng6/CSE029_FA26_001/public/passwd` in `ieng6`.
 
 Can you figure out the passwords of each of the staff members using your `pwcrack` program, the data at that link, and the rockyou dataset shared above?
 

@@ -11,3 +11,4 @@
 # Projects
 - [Project 1](./pa/pa1/index.md)
 - [Project 1 Resubmission](./pa/pa1/resubmission/index.md)
+- [Project 2](./pa/pa2/index.md)
