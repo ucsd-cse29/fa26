@@ -63,6 +63,7 @@ better!
     - Wednesday
       - [Lecture](lec/10-14-array-hash/29-fa26-l8.pdf)
       - Code: [hash.c](lec/10-14-array-hash/hash.c)
+      - [Review Questions Answers](lec_rq_answers/20261014-rq-answers.pdf)
 
 - **Week 2 – UTF-8 and Shell**
   - **Lecture Materials**
