@@ -1,4 +1,4 @@
-# PA2 - Hashing and Passwords: Due Friday 10/23 at 11:59pm
+# PA2 - Hashing and Passwords: Due Friday 10/23 at 10:00pm
 
 [Cryptographic hash functions](https://en.wikipedia.org/wiki/Cryptographic_hash_function) take an input of arbitrary length and produces a fixed length output. The special features are that the outputs are _deterministic_ (the same input always generates the same output) and yet the outputs are apparently “random” – two similar inputs are likely to produce very different outputs, and it's difficult to determine the input by looking at the ouput.
 
@@ -152,8 +152,8 @@ For that moment in the program, right when your program would call SHA256 on tha
 
 ## What to Hand In
 
-- Any .c files you wrote (can be one file or many; it's totally reasonable to only have one). We will compile your code, so you should make sure it works when we do that.
-  You will hand in your code to the `pa2` assignment on Gradescope. An autograder will give you information about if your code compiles and works on some simple examples like the ones from this writeup.
+- Any .c files you wrote (can be one file or many; it's totally reasonable to only have one). Please make sure that if you turn in multiple files, that you don't write the same function in multiple different files because that will cause the autograder to fail.
+  You will hand in your code to the `pa2` assignment on Gradescope. The autograder will give you information about if your code compiles and works on some simple examples like the ones from this writeup.
 
 - Submit your answers to the design questions on Gradescope under the assignment `PA2 Design Questions`.
 
