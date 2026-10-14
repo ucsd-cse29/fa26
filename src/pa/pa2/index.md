@@ -35,7 +35,7 @@ The program should, for each password:
 - Check if the SHA256 hash of the potential password with each of its ASCII characters
   uppercased or lowercased matches the given hash
 
-(You can use the [reference file](#TODO ADD LINK) from Wednesday's (10/14) lecture on how to use a C library to generate SHA256 hashes.)
+(You can use the [hash.c](../../lec/10-14-array-hash/hash.c) reference file from Wednesday's (10/14) lecture on how to use a C library to generate SHA256 hashes.)
 
 If a matching password is found, the program should print the message below and then exit:
 
