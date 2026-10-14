@@ -30,7 +30,8 @@ The program should, for each password:
 
 - Check if the SHA256 hash of the potential password matches the given hash
 - Check if the SHA256 hash of the potential password with each of its ASCII characters
-  uppercased or lowercased matches the given hash
+  uppercased or lowercased matches the given hash. 
+  - We will not check every possible combination of uppercased and lowercased letters in a password. Only versions that require a single character change like going from `password` to `Password`
 
 If a matching password is found, the program should print the message below and then exit:
 
