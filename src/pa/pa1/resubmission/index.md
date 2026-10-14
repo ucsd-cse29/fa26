@@ -1,4 +1,4 @@
-# PA1 Resubmission: Due Date Friday 10/23 at 11:59pm
+# PA1 Resubmission: Due Date Friday 10/23 at 10:00pm
 
 ## If you want to resubmit Project 1, please read this section carefully. You need to pass all the tests in the original Project 1, while also implementing an extra function described below
 
