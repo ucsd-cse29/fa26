@@ -65,6 +65,10 @@ better!
       - Code: [hash.c](lec/10-14-array-hash/hash.c)
       - [Review Questions Answers](lec_rq_answers/20261014-rq-answers.pdf)
       - [Discussion](disc/week3/week-3-discussion-slides.pdf) (Code: [sizeof.c](disc/week3/sizeof.c))
+    - Friday
+      - [Lecture](lec/10-16-stack/29-fa26-l9.pdf)
+      - Code: [stack_demo.c](lec/10-16-stack/stack_demo.c)
+      - Code: [vector_sum.c](lec/10-16-stack/vector_sum.c)
 
 - **Week 2 – UTF-8 and Shell**
   - **Lecture Materials**
