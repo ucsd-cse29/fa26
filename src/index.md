@@ -69,6 +69,7 @@ better!
       - [Lecture](lec/10-16-stack/29-fa26-l9.pdf)
       - Code: [stack_demo.c](lec/10-16-stack/stack_demo.c)
       - Code: [vector_sum.c](lec/10-16-stack/vector_sum.c)
+      - [Review Questions Answers](lec_rq_answers/20261016-rq-answers.pdf)
 
 - **Week 2 – UTF-8 and Shell**
   - **Lecture Materials**
