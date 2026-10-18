@@ -165,7 +165,7 @@ social network](https://en.wikipedia.org/wiki/RockYou) in 2009. You can use the 
 the following commandline:
 
 ```
-$./pwcrack a2c3b02cb22af83d6d1ead1d4e18d916599be7c2ef2f017169327df1f7c844fd < /home/linux/ieng6/CSE29_FA26_001/public/rockyou_clean.txt
+$./pwcrack a2c3b02cb22af83d6d1ead1d4e18d916599be7c2ef2f017169327df1f7c844fd < /home/linux/ieng6/CSE029_FA26_001/public/rockyou_clean.txt
 ```
 
 Note: these are real human-generated passwords, so they may contain profane words (and offensive concepts). We are providing a
