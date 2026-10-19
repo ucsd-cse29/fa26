@@ -58,6 +58,7 @@ better!
     - Monday
       - [Lecture](lec/10-19-malloc/29-fa26-l10.pdf)
       - Code: [malloc.c](lec/10-19-malloc/malloc.c)
+      - [Review Questions Answers](lec_rq_answers/20261019-rq-answers.pdf)
 
 - **Week 3 – Pointers**
   - **Lecture Materials**
