@@ -59,6 +59,9 @@ better!
       - [Lecture](lec/10-19-malloc/29-fa26-l10.pdf)
       - Code: [malloc.c](lec/10-19-malloc/malloc.c)
       - [Review Questions Answers](lec_rq_answers/20261019-rq-answers.pdf)
+    - Wednesday
+      - Code: [strtok.c](lec/10-21-strtok-shell/strtok.c)
+      - Code: [shell.c](lec/10-21-strtok-shell/shell.c)
 
 - **Week 3 – Pointers**
   - **Lecture Materials**
