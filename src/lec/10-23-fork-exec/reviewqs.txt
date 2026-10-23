@@ -1,0 +1,5 @@
+1. If a process is forked inside of another process, do variables change addresses? Why not?
+
+2. What function does a process call to start a new binary running inside of a process?
+
+3. How do you identify a unique process running on a computer? Why is that number critical for a shell to know?
