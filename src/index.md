@@ -62,6 +62,10 @@ better!
     - Wednesday
       - Code: [strtok.c](lec/10-21-strtok-shell/strtok.c)
       - Code: [shell.c](lec/10-21-strtok-shell/shell.c)
+    - Friday
+      - Review Qs: [reviewqs.txt](lec/10-23-fork-exec/reviewqs.txt)
+      - Code: [shell.c](lec/10-23-fork-exec/shell.c)
+      - Code: [vm.c](lec/10-23-fork-exec/vm.c)
 
 - **Week 3 – Pointers**
   - **Lecture Materials**
