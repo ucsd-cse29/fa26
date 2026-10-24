@@ -126,8 +126,8 @@ Found password: SHA256(seCret) = a2c3b02cb22af83d6d1ead1d4e18d916599be7c2ef2f017
 
 The time command takes another command and reports how long it took to run. Use the time command on your password cracker for a password that will not match anything in the rockyou file (so it tests all of the passwords).
 
-Show the output of the time command for your ./pwcrack on that input
-Calculate (or use your program to count) the total number of times you called the SHA256 function and checked a hash against the input
+Show the output of the time command for your ./pwcrack on that input.
+Calculate (or use your program to count) the total number of times you called the SHA256 function and checked a hash against the input.
 How many password variants, on average, does your password cracker check per second?
 
 ### Problem 2
