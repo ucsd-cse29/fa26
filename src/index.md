@@ -66,7 +66,7 @@ better!
     - Friday
       - Code: [shell.c](lec/10-23-fork-exec/shell.c)
       - Code: [vm.c](lec/10-23-fork-exec/vm.c)
-      - [Review Questions Answers](lec_rq_answers/20261023-rq-answers.pdf)
+      - [Review Questions Answers](lec_rq_answers/20261023-rq-answers.txt)
 
 - **Week 3 – Pointers**
   - **Lecture Materials**
