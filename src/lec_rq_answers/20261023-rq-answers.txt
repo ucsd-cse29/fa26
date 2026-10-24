@@ -1,0 +1,8 @@
+1. If a process is forked inside of another process, do variables change addresses? Why not?
+The virtual addresses for the variables remain the same. This is not an issue because even if two virtual addresses are identical between two programs, that address is not necessarily mapped to the same physical memory address.
+
+2. What function does a process call to start a new binary running inside of a process?
+execvp()
+
+3. How do you identify a unique process running on a computer? Why is that number critical for a shell to know?
+The Process ID (PID). The shell uses the PID to track and communicate with every process that it runs. 

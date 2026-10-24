@@ -64,9 +64,9 @@ better!
       - Code: [shell.c](lec/10-21-strtok-shell/shell.c)
       - [Discussion](disc/week4/week-4-discussion-slides.pdf)
     - Friday
-      - Review Qs: [reviewqs.txt](lec/10-23-fork-exec/reviewqs.txt)
       - Code: [shell.c](lec/10-23-fork-exec/shell.c)
       - Code: [vm.c](lec/10-23-fork-exec/vm.c)
+      - [Review Questions Answers](lec_rq_answers/20261023-rq-answers.pdf)
 
 - **Week 3 – Pointers**
   - **Lecture Materials**
