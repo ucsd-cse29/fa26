@@ -18,7 +18,6 @@ This assignment calls upon many of the concepts that you have practiced in previ
 We'll also get practice with a new set of library functions for opening, reading from, and writing to files.
 
 ## Introduction
-
 Throughout this quarter, you have been interacting with the ieng6 server via the terminal – you've used `vim` to write code, used `gcc` and `make` to compile, used `git` to commit and push your changes, etc. At the heart of all this lies the shell, which acts as the user interface for the operating system.
 
 At its core, the shell is a program that reads and parses user input, and runs built-in commands (such as `cd`) or executable programs (such as `ls`, `gcc`, `make`, or `vim`).

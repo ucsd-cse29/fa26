@@ -1,8 +1,8 @@
-# PA2 - Hashing and Passwords: Resubmission Due 2/12 at 11:59pm
+# PA2 - Hashing and Passwords: Resubmission Due 11/6 at 10:00pm
 
 ### If you want to resubmit PA2, please read this section carefully. You need to pass all the tests in the original PA2, while also implementing an extra functionality.
 
-Implement `pwcrack` as originally described below. Also update `pwcrack` to check if the SHA256 hash of the potential password with each of its numeric digits `'0'-'9'` replaced by all possible numberic digits `'0'-'9'` (considering only single digit changes) matches the given hash.
+Implement `pwcrack` as originally described in the write up. Also update `pwcrack` to check if the SHA256 hash of the potential password with each of its numeric digits `'0'-'9'` replaced by all possible numberic digits `'0'-'9'` (considering only single digit changes) matches the given hash.
 
 As before, only one character change at a time is tested, so if `Secret111` is a potential password:
 
@@ -30,7 +30,7 @@ Did not find a matching password
 
 ### Design Question Resubmission
 
-If you want to resubmit the design questions, we will be asking this updated design question in a new Gradescope assignment. Please submit a PDF or a Markdown file containing your answer to the following question:
+If you want to resubmit the design questions, we will be asking this updated design question in a new Gradescope assignment. Please submit a PDF or a Markdown file containing your answer to the the original two design question and the following question:
 
 Consider the following run of an updated `pwcrack` that follows the new requirements:
 
@@ -47,3 +47,6 @@ Assume that it processes each potential password without any optimizations and d
 - How many password variations were hashed and tested for a match?
 - How many duplicate password variations were hashed and checked?
 - What are ways you might change the implementation to avoid this repeated and redundant work?
+
+### Submission
+When you have completed the parts that you want to resubmit, go to Gradescope and find the corresponding assignment and submit your corrected work, and the new work you have done.
