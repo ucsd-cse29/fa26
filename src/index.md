@@ -56,7 +56,7 @@ better!
 - **Week 5 – Structs and Processes **
   - **Lecture Materials**
     - Monday
-      - [Lecture](lec/10-26-structs/29-fa26-l11.pdf)
+      - [Lecture](lec/10-26-structs/29-fa26-l12.pdf)
       - Code: [structs.c](lec/10-26-structs/structs.c)
 
 - **Week 4 – System Calls**
