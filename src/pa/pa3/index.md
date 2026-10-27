@@ -261,10 +261,10 @@ On `ieng6` , start your shell, and from your shell, run vim . Then, in another t
 
 ## What to Hand In
 
-- Submit your code to Gradescope
+- Submit your code to Gradescope under the assignment `Project 3 - Code`
 - CREDITS.txt is required (more details on the [syllabus](https://cse29.site/#assignments-and-academic-integrity))
 - We will run your program with `gcc seash.c -o seash` and `./seash` in both interactive and batch mode
-- Submit a **PDF** with your Design Question Answers on Gradescope
+- Submit a your Design Question Answers to Gradescope under the assignment `Project 3 - Design Questions`
 
 ## Resources and Policy
 
