@@ -1,4 +1,4 @@
-# PA3 - The Sea(C) Shell: Due Thursday, February 12th at 11:59pm - [Classroom50 Link](https://classroom.github.com/a/cpys2JKd)
+# PA3 - The Sea(C) Shell: Due Thursday, February 12th at 11:59pm - [Classroom50 Link](https://classroom50.org/ucsd-cse29-fall2026/cse29-fa26/assignments/pa3/accept)
 
 ## Learning Goals
 
@@ -24,7 +24,7 @@ The **SEA SHell**, or as we endearingly call it, `seash` (a name with such elega
 
 ## Getting Started
 
-Click on the following link to accept the Classroom50 assignment:
+Click on the following link to accept the Classroom50 assignment: [https://classroom50.org/ucsd-cse29-fall2026/cse29-fa26/assignments/pa3/accept](https://classroom50.org/ucsd-cse29-fall2026/cse29-fa26/assignments/pa3/accept)
 
 ## Overall Task
 
@@ -230,7 +230,6 @@ For example, running `nonexistent -q` should print `nonexistent: No such file or
 You are given the following files:
 
 - **seash.c**: Implements the shell.
-- **ref-seash**: A reference implementation of the shell. Note that in this version, the history is written to `~/.ref_seash_history` rather than `~/.seash_history`, to avoid conflict with your own shell program.
 
 ## Running seash
 
@@ -247,8 +246,6 @@ Or, to run a script (e.g., script.sh), type
 ```bash
 $ ./seash script.sh
 ```
-
-The same applies for the reference implementation `ref-seash`.
 
 ## Design Questions
 
