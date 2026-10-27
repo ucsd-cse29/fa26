@@ -1,21 +1,15 @@
-# PA3 - The Pioneer Shell: Due Thursday, February 12th at 11:59pm - [Github Classroom Link](https://classroom.github.com/a/cpys2JKd)
-
-Looking for resubmission? [Click here](https://ucsd-cse29.github.io/wi26/pa/pa3/resubmission/index.html)
-
-This assignment is from [CSE29
-SP24](https://cse29sp24.github.io/docs/pas/pa6.html#acknowledgements), which has
-its own list of acknowledgments!
+# PA3 - The Sea(C) Shell: Due Thursday, February 12th at 11:59pm - [Github Classroom Link](https://classroom.github.com/a/cpys2JKd)
 
 ## Learning Goals
 
 This assignment calls upon many of the concepts that you have practiced in previous PAs. Specifically, we will practice the following concepts in C:
 
-- string manipulation using library functions,
+- string manipulation,
 - command line arguments,
-- process management using fork(), exec(), and wait(), and of course,
+- process management using fork(), exec(), wait(), and waitpid(), and of course,
 - using the terminal and vim.
 
-We'll also get practice with a new set of library functions for opening, reading from, and writing to files.
+We'll also get practice with a new set of functions for opening, reading from, and writing to files.
 
 ## Introduction
 
@@ -23,17 +17,15 @@ Throughout this quarter, you have been interacting with the ieng6 server via the
 
 At its core, the shell is a program that reads and parses user input, and runs built-in commands (such as `cd`) or executable programs (such as `ls`, `gcc`, `make`, or `vim`).
 
-As a way to wrap up this quarter, you will now create your own shell (a massively simplified one of course). We shall call it– (drumroll please)
+You will now create your own shell (a massively simplified one of course). We shall call it– (drumroll please)
 
-### The Pioneer Shell
+### The Sea Shell
 
-The **PIoneer SHell**, or as we endearingly call it, `pish` (a name with such elegance as other popular programs in the UNIX world, e.g., `git`).
+The **SEA SHell**, or as we endearingly call it, `seash` (a name with such elegance as other popular programs in the UNIX world, e.g., `git`).
 
 ## Getting Started
 
-The starter code for this assignment is hosted on GitHub classroom. Use the following link to accept the GitHub Classroom assignment:
-
-Github Classroom: [https://classroom.github.com/a/cpys2JKd](https://classroom.github.com/a/cpys2JKd)
+Click on the following link to accept the Classroom50 assignment:
 
 ## Overall Task
 
@@ -55,11 +47,28 @@ Shell programs (like `bash`, which is what you have been using on ieng6) also su
 
 In both modes, once the shell hits the end-of-file marker (EOF), it should call `exit(EXIT_SUCCESS)` to exit gracefully. In the interactive mode, this can be done by pressing Ctrl-D.
 
+## The Prompt
+In bash, you are used to seeing a prompt that looks like this:
+
+```bash
+memoryleak@ieng6-203 /current/working/dir$
+```
+
+You have to implement a prompt that looks like this:
+
+```bash
+you@🐚 /current/working/dir$
+```
+
+You don't have to worry about the colors of the prompt(look up ANSI escape codes if you are interested but DO NOT IMPLEMENT). The prompt should be printed out every time the shell is ready to accept a new command in interactive mode. In batch mode, the prompt should not be printed. 
+
+You have to implement the prompt exactly as shown above, including the space after the `$` sign. The prompt should also include the current working directory, and the username of the user running the shell. You might find the `getcwd()` and `getpwuid()` functions useful for this. (See `man 3 getcwd` and `man 3 getpwuid`.)
+
 ## Parsing Input
 
 Every time the shell reads a line of input (be it from stdin or from a file), it breaks it down into our familiar `argv` array.
 
-For instance, if the user enters `"ls -a -l\n"` (notice the newline character), the shell should break it down into `argv[0] = "ls"`, `argv[1] = "-a"`, and `argv[2] = "-l"`. In the starter code, we provide a struct to hold the parsed command.
+For instance, if the user enters `"ls -a -l\n"` (notice the newline character), the shell should break it down into `argv[0] = "ls"`, `argv[1] = "-a"`, and `argv[2] = "-l"`. You need to make sure that the `argv` array is **NULL-terminated**, i.e., `argv[3] = NULL`. This is important because the `exec()` family of functions expect a NULL-terminated array of strings.
 
 ### Handling Whitespaces
 
@@ -83,42 +92,92 @@ When the user types `exit`, your shell should call the exit system call with `EX
 
 ### Built-in Command: `cd`
 
-`cd` should be run with precisely 1 argument, which is the path to change to. You should use the `chdir()` system call with the argument supplied by the user. If `chdir()` fails (refer to man page to see how to detect failure), you should use call `perror("cd")` to print an error message.
+`cd` should be run with precisely 1 argument, which is the path to change to. You should use the `chdir()` system call with the argument supplied by the user. If `chdir()` fails (refer to man page to see how to detect failure), you should call `perror("cd")` to print an error message.
+
+#### `cd -`
+
+If the path is a hyphen (`-`), the shell should change back to the previous working directory, i.e., the working directory right before the most recent `cd` in the same shell session, and print it. (Try `cd -` on ieng6 to see what it does.) Don't read the history file to figure this out. If there has been no previous `cd` in the session, the shell should just print the current working directory.
+
+```bash
+you@🐚 /home/you/cse29$ cd -
+/home/you/cse29
+you@🐚 /home/you/cse29$ cd ..
+you@🐚 /home/you$ cd -
+/home/you/cse29
+you@🐚 /home/you/cse29$ cd -
+/home/you
+you@🐚 /home/you$
+```
 
 ### Built-in Command: `history`
 
-When the user enters the `history` command, the shell should print out the list of commands a user has ever entered in interactive mode.
+When the user enters the `history` command with no arguments, the shell should print out the list of commands a user has ever entered in interactive mode.
 
 (If you are on ieng6, open the `~/.bash_history` file to take a look at all the commands you have executed. How far you've come this quarter!)
 
 To do this, we will need to write the execution history to a file for persistent storage. Just like bash, we designate a hidden file in the user's home directory to store the command history.
 
-Our history file will be stored at `~/.pish_history`. (You will find a function in the starter code that will help you get this file path.)
+Our history file will be stored at `~/.seash_history`: your home directory (`getpwuid(getuid())->pw_dir`) followed by `/.seash_history`.
 
-**Important:** When adding a command to history, if the user enters an empty command (0 length or whitespace-only), it should not be added to the history.
+**Important:** Every command the shell processes should be appended to the history file as one line, its arguments separated by single spaces, **except**:
 
-When the user types in the `history` command to our shell, it should print out all the contents of our history file, adding a counter to each line:
+- commands run in script mode, and
+- empty commands (0 length or whitespace-only).
+
+When the user types in the `history` command to our shell, it should print out all the contents of our history file, adding a counter to each line (the line number, a space, then the line):
 
 ```bash
-▶ history
+you@🐚 /home/you/cse29$ history
 1 history
-▶ pwd
-/home/jpolitz/cse29wi26/pa3/Simple-Shell
-▶ ls
-Makefile  script.sh  pish  pish.c  pish.h  pish_history.c
-pish_history.o  pish.o
-▶ history
+you@🐚 /home/you/cse29$ pwd
+/home/you/cse29
+you@🐚 /home/you/cse29$ ls
+pa1  pa2  pa3
+you@🐚 /home/you/cse29$ history
 1 history
 2 pwd
 3 ls
 4 history
 ```
 
-Note that the number before each line is added by `history`. The contents of `.pish_history` should not contain the leading numbers.
+Note that the number before each line is added by `history`. The contents of `.seash_history` should not contain the leading numbers.
+
+#### `history -c`
+
+When the user types `history -c`, the shell should clear the history file, either by removing all of its contents or by deleting the file. Nothing needs to be printed.
 
 ## Running Programs
 
-If, instead, the command is not one of the aforementioned built-in commands, the shell treats it as a program, and spawns a child process to run and manage the program using the `fork()` and `exec()` family of system calls, along with `wait()`.
+If, instead, the command is not one of the aforementioned built-in commands, the shell treats it as a program, and spawns a child process to run and manage the program using the `fork()` and `exec()` family of system calls, along with `waitpid()` (see [Waiting with `waitpid()`](#waiting-with-waitpid) below for why `wait()` isn't enough).
+
+## Running Programs in the Background
+
+In bash, ending a command with `&` runs it in the **background**: the shell starts the program and prints the next prompt right away, without waiting for the program to finish. Your shell should do the same.
+
+A command runs in the background if the last argument is `&`. For instance:
+
+```bash
+you@🐚 /home/you/cse29$ sleep 5 &
+you@🐚 /home/you/cse29$
+```
+
+Both of these run `sleep 5` in the background, and the next prompt appears immediately rather than after 5 seconds. The `&` is not passed to the program: `sleep` gets `argv = {"sleep", "5", NULL}`. Unlike bash, your shell doesn't print anything when it starts a background program.
+
+### Waiting with `waitpid()`
+
+Once there are background programs, `wait()` is no longer enough: it returns when *any* child process exits, which might be a background program rather than the one you just started. Use `waitpid()` instead (see `man 2 waitpid`)
+
+For example, here the shell must wait the full 3 seconds for the second `sleep`, even though the background `sleep 1` finishes first:
+
+```bash
+you@🐚 /home/you/cse29$ sleep 1 &
+you@🐚 /home/you/cse29$ sleep 3
+you@🐚 /home/you/cse29$
+```
+
+## Policies
+
+Your code must compile on the grader, which only has glibc.
 
 ## Excluded Features
 
@@ -146,61 +205,51 @@ Because the shell is quite a complex program, we expect you to handle many diffe
 This only applies to built-in commands. When the user invokes one of the shell's built-in commands, we need to check if they are doing it correctly.
 
 - For `cd`, we expect `argc == 2`,
-- For `history` and `exit`, we expect `argc == 1`.
+- For `history`, we expect an optional `-c` argument and nothing else,
+- For `exit`, we expect `argc == 1`.
 
-If the user enters an incorrect command, e.g. `exit 1` or `cd` without a path, then you should call the `usage_error()` function in the starter code, and continue to the next iteration of the loop.
+If the user enters an incorrect command, e.g. `exit 1`, `cd` without a path, `history -x`, or `history 1 2`, then you should print `seash: Usage error` (followed by a newline) to stderr, and continue to the next iteration of the loop.
 
 ### Errors to handle
 
 You need to handle errors from the following system calls/library functions using `perror()`. Please pay attention to the string we give to `perror()` in each case and reproduce it in your code exactly.
 
-- `fopen()` failure: `perror("open")`,
-- `chdir()` failure: `perror("cd")`,
-- `execvp()` failure: `perror("pish")`,
-- `fork()` failure: `perror("fork")`
+| Error | Print (to stderr) | Then |
+|---|---|---|
+| Built-in command used incorrectly (see [Usage Errors](#usage-errors)) | `seash: Usage error` | continue to the next command |
+| `fopen(filename, ...)` fails on the script file | `perror(filename)` | exit with status 1 |
+| `fopen()` fails on the history file | `perror("open")` | exit with status 1 |
+| `chdir()` fails | `perror("cd")` | continue to the next command |
+| `execvp(cmd, ...)` fails | `perror(cmd)` | exit the child with `EXIT_FAILURE` |
+| `fork()` fails | `perror("fork")` | continue to the next command |
+| `seash` run with more than one argument | `Usage: ./seash [script]` | exit with status 1 |
+
+For example, running `nonexistent -q` should print `nonexistent: No such file or directory`.
 
 ## The Code Base
 
 You are given the following files:
 
-- **pish.h**: Defines `struct pish_arg` for handling command parsing; declares functions handling the history feature.
-- **pish.c**: Implements the shell, including parsing, some built-in commands, and running programs.
-- **pish_history.c**: Implements the history feature.
-- **Makefile**: Builds the project.
-- **ref-pish**: A reference implementation of the shell. Note that in this version, the history is written to `~/.ref_pish_history` rather than `~/.pish_history`, to avoid conflict with your own shell program.
+- **seash.c**: Implements the shell.
+- **ref-seash**: A reference implementation of the shell. Note that in this version, the history is written to `~/.ref_seash_history` rather than `~/.seash_history`, to avoid conflict with your own shell program.
 
-### struct pish_arg
+## Running seash
 
-In pish.h, you will find the definition of `struct pish_arg`:
+First, run `gcc seash.c -o seash` to compile everything. You should see the `seash` executable in your assignment directory.
 
-```c
-#define MAX_ARGC 64
-
-struct pish_arg {
-    int argc;
-    char *argv[MAX_ARGC];
-};
-```
-
-In our starter code, all functions handling a command (after it has been parsed) will be given a `struct pish_arg` argument.
-
-## Running pish
-
-First, run `make` to compile everything. You should see the `pish` executable in your assignment directory.
-
-To run pish in interactive mode (accepting keyboard input), type
+To run seash in interactive mode (accepting keyboard input), type
 
 ```bash
-$ ./pish
+$ ./seash
 ```
 
 Or, to run a script (e.g., script.sh), type
 
 ```bash
-$ ./pish script.sh
+$ ./seash script.sh
 ```
 
-The same applies for the reference implementation `ref-pish`.
+The same applies for the reference implementation `ref-seash`.
 
 ## Design Questions
 
@@ -215,11 +264,11 @@ On `ieng6` , start your shell, and from your shell, run vim . Then, in another t
 
 - Submit your code to Gradescope
 - CREDITS.txt is required (more details on the [syllabus](https://ucsd-cse29.github.io/wi26/#assignments-and-academic-integrity))
-- We will run your program with `make` and `./pish` in both interactive and batch mode
+- We will run your program with `gcc seash.c -o seash` and `./seash` in both interactive and batch mode
 - Submit a **PDF** with your Design Question Answers on Gradescope
 
 ## Resources and Policy
 
-Refer to [the policies on assignments](https://ucsd-cse29.github.io/wi26/#assignments-and-academic-integrity) for working with others or appropriate use of tools like ChatGPT or Github Copilot.
+Refer to [the policies on assignments](https://cse29.site/#assignments-and-academic-integrity) for working with others or appropriate use of tools like ChatGPT or Github Copilot.
 
 You can use any code from class, lab, or discussion in your work.
