@@ -28,7 +28,7 @@ from last quarter was: _What is your favorite letter?_ which I encourage you to 
 
 <div class="exercise">
 
-Please make sure that everyone in your group answers the icebreaker and writes their name on the whiteboard. We will come around to collect pictures for attendance soon\!
+Please make sure that everyone in your group answers the icebreaker and writes their first and last name on the whiteboard. You can add the next activity to the whiteboard alongside these answers\!
 
 </div>
 
