@@ -331,7 +331,6 @@ Notes on the autograder:
 
 If you finish with the lab content above you may any do the following:
 * Go back to the "On your own time!" sections and do them.
-* Continue reading and work on the buffer overflow task that was also available last week. Surprise! it was a lab5 preview all along.
-* Work on PA2
+* Work on Pset3
 
 
