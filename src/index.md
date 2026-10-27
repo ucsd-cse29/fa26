@@ -58,6 +58,7 @@ better!
     - Monday
       - [Lecture](lec/10-26-structs/29-fa26-l12.pdf)
       - Code: [structs.c](lec/10-26-structs/structs.c)
+      - [Review Questions Answers](lec_rq_answers/20261026-rq-answers.txt)
 
 - **Week 4 – System Calls**
   - **Lecture Materials**

@@ -1,0 +1,13 @@
+- What is the difference between a struct and a class (i.e. in Python, Java, etc)?
+A struct is simply a way to group data variables together. A class groups data, functions, and supports
+object-oriented principles like inheritance and polymorphism.  
+
+- What is the difference in the stack when you pass in a struct vs basic 
+variables (i.e. int, char, etc) vs array to a function as an argument? 
+Basic variables and structs are both passed by value into functions. This means that the 
+data is copied onto the stack frame of the function that is being called. On the other hand, 
+arrays are pass by reference. This means that only the pointer to the first element in the array is copied 
+into the function stack frame. The actual data values in the array are not copied. 
+
+- How do you dereference a struct pointer to get out the member variables with only two characters? 
+You use the arrow operator (->). For example, place->latitude is equivalent to (*place).latitude 
