@@ -30,7 +30,7 @@ Did not find a matching password
 
 ### Design Question Resubmission
 
-If you want to resubmit the design questions, we will be asking this updated design question in a new Gradescope assignment. Please submit a PDF or a Markdown file containing your answer to the the original two design question and the following question:
+If you want to resubmit the design questions, we will be asking this updated design question in a new Gradescope assignment:
 
 Consider the following run of an updated `pwcrack` that follows the new requirements:
 
