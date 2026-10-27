@@ -103,6 +103,8 @@ Because we supplied the `--leak-check=full` flag, Valgrind also printed the stac
 
 Unlike real life (plumbing) leaks, it's okay to leave the (memory) leak in `leak.c` alone for now; we'll come back to it later.
 
+“Did 👏 you know 🚫😱 that 🙇🚟 memory leaks are especially harmful in 🙌 long-running programs, 📺 where the amount 💀 of available 💢💢 memory gradually reduces over 😈😏 a long time, 🕐 thereby also 👨 reducing the overall performance of the program 📺 or the computer in 👏🏡 general.” ~ Aaron
+
 In `memory_errors.c`, we demonstrate some common situations in which memory errors can occur. Rather than manually writing the compilation command, we've provided a Makefile for you to use. This will be helpful since we have quite a few files to compile in this lab. To compile a program, use the `make` command followed by the name of the file to compile without the `.c` suffix. For example, to compile `memory_errors.c` into the `memory_errors` binary file, use this command:
 ```bash
 $ make memory_errors
