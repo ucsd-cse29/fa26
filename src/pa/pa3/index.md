@@ -1,4 +1,4 @@
-# PA3 - The Sea(C) Shell: Due Thursday, February 12th at 11:59pm - [Github Classroom Link](https://classroom.github.com/a/cpys2JKd)
+# PA3 - The Sea(C) Shell: Due Thursday, February 12th at 11:59pm - [Classroom50 Link](https://classroom.github.com/a/cpys2JKd)
 
 ## Learning Goals
 
@@ -263,7 +263,7 @@ On `ieng6` , start your shell, and from your shell, run vim . Then, in another t
 ## What to Hand In
 
 - Submit your code to Gradescope
-- CREDITS.txt is required (more details on the [syllabus](https://ucsd-cse29.github.io/wi26/#assignments-and-academic-integrity))
+- CREDITS.txt is required (more details on the [syllabus](https://cse29.site/#assignments-and-academic-integrity))
 - We will run your program with `gcc seash.c -o seash` and `./seash` in both interactive and batch mode
 - Submit a **PDF** with your Design Question Answers on Gradescope
 
