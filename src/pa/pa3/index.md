@@ -1,4 +1,4 @@
-# PA3 - The Sea(C) Shell: Due Friday, November 6th at 10:00pm - [Classroom50 Link](https://classroom50.org/ucsd-cse29-fall2026/cse29-fa26/assignments/pa3/accept)
+# PA3 - The Sea(C) Shell: Due Friday, 11/06 at 10:00pm - [Classroom50 Link](https://classroom50.org/ucsd-cse29-fall2026/cse29-fa26/assignments/pa3/accept)
 
 ## Learning Goals
 
