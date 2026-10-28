@@ -1,0 +1,7 @@
+1. What fields do you need to build a variable
+length string?
+
+2. When should a variable length string grow in the heap memory?
+
+3. When do you need to free heap memory when building a variable length
+string?
