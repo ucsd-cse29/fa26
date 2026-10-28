@@ -53,12 +53,14 @@ better!
 <iframe src="https://calendar.google.com/calendar/embed?src=c_643187aaae9e2fe6d679252feac45be32d15d47c921187e452f7817e5b1b8f59%40group.calendar.google.com&ctz=America%2FLos_Angeles" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
 ## Schedule
-- **Week 5 – Structs and Processes **
+- **Week 5 – Structs and Malloc**
   - **Lecture Materials**
     - Monday
       - [Lecture](lec/10-26-structs/29-fa26-l12.pdf)
       - Code: [structs.c](lec/10-26-structs/structs.c)
       - [Review Questions Answers](lec_rq_answers/20261026-rq-answers.txt)
+    - Wednesday
+      - Code: [varstr.c](lec/10-28-mallocstruct/varstr.c)
 
 - **Week 4 – System Calls**
   - **Lecture Materials**
