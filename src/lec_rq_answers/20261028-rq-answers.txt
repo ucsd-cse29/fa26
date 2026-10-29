@@ -1,0 +1,27 @@
+1. What fields do you need to build a variable length string?
+
+- Pointer (char*): Points to the start of the dynamically allocated 
+character buffer on the heap.
+
+- Length / Size (size_t): Tracks the number of characters currently 
+stored in the string.
+
+- Capacity (size_t): Tracks the total allocated space available in 
+the heap buffer before needing reallocation.
+
+2. When should a variable length string grow in the heap memory?
+
+- Whenever an append, insert, or concatenation operation causes 
+the new string length to exceed the current capacity.
+
+3. When do you need to free heap memory when building a variable length string?\
+
+- Object Destruction: When the string variable is deleted, goes out of scope, 
+or is no longer needed, to prevent memory leaks.
+
+- Buffer Reallocation: If replacing the buffer manually (e.g., using malloc for 
+a new buffer instead of realloc), the old heap buffer must be freed after copying
+elements over.
+
+- Explicit Shrinking / Reset: When clearing the string or reducing capacity 
+(such as a shrink_to_fit or clear operation) to reclaim unused memory.
