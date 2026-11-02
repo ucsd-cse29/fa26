@@ -1,0 +1,22 @@
+1. When should you free dynamically allocated memory?
+
+    As soon as your program no longer needs that piece of memory. 
+
+2. Is there ever a reason to never free dynamically allocated memory?
+
+    There are a few scenarios where you may not need to free() memory within
+    your program. For example, in small, short-lived program (e.g. CLI tools like grep/cat/etc),
+    you may choose to delegate the cleaning up of memory to the operating system after 
+    program termination. Most of these cases are for some performance benefit. However, in 
+    general, you should always free() dynamically allocated memory. 
+
+3. Why is use-after-free a security vulnerability?
+
+    Use-after-free is a memory safety vulnerability where a program continues to use a pointer
+    after the memory that the pointer refers to has already been freed. So, although the memory 
+    has been deallocated, the pointer still holds that memory address (i.e. dangling pointer). 
+    
+    This can cause a variety of security issues. For example, let's say Object A gets freed and 
+    pointer X still points to that section of memory. Later in program execution Object B could get
+    allocated in that same section of memory. Now, pointer X can read/write maliciously to Object B
+    without ever having permission to do so. 

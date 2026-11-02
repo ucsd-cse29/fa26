@@ -67,6 +67,7 @@ better!
     - Friday
       - Code: [varstr.c](lec/10-30-free/varstr.c)
       - Code: [Review Questions](lec/10-30-free/reviewq.txt)
+      - [Review Questions Answers](lec_rq_answers/20261030-rq-answers.txt)
 
 - **Week 4 – System Calls**
   - **Lecture Materials**
