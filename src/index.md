@@ -62,7 +62,11 @@ better!
     - Wednesday
       - Code: [varstr.c](lec/10-28-mallocstruct/varstr.c)
       - [Discussion](disc/week5/week-5-discussion-slides.pdf) (Code: [01_copy_struct.c](disc/week5/01_copy_struct.c), [02_struct.c](disc/week5/02_struct.c), [03_decay.c](disc/week5/03_decay.c))
+      - Code: [Review Questions](lec/10-28-mallocstruct/reviewq.txt)
       - [Review Questions Answers](lec_rq_answers/20261028-rq-answers.txt)
+    - Friday
+      - Code: [varstr.c](lec/10-30-free/varstr.c)
+      - Code: [Review Questions](lec/10-30-free/reviewq.txt)
 
 - **Week 4 – System Calls**
   - **Lecture Materials**
