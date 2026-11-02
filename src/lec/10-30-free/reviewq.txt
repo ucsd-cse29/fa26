@@ -1,0 +1,5 @@
+1. When should you free dynamically allocated memory?
+
+2. Is there ever a reason to never free dynamically allocated memory?
+
+3. Why is use-after-free a security vulnerability?
