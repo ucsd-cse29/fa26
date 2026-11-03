@@ -1,0 +1,22 @@
+1. Does a running process always run instructions or does it ever stop? Why
+would it stop?
+
+    No, not always. A running programs may be go into a blocked state at any time 
+    depending on how the OS's behaviour. For example, if a process needs to wait 
+    for data from the hard drive, the OS may context switch to another process to 
+    avoid wasting CPU time. 
+
+2. What code runs that will copy the running process into a new running
+process?
+
+    fork()
+
+3. If a parent has not yet wait()'ed for their child process but the child
+terminates, should the parent still be able to wait for it? Why or why not?
+    
+    Yes, it should still be able to wait() for it. This is to guarantee that the 
+    parent process can always find the child's exit status. If the OS deletes that
+    information, then the parent would never know if the child succeeded or encountered
+    some kind of error.
+
+

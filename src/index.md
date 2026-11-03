@@ -57,6 +57,7 @@ better!
   - **Lecture Materials**
     - Monday
       - [Lecture](lec/11-02-procs/29-fa26-l18.pdf)
+      - [Review Questions Answers](lec_rq_answers/20261102-rq-answers.txt)
 
 - **Week 5 – Structs and Malloc**
   - **Lecture Materials**
