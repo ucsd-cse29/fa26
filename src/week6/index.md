@@ -29,7 +29,7 @@ Please make sure that everyone in your group answers the icebreaker and writes t
 
 ## Warmup
 
-![warmup_slide](./assets/warmup_slide.png)
+![warmup_slide](./assets/image.png)
 
 The warmup for this lab will be projected on the screen. The slides will be posted [HERE]() once all labs have concluded.  
 
