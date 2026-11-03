@@ -28,6 +28,9 @@ Please make sure that everyone in your group answers the icebreaker and writes t
 
 
 ## Warmup
+
+![warmup_slide](./assets/warmup_slide.png)
+
 The warmup for this lab will be projected on the screen. The slides will be posted [HERE]() once all labs have concluded.  
 
 [Here](https://classroom50.org/ucsd-cse29-fall2026/cse29-fa26/assignments/lab-6/accept) is the classroom 50 assignment for this lab.
