@@ -58,6 +58,8 @@ better!
     - Monday
       - [Lecture](lec/11-02-procs/29-fa26-l18.pdf)
       - [Review Questions Answers](lec_rq_answers/20261102-rq-answers.txt)
+    - Wednesday
+      - [Lecture](lec/11-04-mallocimpl/29-fa26-l19.pdf)
 
 - **Week 5 – Structs and Malloc**
   - **Lecture Materials**
