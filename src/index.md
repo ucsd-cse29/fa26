@@ -61,6 +61,7 @@ better!
     - Wednesday
       - [Lecture](lec/11-04-mallocimpl/29-fa26-l19.pdf)
       - [Discussion](disc/week6/CSE%2029%20Discussion%20Week%206.pdf) (Code: [01_sizeof.c](disc/week6/01_sizeof.c), [02_sizeof.c](disc/week6/02_sizeof.c), [parallel.sh](disc/week6/parallel.sh), [spinner.sh](disc/week6/spinner.sh))
+      - [Review Questions Answers](lec_rq_answers/20261105-rq-answers.pdf)
 
 - **Week 5 – Structs and Malloc**
   - **Lecture Materials**
