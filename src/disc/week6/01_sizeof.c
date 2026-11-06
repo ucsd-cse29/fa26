@@ -27,9 +27,6 @@ int main(void) {
     size_t s2 = sizeof(x);  
     size_t s1 = sizeof x;   
     printf("s1 = %ld, s2 = %ld\n", s1, s2);
-
-    // could show assembly code but that's probably out
-    // of scope for cse29...
-
+    
     return 0;
 }

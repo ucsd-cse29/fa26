@@ -15,7 +15,7 @@ SPINNER_PID=$!
 seconds=10
 for ((i = seconds; i > 0; i--)); do
     # \r moves the cursor back to the start of the line
-    printf "\rTime remaining: %d seconds " "$i"
+    printf "\rTime remaining: %d seconds" "$i"
     sleep 1
 done
 
