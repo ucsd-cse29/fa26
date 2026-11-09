@@ -58,7 +58,7 @@ better!
 - **Week 7 – Dynamic Memory Allocation**
   - **Lecture Materials**
     - Monday
-      - Code: [mm.c](lec/10-96-mallocimpl2/mm.c)
+      - Code: [mm.c](lec/11-09-mallocimpl2/mm.c)
 
 >>>>>>> Stashed changes
 - **Week 6 – OS Concepts**
