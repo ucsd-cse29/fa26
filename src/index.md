@@ -53,6 +53,14 @@ better!
 <iframe src="https://calendar.google.com/calendar/embed?src=c_643187aaae9e2fe6d679252feac45be32d15d47c921187e452f7817e5b1b8f59%40group.calendar.google.com&ctz=America%2FLos_Angeles" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
 ## Schedule
+<<<<<<< Updated upstream
+=======
+- **Week 7 – Dynamic Memory Allocation**
+  - **Lecture Materials**
+    - Monday
+      - Code: [mm.c](lec/10-96-mallocimpl2/mm.c)
+
+>>>>>>> Stashed changes
 - **Week 6 – OS Concepts**
   - **Lecture Materials**
     - Monday

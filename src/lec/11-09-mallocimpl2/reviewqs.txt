@@ -1,0 +1,5 @@
+1. What operations does malloc() need to do to make a new allocation?
+
+2. What operations does free() need to do to free an allocation()?
+
+3. What aspects of malloc are up to specific implementations?
