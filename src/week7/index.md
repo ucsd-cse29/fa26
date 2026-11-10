@@ -272,7 +272,7 @@ echo "Goodbye!"
 ```
 
 And then, run it. If you see _Permission denied_ and don't know what to do, go
-read the [executable bit](./lab2#aside-the-executable-bit) section from lab 2.
+read the [executable bit](../week2/index.html#aside-the-executable-bit) section from lab 2.
 
 ```
 $ ./task_1.sh
