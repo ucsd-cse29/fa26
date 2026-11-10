@@ -1,12 +1,12 @@
-# PA3 - The Pioneer Shell: Resubmission Due 2/26 at 11:59pm
+# PA3 - The Sea(C) Shell: Resubmission Due 11/13 at 10pm
 
 ### If you want to resubmit PA3, please read this section carefully. You need to pass all the tests in the original PA3, while also implementing an extra functionality
 
-Implement `pish` as originally described. Also update `pish` to support a new built-in command `$?` that prints the exit status of the last command executed. This should work for both built-in and non-built-in commands. For example:
+Implement `seash` as originally described. Also update `seash` to support a new built-in command `$?` that prints the exit status of the last command executed. This should work for both built-in and non-built-in commands. For example:
 
 ```bash
 ▶ ls
-Makefile  script.sh  pish  pish.c  pish.h  pish_history.c  pish_history.o  pish.o
+Makefile  script.sh  seash  seash.c  seash.h  seash_history.c  seash_history.o  seash.o
 ▶ $?
 0
 ▶ echo hello
@@ -42,13 +42,13 @@ You may find the `WEXITSTATUS` macro useful.
 
 If you want to resubmit the design questions, we will be asking this updated design question in a new Gradescope assignment. Please submit a PDF containing your answer to the following question:
 
-Look up how to run background processes at the shell with & (feel free to use an AI tool to help you see some examples!). Describe a little bit about what might change in your shell if you wanted to allow background processes to run while the shell continues to take input.
+We've implemented support for background processes with the last argument being &. Let's extend this feature to consider edge cases where users want to use & differently, with commands like `sleep 10&` or `ls & echo B` or even `ls&echo B`! Research how shells handle these cases, and describe in some detail how you might implement such features in `seash`.
 
 ## What to Hand In
 
 - Submit your updated code to Gradescope
 - CREDITS.txt is required (more details on the [syllabus](https://ucsd-cse29.github.io/wi26/#assignments-and-academic-integrity))
-- We will run your program with `make` and `./pish` in both interactive and batch mode
+- We will run your program with `make` and `./seash` in both interactive and batch mode
 
 If you are resubmitting the design question, submit a PDF containing your answer to the design question in the new Gradescope assignment.
 
