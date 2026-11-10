@@ -4,7 +4,7 @@
     --callout-funfact-bg: #48cbe8;
     --callout-funfact-fg: #000000;
     --callout-quality-bg: #ea5656;
-    --callout-quality-fg: #27262b;
+    --callout-quality-fg: #fff8f5;
 }
 
 /* mdBook's dark themes */
@@ -234,6 +234,13 @@
 .exercise::before,
 .owntime::before,
 .midterm::before {
+    /* undo mdBook's built-in .warning:before "ⓘ" badge (general.css) */
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    text-align: left;
+    background-color: transparent;
     display: block;
     font-size: 0.75em;
     font-weight: bold;
