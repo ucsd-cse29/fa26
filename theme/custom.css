@@ -53,7 +53,7 @@
     display: inline-block;
     margin-right: 0.5rem;
     /* em, not rem: mdBook sets the root font-size to 10px */
-    font-size: 1.1em;
+    font-size: 1.07em;
     vertical-align: middle;
     animation: ff-pulse 8s ease-in-out infinite;
 }
@@ -112,7 +112,7 @@
     content: "Quality of Life Improvement 💫";
     display: inline-block;
     margin-right: 0.5rem;
-    font-size: 1.1em;
+    font-size: 1.07em;
     vertical-align: middle;
     animation: ff-pulse 8s ease-in-out infinite;
 }
@@ -139,7 +139,7 @@
 
 @keyframes ff-pulse {
     0% { transform: scale(1); }
-    50% { transform: scale(1.10); }
+    50% { transform: scale(1.07); }
     100% { transform: scale(1); }
 }
 
