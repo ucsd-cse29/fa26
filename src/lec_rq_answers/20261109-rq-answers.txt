@@ -1,0 +1,19 @@
+1. What operations does malloc() need to do to make a new allocation?
+
+    Most implementations will do the following. One, search for a free 
+    adequately sized contiguous block of memory in the heap. Two, 
+    initialize a header. Three, return the memory address at the start 
+    of your allocated block of memory.  
+
+2. What operations does free() need to do to free an allocation()?
+
+    At minimum, the function will free the relevant chunk of memory by 
+    modifying the header. Beyond this you may choose to have additional 
+    optimizations such as coalescing.
+
+3. What aspects of malloc are up to specific implementations?
+
+    A LOT! Header metadata, allocation strategies, memory alignment/padding
+    , etc. Each implementation of malloc weighs different tradeoffs between
+    space and time complexity.
+
