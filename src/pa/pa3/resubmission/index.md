@@ -6,7 +6,7 @@ Implement `seash` as originally described. Also update `seash` to support a new 
 
 ```bash
 ▶ ls
-Makefile  script.sh  seash  seash.c  seash.h  seash_history.c  seash_history.o  seash.o
+Makefile  script.sh  seash  seash.c 
 ▶ $?
 0
 ▶ echo hello
