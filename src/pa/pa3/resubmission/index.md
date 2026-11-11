@@ -42,7 +42,7 @@ You may find the `WEXITSTATUS` macro useful.
 
 If you want to resubmit the design questions, we will be asking this updated design question in a new Gradescope assignment. Please submit a PDF containing your answer to the following question:
 
-We've implemented support for background processes with the last argument being &. Let's extend this feature to consider edge cases where users want to use & differently, with commands like `sleep 10&` or `ls & echo B` or even `ls&echo B`! Research how shells handle these cases, and describe in some detail how you might implement such features in `seash`.
+We've implemented support for background processes, with the last argument being &. How would you extend your implementation to add the `jobs` command to list running background jobs and the `fg <pid>` command to wait for a specific job to finish?
 
 ## What to Hand In
 
