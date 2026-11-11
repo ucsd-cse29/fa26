@@ -50,7 +50,7 @@ We've implemented support for background processes, with the last argument being
 - CREDITS.txt is required (more details on the [syllabus](https://ucsd-cse29.github.io/wi26/#assignments-and-academic-integrity))
 - We will run your program with `make` and `./seash` in both interactive and batch mode
 
-If you are resubmitting the design question, submit a PDF containing your answer to the design question in the new Gradescope assignment.
+If you are resubmitting the design question, submit your answers in the Gradescope Assignment containing your answer to **ALL** of the design questions.
 
 ## Resources and Policy
 
