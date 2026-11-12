@@ -6,7 +6,9 @@ For this PA we provide you with some local testing code to help you make sure yo
 
 In the repository, you will find the `tests/` directory, where we have provided some small testing programs that test your library function.
 
-By coding in to the `tests/` directory and running make, you can compile all these test programs and run them yourself. These programs are what we will be using in the autograder as well.
+By coding in to the `tests/` directory and running make, you can compile all these test programs and run them yourself.
+
+The provided tests are written for the starter code's block format: they check header contents, offsets, and alignment. They're useful while you keep that format; if you change it, update them or write your own. The autograder uses different tests that check only behavior (see [Grading](./index.md#grading)), so they work with any block format.
 
 For example, here’s the code for the very first test: `alloc_basic.c`:
 
@@ -50,6 +52,8 @@ In this test, we simply make one `vmalloc()` call, and we verify that the alloca
 These tests use the `assert()` statement to check certain test conditions. If your code passes the tests, then nothing will be printed. If one of the assert statements fail, then you will see an error.
 
 ## Test Images
+
+The images below are also in the starter code's block format, so they only make sense while you keep that format.
 
 When you are writing vmalloc, you may wonder how you can test the allocation policy fully when you don’t have the ability to free blocks to create a more realistic allocation scenarios (i.e., a heap with many different allocated/free blocks to search through).
 

@@ -34,7 +34,7 @@ To compile, run `make` in the terminal from the root directory of the repository
 
 ### Reading the Starter Code
 
-For this programming assignment, we want the addresses returned by `vmalloc` to always be 16-byte aligned (i.e., at an address ending in `0x0`). Since the metadata (block header) is 8 bytes in size, block headers will therefore always be placed at addresses ending in `0x8`. To maintain this alignment, the first block header (`*heapstart`) starts at an offset of 8, and all blocks going forward must have sizes that are multiples of 16 bytes.
+The starter code sets up the heap for one particular block format, which you can keep or replace with your own design. In this format, the addresses returned by `vmalloc` are 16-byte aligned (i.e., at an address ending in `0x0`). Since the metadata (block header) is 8 bytes in size, block headers are always placed at addresses ending in `0x8`. To maintain this alignment, the first block header (`*heapstart`) starts at an offset of 8, and all blocks have sizes that are multiples of 16 bytes.
 
 Block sizes here refer to the size of the block **including** the header. The smallest possible block is 16 bytes, and would consist of an 8 byte header followed by 8 bytes of allocatable memory. When free, the last 8 bytes of the block would instead contain the block footer, to be used for coalescing free blocks.
 
@@ -42,6 +42,6 @@ Begin by reading through the `vm.h` file, where we define the internal data stru
 
 Next, open `vminit.c`. This is a very big file containing functions that create and set up the simulated heap for this assignment. Find the `init_heap()` function, and read through the entire thing to understand how it is setting up the heap. There is pointer arithmetic involved, you will need to do similar things for implementing `vmalloc` and `vmfree`, so make sure you have a solid understanding of that. (Why is it necessary to cast pointers to different types?)
 
-Just like production allocators, we create a large chunk of memory as our heap using `mmap`, and allocations/frees are performed in that memory region.
+Just like production allocators, we create a large chunk of memory as our heap using `mmap`, and allocations/frees are performed in that memory region. This part is provided: `vminit` creates the heap and `vmdestroy` releases it, and you don't call `mmap` yourself.
 
-Once you understand what the `init_heap()` function is doing, open up `utils.c`. Here we have implemented the function `vminfo()`, which will be your ally throughout this PA. This function traverses through the heap blocks and prints out the metadata in each block header. You should find inspiration for how to write your own `vmalloc` function here. Look at how it manipulates the pointer to jump between blocks!
+Once you understand what the `init_heap()` function is doing, open up `utils.c`. Here we have implemented the function `vminfo()`, which will be your ally throughout this PA. This function traverses through the heap blocks and prints out the metadata in each block header. You should find inspiration for how to write your own `vmalloc` function here. Look at how it manipulates the pointer to jump between blocks! `vminfo()` only understands the starter code's block format, so if you change the format, update it or write your own.
