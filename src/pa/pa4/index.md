@@ -1,8 +1,8 @@
-# PA4 – Malloc
+# PA4 – Malloc Due Friday 11/20 10:00pm
 
 _This assignment is thanks to the [staff of CSE29 spring 2024](https://cse29sp24.github.io/docs/instructors.html), especially [Gerald Soosairaj](https://geraldsoosairaj.github.io) and Jerry Yu._
 
-- **Due Thursday, February 26th, 11:59pm**
+- **Due Friday, November 20th 10:00pm**
 - GitHub Classroom: [https://classroom.github.com/a/5PI5i7dZ](https://classroom.github.com/a/5PI5i7dZ)
 
 In class, quizzes, and PAs we've _used_ `malloc` and `free` to manage memory.
@@ -100,10 +100,10 @@ Freed memory must be reusable for a request of the same size: if a block returne
 _Heap fragmentation_ occurs when there are many available blocks that are
 small-sized and not adjacent (so they cannot be coalesced).
 
-1. Give an example of a program (in C or pseudocode) that sets up a situation
-   where a 20-byte `vmalloc` call **fails** to allocate despite the heap having (in
-   total) over 200 bytes free across many blocks. Assume an allocator that uses
-   best fit, 16-byte alignment, and coalesces adjacent free blocks.
+1. Please describe policy choices you've made for allocating/freeing dynamic memory (e.g. header size, placement policy, etc) in your implementation. 
+
+    Given this set up you just described, give an example of a program (in C or pseudocode) that sets up a situation where a 20-byte `vmalloc` call fails to allocate despite the heap having (in total) over 200 bytes free across many blocks. Depending on your choice of policies, this may not result in an issue, if that is the case for your implementation, please explain why it isn't an issue.
+
 
 2. Write a short C program that uses the built-in `malloc` and `free`
    that triggers an error when run with `valgrind` for attempting to read or
@@ -119,14 +119,14 @@ small-sized and not adjacent (so they cannot be coalesced).
 
 ## Grading
 
-Half of the PA's points come from a leaderboard. The rest come from the correctness tests and the design questions.
+Half of the PA's points come from the Gradescope leaderboard. The rest come from the correctness tests and the design questions.
 
 - **Correctness tests** check only behavior: return values, the `vmfree` error messages, that your allocator never changes data in allocated blocks, and same-size reuse. They don't check your block format, alignment, or allocation policy.
 - **The leaderboard** runs your allocator on a set of `vmalloc`/`vmfree` workloads. Its points are split evenly between:
   - **Speed**: how quickly your allocator runs the workloads.
   - **Heap efficiency**: how much of the heap your allocator uses, including its own bookkeeping, compared with the amount of data allocated at once.
 
-The leaderboard runs only when a submission passes every correctness test. You get at most one leaderboard run every 2 hours. Submissions in between still run the correctness tests and keep your most recent leaderboard results.
+The leaderboard runs only when a submission passes every correctness test. You get at most one leaderboard run every 2 hours. Submissions in between still run the correctness tests and keep your most recent leaderboard results. 
 
 ## Testing
 
