@@ -1,8 +1,8 @@
-# PA4 – Malloc Due Friday 11/20 10:00pm
+# PA4 – Malloc Due Monday 11/23 10:00pm
 
 _This assignment is thanks to the [staff of CSE29 spring 2024](https://cse29sp24.github.io/docs/instructors.html), especially [Gerald Soosairaj](https://geraldsoosairaj.github.io), [Aaron Schulman](https://cseweb.ucsd.edu/~schulman/), and Jerry Yu._
 
-- **Due Friday, November 20th 10:00pm**
+- **Due Monday, November 23rd 10:00pm**
 - Classroom50: [https://classroom50.org/ucsd-cse29-fall2026/cse29-fa26/assignments/pa4/accept](https://classroom50.org/ucsd-cse29-fall2026/cse29-fa26/assignments/pa4/accept)
 
 In class, quizzes, and PAs we've _used_ `malloc` and `free` to manage memory.

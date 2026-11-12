@@ -1,4 +1,4 @@
-# PA3 - The Sea(C) Shell: Resubmission Due 11/20 at 10pm
+# PA3 - The Sea(C) Shell: Resubmission Due Monday 11/23 at 10pm
 
 ### If you want to resubmit PA3, please read this section carefully. You need to pass all the tests in the original PA3, while also implementing an extra functionality
 
