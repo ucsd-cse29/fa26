@@ -1,0 +1,20 @@
+Pick 3 types of memory allocators and list 1 pro and con for each. 
+
+For example: 
+
+First Fit
+Pro: Fairly fast allocation since it stops searching as soon as it finds a large
+     enough block.
+Con: Can lead to more fragmentation by leaving small, unusable gaps in the
+     memory.
+
+Best Fit 
+Pro: More memory efficient as it tightly packs data into small suitable blocks
+     of memory.
+Con: Slower allocation because it must potentially scan the entire heap to find 
+     an optimally sized block of memory. 
+
+Bump Allocator
+Pro: Very fast allocation (O(1)) because you only need to advance a pointer and 
+     allocate at the end of the heap. 
+Con: Cannot free individual allocations.

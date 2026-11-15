@@ -58,6 +58,10 @@ better!
     - Monday
       - Code: [mm.c](lec/11-09-mallocimpl2/mm.c)
       - [Review Questions Answers](lec_rq_answers/20261109-rq-answers.txt)
+    - Wednesday
+      - [Veteran's Day Holiday]
+    - Friday 
+      - [Review Questions Answers](lec_rq_answers/20261113-rq-answers.txt)
 
 - **Week 6 – OS Concepts**
   - **Lecture Materials**
