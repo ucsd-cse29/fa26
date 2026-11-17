@@ -8,13 +8,21 @@
 #define SLOT_SIZE 8
 #define HEAP_SLOTS HEAP_SIZE/SLOT_SIZE
 
+// GLOBAL VARIABLE GROSS
 uint64_t* HEAP_START = NULL;
 
 void init_heap() {
   if(HEAP_START != NULL) { return; }
+
+  // Get pointer to beginning of heap
   uint64_t* heap = sbrk(HEAP_SIZE);
   HEAP_START = heap;
-  *HEAP_START = (HEAP_SIZE - 8);
+
+  // Header at beginning of heap - Make a 8 byte header
+  *HEAP_START = (HEAP_SIZE - 8); // Free memory -8 size of header subtracted
+  
+  // Crazy ideas here:
+  // Array of headers for quick header access - init that here 
 }
 
 size_t block_size(uint64_t s) { return s & (~1); }
@@ -23,7 +31,9 @@ size_t round_size(size_t size) { return (size + 7) & ~7; }
 
 void* allocate_at(uint64_t* start, size_t size) {
   size_t current_size = block_size(start[0]);
+  // Double check there is enough room
   if(current_size > size) {
+    // Setting up the free slot that is made of remaining area of block
     uint64_t remaining = current_size - size - SLOT_SIZE;
     int next_block_index = (size / SLOT_SIZE) + 1;
     start[next_block_index] = remaining; // even, free
@@ -33,13 +43,21 @@ void* allocate_at(uint64_t* start, size_t size) {
 }
 
 void* malloc(size_t requested_size) {
-  init_heap();
+  init_heap(); // Do once operation
+               
   int val_index = 0;
-  size_t rounded = round_size(requested_size);
+  size_t rounded = round_size(requested_size); // heap allocations are 8 byte aligned CPU is 8 byte aligned 
+
+  // Search the heap (beginning to end) to find where we would put this allocation
   while(val_index < HEAP_SLOTS) {
-    uint64_t curr_slot = HEAP_START[val_index];
+    // 8 byte navigation - current header
+    uint64_t curr_slot = HEAP_START[val_index]; // Get current header
+
+    // Parsing the header to get its size and free bit
     int current_size = block_size(curr_slot);
     int current_busy = block_busy(curr_slot);
+
+    // Check if free allocation and that its big enough for allocation
     if(!current_busy && (current_size >= rounded)) {
       return allocate_at(&HEAP_START[val_index], rounded);
     }
@@ -53,7 +71,11 @@ void* malloc(size_t requested_size) {
 
 void free(void* ptr) {
   uint64_t* slot_after_header = ptr;
-  slot_after_header[-1] = slot_after_header[-1] - 1;
+  // Free allocation in the header
+  slot_after_header[-1] = slot_after_header[-1] - 1; // CAN MAKE AN ALLOCATION!!!!
+  slot_after_header[-1] = (slot_after_header[-1] >> 1) << 1; // chop off the last bit
+  slot_after_header[-1] = slot_after_header[-1] & ~1;
+
 }
 
 void show_heap() {
