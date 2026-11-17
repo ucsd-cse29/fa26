@@ -1,5 +1,5 @@
 # Lab 8: Mail and Header Guards
-In this lab, you will fix compiler errors by adding a header guard, and send mail messages with Pokemon. You have the entire lab period for this. Have fun!
+In this lab, you will fix compiler errors by adding a header guard, and send mail messages with Pokemon. You have the remaining lab period for this. Have fun!
 
 ## Lab 8 learning objectives
 
