@@ -1,0 +1,12 @@
+1. What is the main resource that drives the operation of the Internet?
+
+    Could have a variety of answers here. One is simply "money". 
+
+2. How does a computer map the name of a networked resource to the computer 
+   that has that resource?
+
+    Domain Name System (DNS)
+
+3. What is one of the main failure modes of computer networks?
+
+    Network congestion (i.e. running out of bandwidth)

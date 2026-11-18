@@ -57,6 +57,7 @@ better!
   - **Lecture Materials**
     - Monday
       - [Lecture](lec/11-17-net/29-fa26-lnet.pdf)
+      - [Review Questions Answers](lec_rq_answers/20261117-rq-answers.txt)
 
 - **Week 7 – Dynamic Memory Allocation**
   - **Lecture Materials**
