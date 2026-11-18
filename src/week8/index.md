@@ -272,7 +272,7 @@ If you want to do the same thing on your own computer, you can add this same lin
 
 A [real life script](https://github.com/kizhikevich/violating_ripe_probes/blob/main/atlas_pipeline/run_atlas_pipeline.sh) by [Katherine Izhikevich](https://kizhikevich.github.io/) and [Ben Du](https://www.bencdu.com/)    which run several python scripts to retrieve and sort through data.
 
-The script Elena made to print out pokemon randomly when she opens ieng6 [pokemon.sh](.assets//pokemon.sh) (complete with commented out old path variables before she figured out how to pick randomly from an arbitrary amount of directories.)
+The script Elena made to print out pokemon randomly when she opens ieng6 [pokemon.sh](.assets/pokemon.sh) (complete with commented out old path variables before she figured out how to pick randomly from an arbitrary amount of directories.)
 
 The script Elena made to print out Joe quotes also upon opening ieng6. [juotes.sh](./assets/juotes.sh) Note that the file is full of lines that look like 
 ```
