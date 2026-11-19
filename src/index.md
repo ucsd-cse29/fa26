@@ -55,6 +55,9 @@ better!
 ## Schedule
 - **Week 8 – Networking**
   - **Lecture Materials**
+    - Wednesday
+      - Code: [http string server](lec/11-18-netimpl/)
+
     - Monday
       - [Lecture](lec/11-17-net/29-fa26-lnet.pdf)
       - [Review Questions Answers](lec_rq_answers/20261117-rq-answers.txt)
