@@ -59,7 +59,7 @@ better!
       - [Lecture](lec/11-17-net/29-fa26-lnet.pdf)
       - [Review Questions Answers](lec_rq_answers/20261117-rq-answers.txt)
     - Wednesday
-      - Code: [http string server](lec/11-18-netimpl/)
+      - Code: [http-server.c](lec/11-18-netimpl/http-server.c), [http-server.h](lec/11-18-netimpl/http-server.h), [string-server1.c](lec/11-18-netimpl/string-server1.c), [string-server2.c](lec/11-18-netimpl/string-server2.c)
       - [Discussion](disc/week8/cse-29-discussion-week-8.pdf) (Code: [http-server.c](disc/week8/http-server.c), [http-server.h](disc/week8/http-server.h), [number-server.c](disc/week8/number-server.c)) 
 
 - **Week 7 – Dynamic Memory Allocation**
