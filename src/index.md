@@ -64,6 +64,7 @@ better!
 
     - Friday
       - Code: [string-server3.c](lec/11-20-netimpl2/string-server3.c), [string-server4.c](lec/11-20-netimpl2/string-server4.c)
+      - [Review Questions Answers](lec_rq_answers/20261120-rq-answers.txt)
 
 - **Week 7 – Dynamic Memory Allocation**
   - **Lecture Materials**

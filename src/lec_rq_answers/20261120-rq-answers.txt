@@ -1,0 +1,18 @@
+1. What is a function pointer a perfection solution for in a HTTP server? 
+    
+    A function pointer allows you to decouple your logic for the handler from
+    the server itself. This lets you customize your handler without
+    having to touch the main server code. For example, in lecture, we used 
+    the same "http-server.c" file but had different "string-serverx.c" files 
+    that handled requests differently.
+
+2. How does an HTTP server handle URLs? 
+
+    The server parses the URL (e.g. "http://cse29.ucsd.edu:5555/add?value=5") 
+    to extract the path (e.g. "/add") and the query for the
+    request (e.g. "?value=5"). Then, it performs the relevant operation 
+    associated with that path.   
+
+3. Why is the write() system call needed in a webserver? 
+
+    The write() system call allows the webserver to respond to the client(s).
