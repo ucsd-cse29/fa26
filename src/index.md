@@ -61,7 +61,6 @@ better!
     - Wednesday
       - Code: [http-server.c](lec/11-18-netimpl/http-server.c), [http-server.h](lec/11-18-netimpl/http-server.h), [string-server1.c](lec/11-18-netimpl/string-server1.c), [string-server2.c](lec/11-18-netimpl/string-server2.c)
       - [Discussion](disc/week8/cse-29-discussion-week-8.pdf) (Code: [http-server.c](disc/week8/http-server.c), [http-server.h](disc/week8/http-server.h), [number-server.c](disc/week8/number-server.c)) 
-
     - Friday
       - Code: [string-server3.c](lec/11-20-netimpl2/string-server3.c), [string-server4.c](lec/11-20-netimpl2/string-server4.c)
       - [Review Questions Answers](lec_rq_answers/20261120-rq-answers.txt)
