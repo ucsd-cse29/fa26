@@ -329,7 +329,7 @@ Pause here until every sub-team in your row has merged their pull request into t
 
 After the branch from each sub-team has been merged, your row's `main` branch will contain all combined waitlist features and test cases.
 
-Switch to the `main` branch in your local repository, and run `git pull` to pull the latest updates from GitHub. Compile your code with `make`, and execute the combined test suite. **If the tests don't pass, that is okay! You don't need to make all the tests pass.**
+Switch to the `main` branch in your local repository, and run `git pull` to pull the latest updates from GitHub. Compile your code with `make`, and execute the combined test suite. **If test_enqueue(), test_dequeue(), test_promote() don't pass, that is okay! You don't need to make these tests pass.**
 
 <div class="gradescope">
 
