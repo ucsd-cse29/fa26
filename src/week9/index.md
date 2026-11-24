@@ -220,7 +220,7 @@ Now that you've implemented your feature, you'll write tests using `assert` stat
 
 **The _first driver_ should yield the keyboard to another sub-team member for writing tests**. If your sub-team has 3 members, each member other than the _first driver_ should be the driver for at least one test. As a sub-team of 2 or 3, brainstorm and write test cases for `waitlist.c` in `test_waitlist.c`. Since your tests likely will call functions assigned to other sub-teams, you won't be able to run the tests immediately. Instead, ask a tutor or TA to verify the correctness of your sub-team's tests.
 
-<div class="important">
+<div class="note">
 
 Note that your tests should only test one feature of your assigned function. See the example in test_waitlist.c for more details.
 
