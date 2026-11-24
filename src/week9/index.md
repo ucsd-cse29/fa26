@@ -222,7 +222,7 @@ Now that you've implemented your feature, you'll write tests using `assert` stat
 
 <div class="note">
 
-Note that your tests should only test one feature of your assigned function. See the example in test_waitlist.c for more details.
+Note that your tests should only test one feature of your assigned function. See the example in `test_waitlist.c` for more details.
 
 </div>
 
