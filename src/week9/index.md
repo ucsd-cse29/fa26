@@ -1,8 +1,8 @@
-# Lab 8: Git and GitHub at scale
+# Lab 9: Git and GitHub at scale
 
 In this lab, you will do a more advanced Git collaboration exercise to learn about forks, pull requests, branches, and how to revert commits. This exercise mimics common collaboration workflows in software engineering. We hope that this exercise will boost your confidence in using Git and prepare you to use it well in future CSE classes and industry\!
 
-## Lab 8 learning objectives
+## Lab 9 learning objectives
 
 - Practice pair programming with driver and navigator roles
 - Understand the mechanism of branching in Git
@@ -37,17 +37,25 @@ later in the lab you will be **switching who** is typing at the **keyboard**. Yo
 </div>
 
 #### Partner 1 ONLY:
-1. Create a new team on the Github Classroom assignment for you and your partner: <https://classroom.github.com/a/O9CzURk9> 
+1. Create a new team on the Classroom 50 assignment for you and your partner: <https://classroom50.org/ucsd-cse29-fall2026/cse29-fa26/assignments/lab9-p1/accept> 
+
+![P1 accept](./assets/lab9_p1_accept.png)
 
 #### Partner 2 ONLY:
 2. Join the team that Partner 1 created.
+
+![P1 ask join](./assets/lab9_p1_ask_join.png)
+
+![P1 request](assets/lab9_p1_request.png)
+
+Partner 1 now must accept Partner 2's request to join the team.
 
 #### Both:
 
 3. Clone the repo to ieng6
 4. Edit `hello.c` to fill in your own name in the print statement
 
-If at any point you are not sure which git command to run, you may refer to [Lab2: Git-Gud-Bro](./lab2#git-gud-bro)
+If at any point you are not sure which git command to run, you may refer to [Lab2: Git-Gud-Bro](../week2/index.html#git-gud-bro)
 
 #### Partner 1 ONLY:
 
@@ -112,27 +120,26 @@ We are now entering the pair programming phase of the lab. From this point onwar
 
 </div>
 
-Now, to introduce the task that you will be completing: building an implementation of a stack using linked lists. Of course, such an undertaking would be too much for one lab session, which is why you'll be **splitting up** the work amongst your teams.
+Now, to introduce the task that you will be completing: building an implementation of a waitlist using an array list. Of course, such an undertaking would be too much for one lab session, which is why you'll be **splitting up** the work amongst your teams.
 
 Each sub-team will be responsible for building one of three features:
 
-- The **push** operation (which inserts an element into the beginning of the list)
-- The **pop** operation (which removes the first element from the list)
-- A function to copy the contents of the stack into an array.
+- The **enqueue** Add `student` to the BACK of the waitlist. If the array is full (size == capacity), first double its capacity (realloc is your friend), then add the student.
+- The **dequeue** Remove the student at the FRONT of the waitlist and return them. Everyone else moves up one spot, so the next student is now at students[0]. Returns NULL if the waitlist is empty. The waitlist does not free the student: whoever calls dequeue() owns it now. If removing this student leads the list to be less than 40% of it's capacity, the capacity should be halved, resulting in being at just less than 80% capacity. (realloc is your friend)
+- The **promote** (groups of 6 only) Move the student whose PID is `id` to the FRONT of the waitlist. Everyone who was ahead of them moves back one spot; everyone behind them stays where they are. Returns 1 if the student was found and promoted, or 0 if no student has that PID (and the waitlist is left unchanged).
 
 <div class="important">
 
-**READ the following paragraph very carefully** as only **ONE** person per row **creates** the github classroom team.
+**READ the following paragraph very carefully** as only **ONE** person per row **creates** the classroom 50 team.
 
 </div>
 
-**Please wait for your tutor or TA to assign one of the three features to your team.** Your tutor or TA should direct **ONLY the first driver sitting closest to the whiteboard in each row** to accept the [GitHub Classroom assignment](https://classroom.github.com/a/9roQJiWD) for this lab and name your row's team following the template and example below:
+**Please wait for your tutor or TA to assign one of the three features to your team.** Your tutor or TA should direct **ONLY the first driver sitting closest to the whiteboard in each row** to accept the [Classroom 50 assignment](https://classroom50.org/ucsd-cse29-fall2026/cse29-fa26/assignments/lab9-p2/accept) for this lab and name your row's team.
 
-![GitHub classroom team name template](./assets/l8_teamnamingtemplate.png)
+<div class="checkoff">
 
-Following the above template, “TIME” is replaced with your lab’s start time (“10am”, “12pm”, “2pm”, “4pm”), “ROOM” is replaced with your lab’s room number (“b240”, “b250”), “ROW” should be replaced with your row’s number (“row1”, “row2”, … , “row7”), and “NAME” should be replaced with your agreed upon team name (“cheeze-itz”, “burgers”). For example, the above template should be filled out like so:
-
-![GitHub classroom team name example](./assets/l8_teamnamingexample.png)
+Write on your whiteboard all 4-6 of your names, and denote who has created the classroom 50 group, which pair is completing which feature, and who each driver and navigator is.
+</div>
 
 After the first driver sitting closest to the whiteboard in your row accepts the assignment and names the team, **all other drivers will JOIN** your row's team.
 
@@ -157,6 +164,11 @@ To create a branch, run the `git branch` command like so:
 </code>
 
 Replace `branch name here` with an appropriate name that relates to the feature you have been assigned to implement.
+
+<div class="important">
+
+Ensure your branch name includes the name of your feature and that it is spelled correctly.
+</div>
 
 Next, run:
 
@@ -190,27 +202,27 @@ Once you have created a new branch, run the `git status` command. Call over a tu
 
 <div class="note">
 
-Do you want to see `stack.h` and `stack.c` (or `stack_test.c`) side-by-side in Vim? You can do that with the `:vsplit` command in Vim. Run <code>:vsplit <span contenteditable class="code-replace-me">other file's filename</span></code> to open the other file in a vertical split, then press <kbd>Ctrl</kbd>+<kbd>W</kbd> **twice** to switch between the two panes. Likewise, if you would like to have a terminal window open alongside your code, you can use `:vert bot term` or just `term`.
+Do you want to see `waitlist.h` and `waitlist.c` (or `waitlist_test.c`) side-by-side in Vim? You can do that with the `:vsplit` command in Vim. Run <code>:vsplit <span contenteditable class="code-replace-me">other file's filename</span></code> to open the other file in a vertical split, then press <kbd>Ctrl</kbd>+<kbd>W</kbd> **twice** to switch between the two panes. Likewise, if you would like to have a terminal window open alongside your code, you can use `:vert bot term` or just `term`.
 
 </div>
 
-In your pair programming sub-teams, you will now begin implementing your assigned feature. You may find a description of your feature along with the desired method signature in the `stack.h` file. Your sub-team will write your implementation code in the `stack.c` file. While writing this file, _the first driver_ elected from earlier should be at the keyboard, while all other members should be _navigators_. Feel free to do some light testing during this phase, but you will be writing tests after you implement the feature so prioritize getting the implementation done first. **Once your sub-team has finished an implementation of the feature, make sure to <span class="git-action">commit</span> and <span class="git-action">push</span> your changes.**
+In your pair programming sub-teams, you will now begin implementing your assigned feature. You may find a description of your feature along with the desired method signature in the `waitlist.h` file. Your sub-team will write your implementation code in the `waitlist.c` file. While writing this file, _the first driver_ elected from earlier should be at the keyboard, while all other members should be _navigators_. Feel free to do some light testing during this phase, but you will be writing tests after you implement the feature so prioritize getting the implementation done first. **Once your sub-team has finished an implementation of the feature, make sure to <span class="git-action">commit</span> and <span class="git-action">push</span> your changes.**
 
 <div class="note">
 
-You'll notice that while there is a Makefile in your directory, there is no `main` function within your `stack.c`, so as of now there is no way to run your implementation without writing any tests.
+You'll notice that while there is a Makefile in your directory, there is no `main` function within your `waitlist.c`, so as of now there is no way to run your implementation without writing any tests.
 
 </div>
 
 ## Writing Tests
 
-Now that you've implemented your feature, you'll write tests using `assert` statements to verify that it works (remember Lab 4?). Take a look at `test_stack.c` as a reference for how `main` calls tests functions.
+Now that you've implemented your feature, you'll write tests using `assert` statements to verify that it works (remember Lab 4?). Take a look at `test_waitlist.c` as a reference for how `main` calls tests functions.
 
-**The _first driver_ should yield the keyboard to another sub-team member for writing tests**. If your sub-team has 3 members, each member other than the _first driver_ should be the driver for at least one test. As a sub-team of 2 or 3, brainstorm and write test cases for `stack.c` in `test_stack.c`. Since your tests likely will call functions assigned to other sub-teams, you won't be able to run the tests immediately. Instead, ask a tutor or TA to verify the correctness of your sub-team's tests.
+**The _first driver_ should yield the keyboard to another sub-team member for writing tests**. If your sub-team has 3 members, each member other than the _first driver_ should be the driver for at least one test. As a sub-team of 2 or 3, brainstorm and write test cases for `waitlist.c` in `test_waitlist.c`. Since your tests likely will call functions assigned to other sub-teams, you won't be able to run the tests immediately. Instead, ask a tutor or TA to verify the correctness of your sub-team's tests.
 
-<div class="checkoff">
+<div class="exercise">
 
-When you have at least 2 test functions written, ask a TA or tutor to check your progress. Once checked off, push the test cases to your sub-team's branch.
+Write at least 2 test functions for your feature. Once complete, push the test cases to your sub-team's branch.
 
 </div>
 
@@ -249,7 +261,7 @@ Your function is now finished, but it is still sitting in your sub-team's branch
 
 Go to your row's repository on GitHub.com. Navigate to the "Pull requests" tab, and press the green "New pull request" button near the top right. Near the top of the "Comparing changes" page, you are asked to select which branch to merge from and which branch to merge into. Make sure that the "base" selection is "main" and that the "compare" selection is your sub-team's branch, which means you are merging _from_ your sub-team's branch _into_ the "main" branch.
 
-![Make selections to merge into main](./assets/lab8_setup_pr.png)
+![Make selections to merge into main](./assets/lab9_setup_pr.png)
 
 GitHub may report that these branches "can't automatically merge". **Nevertheless**, press "Create pull request", populate the description box with a short description of your changes, and press "Create pull request" below the box. You have just opened a Pull request\!
 
@@ -257,7 +269,7 @@ According to the GitHub Flow, others in your organization can now review your Pu
 
 ![Your branch and the main branch have diverged](./assets/lab8_diverge.svg)
 
-Between the instant when your sub-team's branch was created and now, `main` has been updated. Unfortunately, your TA has written their own bad implementations of the three functions in `stack.c` and committed it directly to your row's `main` branch. Then, another sub-team has possibly contributed their feature to `main` already. The diagram above shows a probable state of your repository, where the `main` branch and your branch have _diverged_ with different changes. When these divergent commits modify the same file, they could pose a conflict when you want to merge them together.
+Between the instant when your sub-team's branch was created and now, `main` has been updated. Unfortunately, your TA has written their own bad implementations of the three functions in `waitlist.c` and committed it directly to your row's `main` branch. Then, another sub-team has possibly contributed their feature to `main` already. The diagram above shows a probable state of your repository, where the `main` branch and your branch have _diverged_ with different changes. When these divergent commits modify the same file, they could pose a conflict when you want to merge them together.
 
 Merge conflicts are often considered the thorniest part of working with Git, but don't worry\! We're here to guide you through it. Because not all merge conflicts can be resolved through GitHub's online editor, and because we love the command line (as you already know), we're going to show you how to resolve this merge conflict in your terminal.
 
@@ -277,7 +289,7 @@ Ensure that you are on the `main` branch by running:
 $ git checkout main
 ```
 
-Follow the instructions from GitHub until you see a `CONFLICT` reported by Git in `stack.c` and possibly `test_stack.c`. At this point, Git has edited all the files for which there is a conflict by putting all segments of conflicting changes side-by-side for you to review. Use Vim to review the contents of the files for which Git reported a conflict. Pay attention to how Git distinguishes between your branch's changes and the destination branch's changes. Here's GitHub's explanation of what's going on:
+Follow the instructions from GitHub until you see a `CONFLICT` reported by Git `waitlist.c` and possibly `test_waitlist.c`. At this point, Git has edited all the files for which there is a conflict by putting all segments of conflicting changes side-by-side for you to review. Use Vim to review the contents of the files for which Git reported a conflict. Pay attention to how Git distinguishes between your branch's changes and the destination branch's changes. Here's GitHub's explanation of what's going on:
 
 > To see the beginning of the merge conflict in your file, search the file for the conflict marker `<<<<<<<`. When you open the file in your text editor, you'll see the changes from the `HEAD` or base branch after the line `<<<<<<< HEAD`. Next, you'll see `=======`, which divides your changes from the changes in the other branch, followed by `>>>>>>> BRANCH-NAME`. In this example, one person wrote "open an issue" in the base or `HEAD` branch and another person wrote "ask your question in IRC" in the compare branch or `branch-a`.
 > 
@@ -290,11 +302,11 @@ Follow the instructions from GitHub until you see a `CONFLICT` reported by Git i
 > >>>>>>> branch-a
 > ```
 
-Integrate the changes, and then remove Git's markers (`>>>>>>>`, `=======`, `<<<<<<<`), ensuring that the file has proper C syntax. **Repeat this for each file with a conflict (e.g., `stack.c`).** After fixing each file, run <code>git add <span contenteditable class="code-replace-me">filename</span></code> to tell Git that you have finished fixing it.
+Integrate the changes, and then remove Git's markers (`>>>>>>>`, `=======`, `<<<<<<<`), ensuring that the file has proper C syntax. **Repeat this for each file with a conflict (e.g., `waitlist.c`).** After fixing each file, run <code>git add <span contenteditable class="code-replace-me">filename</span></code> to tell Git that you have finished fixing it.
 
-<div class="checkoff">
+<div class="important">
 
-Once you have finished resolving the conflicts in all files, ask a tutor or TA to check your progress.
+Make sure to resolve the conflicts in all files, ask a tutor or TA if you need help.
 
 </div>
 
@@ -315,13 +327,15 @@ Pause here until every sub-team in your row has merged their pull request into t
 
 ## Finishing up
 
-After the branch from each sub-team has been merged, your row's `main` branch will contain all combined stack features and test cases.
+After the branch from each sub-team has been merged, your row's `main` branch will contain all combined waitlist features and test cases.
 
 Switch to the `main` branch in your local repository, and run `git pull` to pull the latest updates from GitHub. Compile your code with `make`, and execute the combined test suite. **If the tests don't pass, that is okay! You don't need to make all the tests pass.**
 
-<div class="checkoff">
+<div class="gradescope">
 
-Show a TA/tutor the outcome of your tests.
+Have 1 person submit your repository and add all other team members to the submission.
+
+Please also submit your SETs and IA evalutions! <https://academicaffairs.ucsd.edu/Modules/Evals>
 
 </div>
 
@@ -329,8 +343,7 @@ Show a TA/tutor the outcome of your tests.
 
 If you finish with the lab content above you may any do the following:
 * If you want to feel more comfortable with using unix commands or otherwise enjoy files or fruits, we have an activity involving sorting fruit pictures botanically.
-* Work on PA4
-* Work on HW6
+* Work on Pset 5
 
 # Fruit
 in the initial repo you started with your partner, there is a `fruits` directory
