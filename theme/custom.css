@@ -332,3 +332,15 @@
 }
 
 .label-purple { background-color: #5e41d0; }
+
+.code-replace-me {
+    display: inline-block;
+    padding: 0 0.2em;
+    border: 1px solid currentColor;
+    border-radius: 3px;
+}
+
+.code-replace-me:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
