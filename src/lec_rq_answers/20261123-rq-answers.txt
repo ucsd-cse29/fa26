@@ -1,0 +1,16 @@
+1. What device would hold data for a frequently accessed memory address.
+    
+    At the lowest-level CPU registers and/or cache.
+
+2. When a hardware device finishes a task (e.g., the user touches the 
+   mouse) how does the OS learn that the action happened?
+
+    The device sends a hardware interrupt to the operating system.
+
+
+3. How does a bit get written to flash memory (SSD)?
+
+    Bits get written by trapping electrical charges inside a transistor
+    called a floating-gate transistor/MOSFET. 
+
+

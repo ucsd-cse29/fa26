@@ -56,6 +56,7 @@ better!
 - **Week 9 – OS**
     - Monday
       - [Lecture](lec/11-23-os/29-fa26-los.pdf)
+      - [Review Questions Answers](lec_rq_answers/20261123-rq-answers.txt)
 
 - **Week 8 – Networking**
   - **Lecture Materials**
