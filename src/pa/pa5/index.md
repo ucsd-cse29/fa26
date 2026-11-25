@@ -1,8 +1,9 @@
-# PA5 - Web Server
+# PA5 – Web Server Due TBD
 
-**Due Friday, March 13th, 11:59PM**
+<!-- TODO: set the due date -->
 
-Github Classroom Assignment: [https://classroom.github.com/a/exV5tX-2](https://classroom.github.com/a/exV5tX-2)
+- **Due TBD**
+- Classroom50: TODO
 
 **Important**: There is no resubmission available for Assignment 5 (Problem Set, Design Questions, and Programming Assignment). Please plan your development and testing accordingly. There will also be no hidden tests for PA5, so you will receive immediate feedback on your code.
 
@@ -14,11 +15,26 @@ One nice feature of HTTP is that it is a primarily text-based protocol, which ma
 
 It's useful to get experience with the format of HTTP, and with using system calls in C to manipulate HTTP requests.
 
-## Task – Chat Server
+Specifically, we will practice the following concepts in C:
+
+- string manipulation,
+- structs and memory management,
+- process management using fork(), _exit(), and waitpid(),
+- handling the SIGCHLD signal, and of course,
+- using the terminal and vim.
+
+## Getting Started
+
+The starter code for this assignment is hosted on Classroom50: TODO.
+Just like on previous PAs, clone the repository to the ieng6 server. It's best to complete the PA on `ieng6`, because it gives a consistent testing environment for the live server.
+
+- `http-server.c` and `http-server.h` are a library that handles the networking for you. It provides `start_server`, which listens on a port and calls a function you write once for every request. Treat it as a library: don't change it.
+- `chat-server.c` has a `main` that starts the server on the port given on the command line, and an empty `handle_request` function where you start writing your server.
+- The `Makefile` builds every `.c` file in the root of the repository into `chat-server`. Run `make chat-server` to compile.
+
+## Task Specification
 
 In this programming assignment, you'll write a C program to implement a chat room (think a plain-text version of [Slack](https://slack.com/) or [Discord](https://discord.com/)).
-
-It's best to complete the PA on `ieng6`, because it gives a consistent testing environment for the live server.
 
 Your programs should compile and run with:
 
@@ -99,6 +115,17 @@ Limits and constraints:
 - If username is longer than 15 bytes, respond with some kind of error (HTTP code 400 or 500)
 - If message is longer than 15 bytes, respond with some kind of error (HTTP code 400 or 500) – reactions are intended to be short!
 - If a reaction would make a chat have more than 100 reactions, the server should respond with an error (HTTP code 404 or 500)
+
+### Handling Requests in Child Processes
+
+Your server must send every response from a forked child process. For each request:
+
+1. The server process (the parent) parses the request and makes any change to the chats and reactions.
+2. The parent then forks. The child writes the whole response to the client (the list of chats, or an error) and then calls `_exit()`. The child must not change the chats, and must never return from the handler.
+3. The parent does not wait for the child. It returns from the handler right away so the server can accept the next request, which means several children can be sending responses at the same time.
+4. The parent reaps every child after it exits, using a `SIGCHLD` signal handler that calls `waitpid()`. Children must be reaped even if no more requests arrive: once all responses have been sent, the server must have no zombie children left. (Setting `SIGCHLD` to `SIG_IGN` also avoids zombies, but for this PA you must reap with `waitpid()`.)
+
+If `fork()` fails, print an error with `perror("fork")`, have the parent send a `500` response itself, and keep running.
 
 ## **Implementation Guide**
 
@@ -199,7 +226,7 @@ This function can have several tasks:
 
 - Use string functions to extract the username and message from the path
 - Call `add_chat` to do the data update
-- Call `respond_with_chats` to send the response
+- Fork a child that calls `respond_with_chats` to send the response, then `_exit()`s
 
 #### **`handle_reaction`**
 
@@ -212,7 +239,50 @@ This function can have several tasks:
 
 - Use string functions to extract the username, message, and id from the path
 - Call `add_reaction` to do the data update
-- Call `respond_with_chats` to send the response
+- Fork a child that calls `respond_with_chats` to send the response, then `_exit()`s
+
+### Forking a Child to Respond
+
+It may help to get your server working without `fork()` first, and add forking once requests and responses work.
+
+When a process forks, the child gets its own _copy_ of the parent's memory. If the child added a chat, it would add it to its own copy, and the chat would be gone when the child exits; the parent would never see it. That's why all changes to the chats happen in the parent, before the fork. The child's copy holds exactly the chats that existed when it was forked, so it can take its time sending them while the parent goes on to handle new requests.
+
+The child should end with `_exit()` (from `unistd.h`) instead of returning or calling `exit()`:
+
+- If the child returns from the handler, it goes back into the loop inside `start_server` and starts accepting requests too. Now there are two servers, each of which forks on the next request, and the number of processes keeps growing.
+- `exit()` flushes any `printf` output still sitting in a buffer. The child inherited a copy of the parent's buffer, so output the parent printed but hadn't flushed yet would be printed again by every child.
+- `_exit()` ends the process right away. The child has already sent its response, so there's nothing left for it to do.
+
+After the parent forks, it returns from the handler, and `start_server` closes the parent's copy of the client socket. The child's copy stays open until the child exits.
+
+In PA3, finished background programs were left as zombies. A server handles many requests, so here every child has to be reaped: each zombie takes up an entry in the process table, and once you reach your limit of processes on ieng6, `fork()` fails.
+
+Calling `waitpid(pid, NULL, 0)` on the child right after forking would make the parent wait for every response to finish, which is what forking is meant to avoid. Instead, the operating system tells the parent when a child exits by sending it the `SIGCHLD` signal. A program can register a _signal handler_, a function that runs when the signal arrives, interrupting whatever the program was doing:
+
+```c
+void handle_sigchld(int sig) {
+    // reap every child that has finished
+    ...
+}
+
+int main(int argc, char *argv[]) {
+    struct sigaction sa = {0};
+    sa.sa_handler = handle_sigchld;
+    sigaction(SIGCHLD, &sa, NULL);
+    ...
+}
+```
+
+Some things to think about when writing the handler:
+
+- `waitpid(-1, ...)` waits for _any_ child, not one particular child.
+- The `WNOHANG` option makes `waitpid` return right away instead of waiting: it reaps a child that has already finished, or returns 0 if none has. See `man 2 waitpid`.
+- Several children can exit before the handler gets to run, and the operating system may send only one `SIGCHLD` for all of them. So the handler should keep calling `waitpid` until there are no more finished children.
+- The handler can run in the middle of any of your other code, so it should only reap. Don't change the chats or call `printf` from it.
+
+The parent usually spends its time waiting for the next connection inside `start_server`. When a signal arrives, that wait is interrupted; the provided library notices and starts waiting again, so you don't need to handle that yourself.
+
+If you end up with stray servers, `ps -u $USER` lists your processes and `pkill chat-server` stops them.
 
 ## Representing Chats and Reactions
 
@@ -243,6 +313,8 @@ This PA explores several features that are straightforward to use, but there are
   - [`localtime`](https://en.cppreference.com/w/c/chrono/localtime): convert the time to the current local time zone
   - [`strftime`](https://en.cppreference.com/w/c/chrono/strftime): print the time in a given format
 
+- **Process functions:** `fork`, `_exit` (`man 2 _exit`), `waitpid` (`man 2 waitpid`), and `sigaction` (`man 2 sigaction`)
+
 ## Design Questions
 
 We know from [lab 8](https://ucsd-cse29.github.io/wi26/week8/lab8.html) that we can write `bash` scripts to automate running commands in loops. We know from this PA and lab 9 that we can use `wget` and `curl` to make requests to our chat server from the command line. We also hear in the news that AI agents are pretty good at writing code.
@@ -258,7 +330,7 @@ In your response:
 - Discuss if you are more confident in your implementation as a result
 - Discuss anything else you learned about bash scripting, programming, or URLs/servers as a result
 
-## Handin
+## Submission
 
 - Be sure to complete your Problem Set on PrairieLearn
 - Submit a **PDF** with your Design Question Answers on Gradescope
