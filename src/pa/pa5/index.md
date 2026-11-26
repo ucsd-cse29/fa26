@@ -1,10 +1,7 @@
-# PA5 – Web Server Due TBD
+# PA5 – Web Server Due Friday 12/4 10pm
 
-<!-- TODO: set the due date -->
-
-- **Due TBD**
-- Classroom50: TODO
-
+- **Due Friday 12/4 10pm**
+- [Classroom50](https://classroom50.org/ucsd-cse29-fall2026/cse29-fa26/assignments/pa5-web-server/accept)
 <div class="important">
 
 There is no resubmission available for PA5 (including the Design Questions) or Problem Set 5. Please plan your development and testing accordingly.
