@@ -22,3 +22,4 @@
 - [Project 3](./pa/pa3/index.md)
 - [Project 3 Resubmission](./pa/pa3/resubmission/index.md)
 - [Project 4](./pa/pa4/index.md)
+- [Project 5](./pa/pa5/index.md)
